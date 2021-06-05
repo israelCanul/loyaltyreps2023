@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".view.fragments.complimentary.ComplimetariesFragment">
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimaryLight"
+                    android:id="@+id/mainContainer">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp" android:id="@+id/complimentariesRV"
+                android:layout_marginTop="15dp"/>
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="@string/something_wrong"
+                  android:layout_marginStart="@dimen/margin60"
+                  android:layout_marginEnd="@dimen/margin60"
+                  android:textAlignment="center"
+                  android:textSize="@dimen/general_text"
+                  android:id="@+id/runoutOfItems"
+                  android:fontFamily="@font/roboto"
+                  android:textColor="@color/primary_text"
+                  android:layout_centerInParent="true" android:visibility="gone"/>
+
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar" android:layout_centerHorizontal="true" android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+</layout>

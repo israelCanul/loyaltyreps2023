@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".view.WelcomeActivity">
+
+        <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+                                               android:layout_height="match_parent"
+                                               android:background="@color/colorPrimaryLight">
+
+                <RelativeLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                >
+
+                        <TextView
+                                android:id="@+id/welcomeTitle"
+                                style="@style/ActivityTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/activity_title"
+                                android:text="@string/meet_lore_title" android:textSize="@dimen/text26"
+                                android:layout_marginTop="@dimen/margin30"/>
+
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                                  android:id="@+id/welcoMessage"
+                                  android:text="@string/meet_lore_desc" android:textAlignment="center"
+                                  android:layout_below="@+id/welcomeTitle"
+                                  android:layout_marginTop="@dimen/margin15"
+                                  style="@style/GeneralTextGrey"/>
+
+                        <com.airbnb.lottie.LottieAnimationView android:layout_width="wrap_content"
+                                                               android:layout_height="wrap_content"
+                                                               android:id="@+id/lore_animated"
+                                                               android:layout_centerHorizontal="true"
+                                                               android:layout_below="@id/welcoMessage"
+                                                               app:lottie_rawRes="@raw/lore_bienvenida"
+                                                               app:lottie_autoPlay="true"
+                                                               app:lottie_loop="true"
+                                                               app:lottie_speed="1"/>
+
+                        <Button
+                                android:id="@+id/startVideoTutorial"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/lore_animated"
+                                android:text="@string/start_tutorial"
+                                android:layout_marginTop="30dp"
+                                style="@style/GreenButtonStyle"/>
+
+                        <Button
+                                android:id="@+id/gotoMainView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:layout_below="@id/startVideoTutorial"
+                                android:background="@color/colorTransparent"
+                                android:textAllCaps="true"
+                                android:textStyle="bold|italic"
+                                android:textColor="@color/textDark" android:layout_centerHorizontal="true"
+                                android:text="@string/skip" android:layout_marginTop="30dp"
+                                android:fontFamily="@font/roboto"/>
+
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                                  android:text="@string/welcom_skip_notice" android:textAlignment="center"
+                                  android:textSize="@dimen/general_text"
+                                  android:textColor="@color/colorPrimary" android:layout_below="@+id/gotoMainView"
+                                  android:layout_marginTop="@dimen/margin50" android:textStyle="italic"/>
+
+                </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+</layout>

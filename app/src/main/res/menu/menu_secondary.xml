@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/actionXHome"
+          android:title="@string/menu_home"
+          android:icon="@drawable/icon_menu_home_off"/>
+
+    <item android:id="@+id/actionXParks"
+          android:title="@string/menu_parks"
+          android:icon="@drawable/icon_menu_attractions_off"/>
+
+    <item android:id="@+id/moduleNotAvailableFragment"
+          android:title="@string/menu_shop"
+          android:icon="@drawable/icon_menu_shop_off"/>
+
+    <item android:id="@+id/actionXComplimentaries"
+          android:title="@string/menu_courtesies"
+          android:icon="@drawable/icon_menu_courtesies_off"/>
+
+    <item android:id="@+id/profileFragment"
+          android:title="@string/menu_profile"
+          android:icon="@drawable/icon_menu_profile_off"/>
+
+</menu>

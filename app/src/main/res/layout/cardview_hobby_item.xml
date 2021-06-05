@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <ToggleButton android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:background="@color/colorTransparent"
+                  android:drawableStart="@drawable/toggle_off"
+                  android:textAlignment="textStart"
+                  android:textAllCaps="false"
+                  android:paddingStart="@dimen/margin5"
+                  android:paddingEnd="5dp"
+                  android:checked="true"
+                  android:id="@+id/userHobby"
+                  tools:text="@string/date"
+                  tools:textOn="@string/date"
+                  tools:textOff="@string/date" android:fontFamily="@font/roboto"
+                  android:textSize="@dimen/general_text"/>
+
+</LinearLayout>

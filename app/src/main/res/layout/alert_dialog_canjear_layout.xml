@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical" android:layout_margin="@dimen/margin50"
+              android:layout_width="wrap_content" android:padding="@dimen/margin50" android:gravity="center_vertical"
+              android:layout_height="wrap_content" android:background="@drawable/backgroun_pickup_form">
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textAlignment="center"
+              android:text="@string/canjear_alert_title"
+              style="@style/GeneralTextGrey"/>
+
+    <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/mprogressBar"
+                 android:layout_marginTop="@dimen/margin30" android:layout_gravity="center_horizontal" android:visibility="gone"/>
+
+    <Button
+            android:text="@string/shop_canjear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/shop_continue" android:layout_marginTop="40dp"
+            style="@style/GreenButtonStyle"/>
+
+    <Button
+            android:text="@string/shop_cancelar_canje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cancel_action"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            style="@style/TransparentButton"/>
+
+</LinearLayout>

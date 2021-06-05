@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                   xmlns:tools="http://schemas.android.com/tools"
+                                   app:cardElevation="0dp"
+                                   android:layout_width="match_parent" app:cardCornerRadius="@dimen/margin10"
+                                   android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin15"
+                                   android:layout_marginStart="@dimen/margin5" android:layout_marginEnd="@dimen/margin5"
+                                   android:weightSum="10" android:id="@+id/cardTourContainer">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:paddingTop="@dimen/margin10"
+                                                       android:paddingBottom="@dimen/margin10"
+                                                       android:layout_height="match_parent"
+                                                       android:id="@+id/cardConstraint">
+
+        <ImageView
+                android:layout_width="32dp" android:contentDescription="@string/goto_training"
+                android:layout_height="30dp"
+                android:id="@+id/parkCover" android:scaleType="fitCenter" tools:src="@drawable/xcaret_sample"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="5dp"/>
+
+        <TextView
+                android:text="@string/app_name"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:id="@+id/parkTitle"
+                android:textSize="@dimen/text13"
+                android:textStyle="bold"
+                android:autoSizeTextType="uniform"
+                android:autoSizeStepGranularity="2sp"
+                android:gravity="center_vertical|center_horizontal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" tools:targetApi="o"
+                android:layout_marginEnd="5dp" app:autoSizeMaxTextSize="@dimen/text13"
+                app:autoSizeMinTextSize="@dimen/text12" app:autoSizeTextType="uniform" android:autoText="true"
+                android:layout_marginStart="32dp" app:layout_constraintStart_toStartOf="parent"
+                android:fontFamily="@font/roboto" android:textColor="@color/primary_text"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

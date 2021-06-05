@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".view.fragments.complimentary.ComplimentaryDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent">
+
+        <View android:layout_width="0dp" android:layout_height="300dp"
+              android:background="@drawable/gradient_background" app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintHorizontal_bias="0.497"
+              app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+                                               android:layout_height="match_parent"
+                                               android:id="@+id/complimentaryFragment"
+                                               app:layout_constraintEnd_toEndOf="parent"
+                                               app:layout_constraintStart_toStartOf="parent"
+                                               app:layout_constraintBottom_toBottomOf="parent"
+                                               app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                               android:layout_height="match_parent"
+                                                               android:layout_marginBottom="@dimen/margin15">
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:text="@string/complimentary_details_title"
+                        android:id="@+id/complimentaryTitle" app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="30dp" android:layout_marginEnd="30dp"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/activity_title" android:textStyle="bold"
+                        android:fontFamily="@font/roboto"/>
+
+                <TextView
+                        android:text="@string/complimentary_details_description"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/complimentaryDescription"
+                        app:layout_constraintTop_toBottomOf="@+id/complimentaryTitle"
+                        app:layout_constraintEnd_toEndOf="@+id/complimentaryTitle"
+                        app:layout_constraintStart_toStartOf="@+id/complimentaryTitle" android:textColor="@color/colorWhite"
+                        android:layout_marginTop="10dp" android:fontFamily="@font/roboto"/>
+
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="0dp" android:background="@drawable/backgroun_pickup_form"
+                        android:layout_height="wrap_content" android:layout_marginTop="15dp"
+                        android:padding="@dimen/general_padding"
+                        app:layout_constraintTop_toBottomOf="@+id/complimentaryDescription"
+                        app:layout_constraintStart_toStartOf="@+id/complimentaryDescription"
+                        app:layout_constraintEnd_toEndOf="@+id/complimentaryDescription">
+
+                    <TextView android:text="@string/reservation_instructions"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:textStyle="italic"
+                              android:textColor="@color/primary_text"
+                              android:textSize="@dimen/general_text" android:fontFamily="@font/roboto"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin15"
+                            app:errorEnabled="true"
+                            app:errorTextAppearance="@style/error_appearance">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/primary_text"
+                                android:textSize="@dimen/general_text"
+                                android:drawableEnd="@drawable/icon_calendar"
+                                android:hint="@string/reservation_date"
+                                android:id="@+id/reservationDate"
+                                android:imeOptions="actionUnspecified"
+                                android:inputType="text"
+                                android:focusable="false"
+                                android:maxLines="1"
+                                android:longClickable="true" android:fontFamily="@font/roboto"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin15">
+
+                        <RelativeLayout android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/textView14"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintHorizontal_bias="0.5"
+                                        app:layout_constraintEnd_toStartOf="@+id/textView15">
+
+                            <TextView android:id="@+id/adultText"
+                                      android:text="@string/reservation_adult_txt"
+                                      android:layout_width="match_parent"
+                                      android:textAlignment="center"
+                                      android:layout_height="wrap_content"
+                                      android:textColor="@color/primary_text"
+                                      android:textSize="@dimen/text12" android:fontFamily="@font/roboto"/>
+
+                            <TextView android:id="@+id/adultTextBelow"
+                                      android:text="@string/reservation_adult_txt_desc"
+                                      android:layout_width="match_parent"
+                                      android:layout_below="@+id/adultText"
+                                      android:textAlignment="center"
+                                      android:layout_height="wrap_content"
+                                      android:textColor="@color/primary_text"
+                                      android:textSize="@dimen/text10" android:fontFamily="@font/roboto"/>
+
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                                            android:id="@+id/selectNumberOfAdults" android:layout_marginTop="@dimen/margin5"
+                                            android:background="@drawable/spinner_purple_border_background"
+                                            android:layout_below="@+id/adultTextBelow" android:gravity="end">
+
+                                <androidx.appcompat.widget.AppCompatSpinner android:backgroundTint="@color/colorTimer"
+                                                                            android:layout_width="wrap_content"
+                                                                            android:layout_height="wrap_content"
+                                                                            android:textAlignment="textStart"
+                                                                            android:spinnerMode="dialog"
+                                                                            tools:targetApi="lollipop"
+                                                                            android:id="@+id/numberOfAdults"/>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout android:id="@+id/textView15"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintStart_toEndOf="@+id/textView14"
+                                        android:layout_marginStart="20dp"
+                                        android:layout_marginEnd="20dp" app:layout_constraintEnd_toStartOf="@+id/textView16"
+                                        app:layout_constraintHorizontal_bias="0.5" android:visibility="visible">
+
+                            <TextView android:id="@+id/kidsText"
+                                      android:text="@string/reservation_kids_txt"
+                                      android:layout_width="match_parent"
+                                      android:layout_height="wrap_content"
+                                      android:textAlignment="center"
+                                      android:textColor="@color/primary_text"
+                                      android:textSize="@dimen/text12" android:fontFamily="@font/roboto"/>
+
+                            <TextView android:id="@+id/kidsTextBelow"
+                                      android:text="@string/reservation_kids_txt_desc"
+                                      android:layout_width="match_parent"
+                                      android:layout_below="@+id/kidsText"
+                                      android:textAlignment="center"
+                                      android:layout_height="wrap_content"
+                                      android:textColor="@color/primary_text"
+                                      android:textSize="@dimen/text10" android:fontFamily="@font/roboto"/>
+
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                                            android:id="@+id/selectNumberOfKids" android:layout_marginTop="@dimen/margin5"
+                                            android:background="@drawable/spinner_purple_border_background"
+                                            android:layout_below="@+id/kidsTextBelow" android:gravity="end">
+
+                                <androidx.appcompat.widget.AppCompatSpinner android:backgroundTint="@color/colorTimer"
+                                                                            android:layout_width="wrap_content"
+                                                                            android:layout_height="wrap_content"
+                                                                            android:textAlignment="textStart"
+                                                                            android:spinnerMode="dialog"
+                                                                            tools:targetApi="lollipop"
+                                                                            android:layout_marginTop="0dp"
+                                                                            android:layout_alignParentTop="true"
+                                                                            android:id="@+id/numberOfKids"/>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout android:id="@+id/textView16"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintStart_toEndOf="@+id/textView15"
+                                        app:layout_constraintHorizontal_bias="0.5" android:visibility="visible">
+
+                            <TextView android:id="@+id/infantsText"
+                                      android:text="@string/reservation_infants_txt"
+                                      android:layout_width="match_parent"
+                                      android:textAlignment="center"
+                                      android:layout_height="wrap_content"
+                                      android:textColor="@color/primary_text"
+                                      android:textSize="@dimen/text12" android:fontFamily="@font/roboto"/>
+
+                            <TextView android:id="@+id/infantsTextBelow"
+                                      android:text="@string/reservation_infants_txt_desc"
+                                      android:layout_width="match_parent"
+                                      android:layout_below="@+id/infantsText"
+                                      android:textAlignment="center"
+                                      android:layout_height="wrap_content"
+                                      android:textColor="@color/primary_text"
+                                      android:textSize="@dimen/text10" android:fontFamily="@font/roboto"/>
+
+                            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                                            android:id="@+id/selectNumberOfInfants" android:layout_marginTop="@dimen/margin5"
+                                            android:background="@drawable/spinner_purple_border_background" android:gravity="end"
+                                            android:layout_below="@+id/infantsTextBelow">
+
+                                <androidx.appcompat.widget.AppCompatSpinner android:backgroundTint="@color/colorTimer"
+                                                                            android:layout_width="wrap_content"
+                                                                            android:layout_height="wrap_content"
+                                                                            android:textAlignment="textStart"
+                                                                            android:spinnerMode="dialog"
+                                                                            tools:targetApi="lollipop"
+                                                                            android:id="@+id/numberOfInfants"/>
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="@dimen/margin10" android:layout_marginTop="@dimen/margin15">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                                android:backgroundTint="@color/colorTransparent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/primary_text"
+                                android:textSize="@dimen/general_text"
+                                android:enabled="false"
+                                android:hint="@string/reservation_titular"
+                                android:id="@+id/reservationUser" android:fontFamily="@font/roboto"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="@dimen/margin10">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                                android:backgroundTint="@color/colorTransparent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/primary_text"
+                                android:textSize="@dimen/general_text"
+                                android:enabled="false"
+                                android:hint="@string/insert_park" android:id="@+id/reservationPark"
+                                tools:targetApi="lollipop" android:fontFamily="@font/roboto"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="@dimen/margin10">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                                android:backgroundTint="@color/colorTransparent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/primary_text"
+                                android:textSize="@dimen/general_text"
+                                android:enabled="false"
+                                android:hint="@string/reservation_agency" android:id="@+id/reservationAgency"
+                                tools:targetApi="lollipop" android:fontFamily="@font/roboto"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="@dimen/margin10">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                                android:backgroundTint="@color/colorTransparent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/primary_text"
+                                android:textSize="@dimen/general_text"
+                                android:enabled="false"
+                                android:hint="@string/reservation_rcx" android:id="@+id/reservationRCX"
+                                tools:targetApi="lollipop" android:fontFamily="@font/roboto"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ProgressBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+                            android:id="@+id/progressBar"
+                            android:visibility="gone"/>
+
+                    <Button
+                            android:text="@string/make_reservation" android:textColor="@color/colorWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_disabled"
+                            android:enabled="false"
+                            android:id="@+id/requestReservation"
+                            app:layout_constraintStart_toStartOf="@+id/product_description"
+                            app:layout_constraintEnd_toEndOf="@+id/product_description"
+                            app:layout_constraintHorizontal_bias="0.517"
+                            android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/lessMore"
+                            style="@style/GreenButtonStyle"/>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/backgroun_pickup_form"
+              android:padding="@dimen/general_padding">
+
+    <ImageButton android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="end"
+                 android:contentDescription="@string/close_app"
+                 app:srcCompat="@drawable/icon_close"
+                 android:background="@color/colorTransparent" android:id="@+id/closeMe"/>
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:text="@string/profile_popup2_title" android:textColor="@color/activity_title"
+              android:textSize="@dimen/activity_title" android:textStyle="bold" android:textAlignment="center"
+              android:layout_marginTop="@dimen/margin10" android:fontFamily="@font/roboto"/>
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:text="@string/profile_popup2_description" android:layout_marginStart="@dimen/margin30"
+              android:layout_marginEnd="0dp" android:layout_marginTop="@dimen/margin15"
+              style="@style/GeneralTextGrey"/>
+
+    <ImageView android:layout_width="250dp" android:layout_height="110dp"
+               tools:src="@drawable/lore_fotografia" android:layout_gravity="center_horizontal"
+               android:contentDescription="@string/app_name" android:scaleType="centerCrop"
+               android:layout_marginTop="@dimen/margin30" android:id="@+id/instructions"/>
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:text="@string/profile_popup3_description" android:layout_marginStart="@dimen/margin30"
+              android:layout_marginEnd="0dp" android:layout_marginTop="@dimen/margin30"
+              style="@style/GeneralTextGrey"/>
+
+</LinearLayout>

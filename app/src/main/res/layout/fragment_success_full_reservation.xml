@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".view.fragments.complimentary.SuccessFullReservationFragment">
+
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+                                           android:layout_height="match_parent"
+                                           android:background="@color/colorPrimaryLight">
+
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|center_horizontal" android:layout_marginStart="@dimen/margin30"
+                        android:layout_marginEnd="@dimen/margin30">
+
+            <TextView android:id="@+id/welcomeTitle"
+                      android:layout_height="wrap_content" android:textColor="@color/activity_title"
+                      style="@style/ActivityTitle" android:layout_marginBottom="@dimen/margin30"
+                      android:layout_width="match_parent"
+                      android:text="@string/reservations_success_response" android:textSize="@dimen/text26"
+                      android:fontFamily="@font/roboto"/>
+
+            <com.airbnb.lottie.LottieAnimationView android:layout_width="210dp"
+                                                   android:layout_height="255dp"
+                                                   android:id="@+id/lore_animated"
+                                                   android:layout_centerHorizontal="true"
+                                                   android:layout_below="@id/welcomeTitle"
+                                                   android:scaleType="fitCenter"
+                                                   tools:src="@drawable/lore_compra_exitosa"
+                                                   app:lottie_rawRes="@raw/lore_tarjeta"
+                                                   app:lottie_autoPlay="true"
+                                                   app:lottie_loop="true"
+                                                   app:lottie_speed="1"/>
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/welcoMessage"
+                      android:text="@string/reservations_success_response_desc" android:textAlignment="center"
+                      android:layout_marginStart="@dimen/margin20" android:layout_marginEnd="@dimen/margin20" android:layout_marginTop="@dimen/margin30"
+                      android:layout_below="@+id/lore_animated"
+                      style="@style/GeneralTextGrey"/>
+
+            <Button
+                    android:text="@string/menu_courtesies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:background="@drawable/button_green"
+                    android:id="@+id/gotoComplimentaries"
+                    android:layout_below="@+id/welcoMessage"
+                    android:layout_marginTop="@dimen/margin30"
+                    style="@style/GreenButtonStyle"/>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

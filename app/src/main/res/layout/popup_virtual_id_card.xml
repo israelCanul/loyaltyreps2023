@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="250dp"
+              android:layout_height="wrap_content"
+              android:background="@drawable/backgroun_pickup_form"
+              android:padding="@dimen/general_padding">
+
+    <ImageButton android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentEnd="true"
+                 android:contentDescription="@string/close_app"
+                 app:srcCompat="@drawable/icon_close"
+                 android:background="@color/colorTransparent" android:id="@+id/closeMe"/>
+
+    <ImageView android:layout_width="match_parent"
+               android:layout_height="250dp"
+               android:scaleType="centerCrop"
+               android:layout_below="@+id/closeMe"
+               android:layout_marginTop="@dimen/margin15"
+               android:contentDescription="@string/profile_popup1_title"
+               android:id="@+id/xuserVirtualId"/>
+
+    <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content"
+                 android:id="@+id/mprogressBar" android:layout_centerInParent="true"/>
+
+</RelativeLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content"
+                                                   android:id="@+id/beganTraining"
+                                                   app:layout_constraintTop_toTopOf="parent"
+                                                   android:layout_marginEnd="30dp"
+                                                   app:layout_constraintEnd_toEndOf="parent"
+                                                   android:layout_marginStart="30dp"
+                                                   app:layout_constraintStart_toStartOf="parent"
+                                                   android:layout_marginTop="20dp">
+
+    <com.airbnb.lottie.LottieAnimationView android:layout_width="200dp"
+                                           android:id="@+id/lottieAnimationView"
+                                           android:layout_height="200dp" android:elevation="5dp"
+                                           tools:src="@drawable/lore_face_progress"
+                                           app:layout_constraintEnd_toEndOf="parent"
+                                           app:layout_constraintStart_toStartOf="parent"
+                                           app:layout_constraintHorizontal_bias="0.497"
+                                           app:layout_constraintTop_toTopOf="parent"
+                                           app:lottie_rawRes="@raw/lore_azul"
+                                           app:lottie_autoPlay="true"
+                                           app:lottie_loop="true"
+                                           app:lottie_speed="1" tools:targetApi="lollipop"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="300dp" android:background="@drawable/backgroun_pickup_form"
+            android:layout_height="wrap_content" app:layout_constraintEnd_toEndOf="parent"
+            android:padding="@dimen/general_padding"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="140dp" app:layout_constraintTop_toTopOf="@+id/lottieAnimationView">
+
+        <ImageButton android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="end"
+                     android:contentDescription="@string/close_app"
+                     app:srcCompat="@drawable/icon_close"
+                     android:background="@color/colorTransparent" android:id="@+id/closeMe"/>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  tools:text="@string/how_to_get_card" android:layout_marginTop="@dimen/margin50"
+                  android:layout_marginBottom="@dimen/margin20"
+                  android:textAlignment="center" android:id="@+id/popupMessage"
+                  style="@style/GeneralTextGrey"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".view.fragments.store.ProductsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/general_padding"
+            android:paddingEnd="@dimen/general_padding">
+
+        <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/backgroun_pickup_form"
+                android:baselineAligned="false"
+                android:orientation="vertical"
+                android:padding="@dimen/margin15"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/store_productpoints"
+                    android:textAlignment="center"
+                    android:textColor="@color/activity_title"
+                    android:textSize="@dimen/text13" />
+
+            <TextView
+                    android:id="@+id/articulosPuntos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin5"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/product_price"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/text16"
+                    android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:text="@string/store_categorytext" style="@style/PickUpForm" android:id="@+id/textView3"
+                  app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                  app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+                  app:layout_constraintStart_toStartOf="@+id/linearLayout2" android:layout_marginTop="10dp"
+                  android:layout_marginStart="40dp" android:layout_marginEnd="40dp" android:fontFamily="@font/roboto"/>
+
+        <androidx.appcompat.widget.AppCompatSpinner style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                                                    android:backgroundTint="@color/colorAccent"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:textAlignment="textStart" android:spinnerMode="dialog"
+                                                    android:id="@+id/selectCategory" android:entries="@array/tours"
+                                                    app:layout_constraintTop_toBottomOf="@+id/textView3"
+                                                    app:layout_constraintStart_toStartOf="@+id/textView3"
+                                                    app:layout_constraintEnd_toEndOf="@+id/textView3"
+                                                    android:layout_marginStart="30dp" android:layout_marginEnd="30dp"
+                                                    android:paddingTop="0dp" tools:ignore="UnusedAttribute"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="140dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.862"
+                android:id="@+id/productsRecyclerView"
+                tools:listitem="@layout/cardview_store_item"
+                tools:itemCount="3"
+                app:layout_constraintTop_toBottomOf="@+id/selectCategory" android:fitsSystemWindows="true"
+                android:clipChildren="false" app:fastScrollEnabled="false"/>
+
+        <TextView android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:text="@string/runout_ofproducts"
+                  android:textAlignment="center"
+                  android:textSize="@dimen/general_text"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintVertical_bias="0.534"
+                  app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                  android:visibility="gone" android:id="@+id/runoutOfItems" android:fontFamily="@font/roboto"
+                  android:textColor="@color/primary_text"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

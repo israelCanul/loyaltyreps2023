@@ -1,0 +1,331 @@
+<resources>
+    <string name="app_name">Xcaret Loyalty Reps</string>
+    <string name="title_activity_login">Inicio de sesión</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">RCX / RRX</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Ingresar</string>
+    <string name="action_sign_in_short">Ingresar</string>
+
+    <string name="error_invalid_data">Tus datos son incorrectos, por favor verificalos.</string>
+    <string name="error_invalid_name">Debes ingresar RCX / RRX válido</string>
+    <string name="error_invalid_email">Debes ingresar un correo válido</string>
+    <string name="error_invalid_profile_email">Debes ingresar un correo válido</string>
+    <string name="error_invalid_profile_phone">Ingresa un número telefónico de 10 dígitos</string>
+    <string name="error_invalid_password">Debes ingresar RCX válido</string>
+    <string name="error_incorrect_password">Debes ingresar contraseña</string>
+    <string name="error_field_required">Este campo es obligatorio</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="login">Entrar</string>
+    <string name="login_notice">*Si aún no tienes tu número de acceso u olvidaste tu contraseña, contacta a tu Ejecutivo
+        o llámanos al\n(998) 980 0390.
+    </string>
+
+    <string name="meet_lore_title">¡Hola!</string>
+    <string name="meet_lore_desc">Mi nombre es
+        <font fgcolor='#832181'>
+            <b>LORE</b>
+        </font>
+        , y te ayudaré a que\naproveches al máximo tu plataforma.
+    </string>
+    <string name="home_level">nivel</string>
+    <string name="menu_home">Inicio</string>
+    <string name="menu_parks">Parques</string>
+    <string name="menu_shop">Tienda</string>
+    <string name="menu_courtesies">Cortesías</string>
+    <string name="menu_profile">Perfil</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="home_fragment_title">Responde el quiz para empezar\na ganar puntos.</string>
+    <string name="home_fragment_title2">Completa tu perfil y responde el quiz\npara empezar a ganar y canjear puntos.
+    </string>
+    <string name="home_frag_status">Estatus:</string>
+    <string name="home_frag_statusopt">Inactivo</string>
+    <string name="home_frag_0">0</string>
+    <string name="home_frag_points">puntos totales\n(rifa + artículos)</string>
+    <string name="home_frag_profile">Perfil</string>
+    <string name="home_frag_quiz">Quiz</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="goto_training">Training</string>
+    <string name="goto_newsfeed">Newsfeed</string>
+    <string name="goto_sails">Ventas</string>
+    <string name="goto_support">Soporte</string>
+    <string name="pickup_zona">Zona</string>
+    <string name="pickup_select_tour">Selecciona un tour</string>
+    <string name="pickup_tour">Tour</string>
+    <string name="pickup_date">Fecha</string>
+    <string name="date">Selecciona una fecha</string>
+    <string name="pickup_schedule">Horarios de transporte</string>
+    <string name="pickup_search">Buscar</string>
+    <string name="pickup_hour">Horario</string>
+    <string name="product_name">Cafetera Nespresso Krups</string>
+    <string name="product_price">50,000 pts</string>
+    <string name="store_items">Artículos</string>
+    <string name="store_curses">Cursos</string>
+    <string name="store_hotsale">¡Hot sale!</string>
+    <string name="store_mypoints">Mis puntos:</string>
+    <string name="store_categorytext">Categoría</string>
+    <string name="shop_canjear">Canjear</string>
+    <string name="canjear_alert_title">¿Estás seguro que quieres continuar con el canje?</string>
+    <string name="shop_cancelar_canje">Cancelar</string>
+    <string name="goto_shop">Tienda</string>
+    <string name="videos_disponibles">Los videos estarán disponibles hasta el día 00/00/00. Responde el quiz para ganar
+        puntos.
+    </string>
+    <string name="quiz">QUIZ</string>
+    <string name="quiz_instruction">Puedes seleccionar varias respuestas</string>
+    <string name="playme">Play video</string>
+    <string name="quiz_next">SIGUIENTE</string>
+
+    <string name="share_using">Compartir usando</string>
+    <string name="emptyList">No se encontraron resultados</string>
+    <string name="search_news">Buscar noticia</string>
+    <string name="success_response1">Tu saldo actual de puntos para artículos es de:</string>
+    <string name="success_response1_boletosrifa">Tu saldo actual de puntos para boletos de rifa es de:</string>
+    <string name="success_response2">Contacta a tu asesor para recibir tu compra.</string>
+    <string name="call_support">Iniciar chat</string>
+    <string name="success_response3">Por favor inténtalo de nuevo. Si el problema persiste, escríbenos en la sección de
+        soporte.
+    </string>
+    <string name="search_hotel">Buscar hotel</string>
+    <string name="ask_availavility">*Reserva con 24 hrs de anticipación.</string>
+    <string name="make_reservation">ENVIAR</string>
+    <string name="make_reservation_text">RESERVAR</string>
+    <string name="make_phone_call">CONSULTAR DISPONIBILIDAD</string>
+    <string name="reservation_titular">Titular de la reservación</string>
+    <string name="insert_name">Ingresa tu nombre</string>
+    <string name="reservation_adult_txt">Adulto(s)</string>
+    <string name="reservation_kids_txt">Niño(s)</string>
+    <string name="reservation_infants_txt">Infante(s)</string>
+    <string name="insert_park">Parque</string>
+    <string name="reservation_date">Fecha</string>
+    <string name="insert_date">Elige fecha</string>
+    <string name="reservation_agency">Agencia</string>
+    <string name="insert_agency">Ingresa agencia</string>
+    <string name="reservation_rcx">RRX/RCX</string>
+    <string name="sales_bymonth">DEL MES</string>
+    <string name="sales_byear">DEL AÑO</string>
+    <string name="month">Month Year</string>
+    <string name="total_pax">Total pax:</string>
+    <string name="days_left">¡Te quedan
+        <b>
+            <font fgcolor='#832181'>86 días</font>
+        </b>
+        para convertirte en
+        <b>
+            <font fgcolor='#832181'>Top Rep</font>
+        </b>
+        !
+    </string>
+    <string name="accumulate_points">Debes acumular un total de
+        <b>
+            <font fgcolor='#832181'>18,000 pts</font>
+        </b>
+        antes del
+        <b>
+            <font fgcolor='#832181'>30-06-2019</font>
+        </b>
+        .
+    </string>
+    <string name="total_points">18,000</string>
+    <string name="num">100 pts</string>
+    <string name="go_back">Atrás</string>
+    <string name="section_pickup">Pick-ups</string>
+    <string name="section_training">Training</string>
+    <string name="section_complimentaries">Cortesías</string>
+    <string name="section_newsfeed">Newsfeed</string>
+    <string name="section_parks">Parques</string>
+    <string name="store_productpoints">Puntos artículos:</string>
+    <string name="store_rifapoints">Puntos rifa:</string>
+    <string name="section_profile">Perfil</string>
+    <string name="section_profile_myaccount">Mi cuenta</string>
+    <string name="section_profile_interests">Intereses</string>
+    <string name="section_profile_record">Historial</string>
+    <string name="profile_status">Estatus de la cuenta:</string>
+    <string name="registration_prompt_name">Nombre</string>
+    <string name="add_more">Más</string>
+    <string name="add_less">Menos</string>
+    <string name="product_qty">2</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="notification">Notificación</string>
+    <string name="skip">Saltar</string>
+    <string name="start_tutorial">Empezar</string>
+    <string name="welcom_skip_notice">*Si eliges la opción SALTAR,\npodrás ver el tutorial en la sección de Soporte.
+    </string>
+    <string name="main_quiz_instructions">Deberás aprobar con un mínimo de 80% para activar tu cuenta y acceder a tus
+        cortesías. Si quieres prepararte para el quiz, revisa nuestra sección de Training.
+    </string>
+    <string name="mainquiz_welcome_title">¡Bienvenido al quiz!</string>
+    <string name="start_main_quiz">COMENZAR</string>
+    <string name="quiz_previous">ANTERIOR</string>
+    <string name="quiz_finish">FINALIZAR</string>
+    <string name="choice">I\'m a choice</string>
+    <string name="choice_pickone">¡Debes seleccionar una opción!</string>
+
+    <string name="quiz_result_title_error">Inténtalo de nuevo</string>
+    <string name="quiz_result_training_error_description">Una o más respuestas no fueron correctas</string>
+    <string name="quiz_result_training_error_next_steps">Puedes volver a ver el video y regresar a contestar el quiz de
+        nuevo.
+    </string>
+    <string name="quiz_result_title_passed">¡Felicidades!</string>
+    <string name="quiz_result_description_error">Necesitas un mínimo de 80% de respuestas correctas para activar tu
+        cuenta.
+    </string>
+    <string name="quiz_result_error_next_instructions">Visita la sección de “Training” para prepararte y regresa a
+        contestar el quiz de nuevo.
+    </string>
+    <string name="quiz_result_passed_next_instructions">¡Ya puedes comenzar a usar tus puntos! Recuerda que los puedes
+        canjear por productos de tienda, cursos y rifa.
+    </string>
+    <string name="quiz_result_passed_descriptions">Aprobaste el quiz ganando \nun total de:</string>
+    <string name="quiz_result_error_quiz">QUIZ</string>
+    <string name="quiz_result_error_training">TRAINING</string>
+    <string name="quiz_result_passed_mainview">INICIAR</string>
+    <string name="quiz_result_passed_store">TIENDA</string>
+
+    <string-array name="tours">
+        <item>Xcaret</item>
+        <item>Xplor</item>
+        <item>Xenses</item>
+    </string-array>
+
+    <string name="Smooch_startOfConversation">¡Hola! En este chat podrás conversar con un ejecutivo de Grupo Xcaret.
+    </string>
+    <string name="Smooch_welcome">Si tienes alguna pregunta sobre Lore App, el Programa de Loyalty Reps o sobre los
+        servicios de los Parques y Tours de Xcaret, escríbenos, estamos disponibles para ti de 7 am a 7 pm.
+    </string>
+
+    <string name="prompt_profile_hint_name">Nombre</string>
+    <string name="prompt_profile_name">rcx0000543</string>
+    <string name="prompt_profile_hint_rcx">RCX / RRX</string>
+    <string name="prompt_profile_hint_last_name">Apellido paterno</string>
+    <string name="prompt_profile_hint_last_name2">Apellido materno</string>
+    <string name="prompt_profile_hint_email">Correo</string>
+    <string name="prompt_profile_hint_phone">Teléfono</string>
+    <string name="prompt_profile_hint_photo">Foto</string>
+    <string name="prompt_profile_hint_id">Identificación oficial (INE, licencia, pasaporte)</string>
+    <string name="prompt_profile_hint_guide">Especificaciones de imagen</string>
+    <string name="prompt_profile_hint_photo_front">Frente</string>
+    <string name="prompt_profile_hint_photo_back">Reverso</string>
+    <string name="prompt_profile_hint_validation_status">Estatus de validación:</string>
+    <string name="prompt_profile_hint_validation_terms_and_conditions">Al guardar mis datos acepto que he leído y estoy
+        de acuerdo con el <font fgcolor='#832181'>Aviso de privacidad</font> y los <font fgcolor='#832181'>términos y
+            condiciones
+        </font> del programa.
+    </string>
+    <string name="prompt_profile_hint_save_data">GUARDAR</string>
+    <string name="prompt_profile_hint_birthdate">Fecha de nacimiento</string>
+    <string name="prompt_profile_hint_estado_civil">Estado civil</string>
+    <string name="prompt_profile_hint_children">Hijos</string>
+    <string name="prompt_profile_hint_estate">Estado de nacimiento</string>
+    <string name="prompt_profile_hint_municipio">Municipio de nacimiento</string>
+    <string name="prompt_profile_hint_hobbies">Hobbies</string>
+    <string name="prompt_profile_hint_points">+50 pts.</string>
+    <string name="prompt_profile_hint_negative_record">PUNTOS -</string>
+    <string name="prompt_profile_hint_positive_record">PUNTOS +</string>
+    <string name="close_app">Close me</string>
+    <string name="profile_popup1_title">Especificaciones para la\nfotografía de tu tarjeta digital</string>
+    <string name="profile_popup1_description">
+        1. Archivo JPG, PNG.\n(2MB Máx.)\n2. Fotografía tipo credencial:\n
+        - De frente\n
+        - Fondo blanco\n
+        - Con uniforme
+    </string>
+    <string name="profile_popup2_title">Especificaciones para la\n identificación oficial</string>
+    <string name="profile_popup2_description">
+        1. Archivo JPG, PNG o PDF.\n(2MB Máx.)\n2. Debes subir el frente y reverso, en un archivo o dos.
+    </string>
+    <string name="profile_popup3_description">3. Los archivos que subas a la plataforma serán revisados y validados.
+    </string>
+
+    <string name="add_profrile_picture">Agregar foto de perfil</string>
+    <string name="take_picture_from_camera">Tomar una foto</string>
+    <string name="take_picture_from_gallery">Elegir de la galería</string>
+    <string name="select_pdf_file">Elegir un archivo PDF</string>
+    <string name="photo_selected">(Seleccionado)</string>
+    <string name="profile_change_photo">CAMBIAR FOTO</string>
+    <string name="profile_update_respose_success">¡Felicidades: Tus datos se actualizaron con éxito!</string>
+    <string name="profile_update_respose_error">¡Oops, parece que algo no salió bien, verifica tu conexión a internet o
+        intenta más tarde!
+    </string>
+    <string name="watch_again">VOLVER A VER</string>
+    <string name="goto_main">INICIO</string>
+    <string name="goto_main_quiz">QUIZ</string>
+    <string name="you_are_ready_message">Si más adelante tienes dudas, ve a la sección\n
+        de
+        <b>
+            <font fgcolor='#832181'>"Soporte"</font>
+        </b>
+        para seguir ayudándote.
+    </string>
+    <string name="you_are_ready_title">¡Ya estás listo!</string>
+    <string name="continue_tohome">CONTINUAR</string>
+    <string name="logout">CERRAR SESIÓN</string>
+    <string name="beginTraining">¡Hola! Veo que aún no empiezas tu formación. Ve a la sección de Training y gana puntos
+        al ver videos y responder un quiz.
+    </string>
+    <string name="module_notavailable">¡Sección no\ndisponible!</string>
+    <string name="not_available_textdesc">Para poder canjear artículos en la tienda y usar tus cortesías debes:</string>
+    <string name="available_view_needs">
+        <li>Estar activo en el programa</li>\n
+        <li>Actualizar tus datos personales</li>\n
+        <li>Aceptar los términos y condiciones</li>\n
+        <li>Haber aprobado el quiz inicial</li>
+    </string>
+    <string name="module_not_available">No disponible</string>
+    <string name="video_quiz_availability">Quiz disponible hasta</string>
+    <string name="timer">15 / 05 / 2019</string>
+    <string name="quiz_completed">¡Quiz completado!</string>
+    <string name="timeLeft">00:00:00:00</string>
+    <string name="hote_sale_ended">¡La oferta finalizó!</string>
+    <string name="complimentary_details_title">Reservación - Xplor</string>
+    <string name="complimentary_details_description">Envía tus datos y recibirás confirmación en las próximas 72 hrs. Si
+        tienes dudas de cuántas cortesías de este Tour te quedan, escríbenos en el chat de la sección de Soporte.
+    </string>
+    <string name="reservation_adult_txt_desc"><![CDATA[> 11 años]]></string>
+    <string name="reservation_kids_txt_desc">5 – 11 años</string>
+    <string name="reservation_infants_txt_desc">0 – 4 años</string>
+    <string name="reservation_instructions">Selecciona la fecha y el número de pax.</string>
+    <string name="reservations_exceeded">Haz excedido el número de\nsolicitudes. Por favor, inténtalo\nmañana
+        nuevamente.
+    </string>
+    <string name="reservations_success_response">¡Tu reservación\nfue exitosa!</string>
+    <string name="reservations_success_response_desc">Nos pondremos en contacto vía correo\nelectrónico para enviarte tu
+        confirmación.
+    </string>
+    <string name="how_to_get_card">Recuerda que es indispensable contar\ncon 3 meses de antigüedad y estar
+        activo para que puedas visualizar tu tarjeta.
+    </string>
+    <string name="watch_tutorial">Ver tutorial</string>
+    <string name="add_upload_file">Agregar archivo</string>
+    <string name="runout_ofproducts">Artículos agotados</string>
+    <string name="active">Activo</string>
+    <string name="error_terms_conditions">Debes aceptar los términos y condiciones</string>
+    <string name="training_message">Te retamos a ver los siguientes videos y contestar unas preguntas para ganar
+        puntos
+    </string>
+    <string name="something_wrong">Error: Oops, parece que algo no salió bien, intenta más tarde</string>
+    <string name="go_back_to_quiz">REGRESAR</string>
+
+    <string name="upload_failed_title">Algo salió mal al subir el archivo.</string>
+    <string name="upload_failed_desc">
+        Recuerda que:\n\n
+        1. Solamente puedes subir archivos JPG, PNG o PDF.\n
+        2. No deben pesar más de <b>2MB</b>.\n
+        3. Debes subir el frente y reverso, en un archivo o dos.\n
+    </string>
+    <string name="upload_failed_desc2">
+        3. Los archivos que subas a la plataforma serán revisados y validados.\n\n
+        Si el problema persiste, comunícate con nosotros en la sección de Soporte.
+    </string>
+    <string name="copy_right">Grupo Xcaret 2019 - Todos los Derechos Reservados.</string>
+    <string name="watch_video_quiz_again">Puedes volver a ver el video y regresar\n a contestar el quiz de nuevo.</string>
+    <string name="tu_canje_fue_exitoso">¡Tu canje fue exitoso!</string>
+    <string name="support">SOPORTE</string>
+</resources>

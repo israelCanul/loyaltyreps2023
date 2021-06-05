@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".view.fragments.PickUpsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent"
+                                                       android:background="@color/colorPrimaryLight">
+
+        <View android:layout_width="0dp" android:layout_height="210dp"
+              android:background="@drawable/gradient_background" app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintHorizontal_bias="0.497"
+              app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+                                               android:focusable="true"
+                                               android:layout_height="match_parent"
+                                               app:layout_constraintEnd_toEndOf="parent"
+                                               app:layout_constraintStart_toStartOf="parent"
+                                               app:layout_constraintBottom_toBottomOf="parent"
+                                               app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                               android:layout_height="wrap_content">
+
+                <com.airbnb.lottie.LottieAnimationView android:layout_width="0dp" android:layout_height="112dp" app:layout_constraintEnd_toEndOf="parent"
+                                                       android:layout_marginEnd="50dp" android:contentDescription="@string/app_name"
+                                                       app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="50dp"
+                                                       app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="20dp"
+                                                       app:layout_constraintTop_toTopOf="parent" android:id="@+id/img_lore_pickup" android:translationZ="10dp"
+                                                       tools:targetApi="lollipop"
+                                                       app:lottie_rawRes="@raw/lore_bus"
+                                                       app:lottie_autoPlay="true"
+                                                       app:lottie_loop="true"
+                                                       app:lottie_speed="1"/>
+
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="330dp" android:background="@drawable/backgroun_pickup_form"
+                        android:layout_height="wrap_content" android:layout_marginTop="70dp"
+                        android:paddingTop="80dp" android:paddingStart="@dimen/general_padding"
+                        android:paddingEnd="@dimen/general_padding"
+                        android:paddingBottom="@dimen/margin30"
+                        app:layout_constraintTop_toTopOf="@+id/img_lore_pickup"
+                        app:layout_constraintEnd_toEndOf="@+id/img_lore_pickup"
+                        app:layout_constraintStart_toStartOf="@+id/img_lore_pickup" android:id="@+id/linearLayout">
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:layout_marginStart="@dimen/margin10"
+                              android:text="@string/pickup_zona" style="@style/PickUpForm"
+                              android:fontFamily="@font/roboto"/>
+
+                    <androidx.appcompat.widget.AppCompatSpinner style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                                                                android:backgroundTint="@color/colorAccent"
+                                                                android:layout_width="match_parent"
+                                                                android:layout_height="wrap_content"
+                                                                android:textAlignment="textStart" android:spinnerMode="dialog"
+                                                                android:id="@+id/selectZone" tools:targetApi="lollipop"/>
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:layout_marginStart="@dimen/margin10"
+                              android:text="@string/pickup_tour" style="@style/PickUpForm"
+                              android:fontFamily="@font/roboto"/>
+
+                    <androidx.appcompat.widget.AppCompatSpinner style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                                                                android:backgroundTint="@color/colorAccent"
+                                                                android:layout_width="match_parent"
+                                                                android:layout_height="wrap_content"
+                                                                android:textAlignment="textStart" android:spinnerMode="dialog"
+                                                                android:id="@+id/selectLanguage"
+                                                                tools:targetApi="lollipop"/>
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:layout_marginStart="@dimen/margin10"
+                              android:text="@string/pickup_date" style="@style/PickUpForm"
+                              android:fontFamily="@font/roboto"/>
+
+                    <LinearLayout android:id="@+id/selectDate"
+                                  android:layout_width="match_parent" android:layout_height="wrap_content"
+                                  android:background="@color/colorWhite" android:orientation="vertical">
+
+                        <RelativeLayout android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                            <TextView
+                                    android:id="@+id/selected_date"
+                                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                    android:padding="@dimen/margin12"
+                                    android:layout_alignParentStart="true" android:layout_toStartOf="@+id/imageButton2"
+                                    android:text="@string/date" android:textColor="@color/primary_text"
+                                    android:textSize="@dimen/general_text" android:fontFamily="@font/roboto"/>
+
+                            <ImageButton
+                                    android:id="@+id/imageButton2"
+                                    android:layout_width="20dp" android:layout_height="20dp"
+                                    android:layout_marginEnd="@dimen/margin15"
+                                    android:layout_alignParentEnd="true" android:layout_centerVertical="true"
+                                    android:layout_gravity="center_vertical" android:background="@color/colorTransparent"
+                                    app:srcCompat="@drawable/icon_menu_down" android:contentDescription="@string/app_name"/>
+
+                        </RelativeLayout>
+
+                        <View android:layout_width="match_parent" android:layout_height="1dp"
+                              android:background="@color/colorAccent" android:layout_marginEnd="@dimen/margin5"
+                              android:layout_marginStart="@dimen/margin5"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:visibility="gone"
+                                  android:layout_marginTop="@dimen/margin10" android:id="@+id/horario">
+
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                                  android:layout_marginStart="@dimen/margin10"
+                                  android:text="@string/pickup_hour" style="@style/PickUpForm"/>
+
+                        <androidx.appcompat.widget.AppCompatSpinner style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                                                                    android:backgroundTint="@color/colorAccent"
+                                                                    android:layout_width="match_parent"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:textAlignment="textStart" android:spinnerMode="dialog"
+                                                                    android:id="@+id/selectSchedule"
+                                                                    tools:targetApi="lollipop"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical"
+                                  android:id="@+id/hotelSelectContainer">
+
+                        <androidx.appcompat.widget.SearchView android:layout_width="match_parent"
+                                                              android:layout_height="wrap_content"
+                                                              android:background="@drawable/backgroun_pickup_form"
+                                                              android:layout_marginTop="@dimen/margin10"
+                                                              app:queryBackground="@android:color/transparent"
+                                                              app:iconifiedByDefault="false" android:focusable="false"
+                                                              app:queryHint="@string/search_hotel"
+                                                              android:textSize="@dimen/general_text"
+                                                              android:id="@+id/searchHotel"/>
+
+                        <View android:layout_width="match_parent" android:layout_height="1dp"
+                              android:background="@color/colorAccent" android:layout_marginEnd="@dimen/margin5"
+                              android:layout_marginStart="@dimen/margin5"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout   android:background="@drawable/backgroun_pickup_form"
+                                  android:layout_width="330dp" android:layout_height="wrap_content" android:orientation="vertical"
+                                  android:layout_marginTop="20dp" android:padding="@dimen/general_padding"
+                                  app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                                  app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                                  app:layout_constraintEnd_toEndOf="@+id/linearLayout" android:descendantFocusability="blocksDescendants">
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:text="@string/pickup_schedule" android:textSize="@dimen/general_text"
+                              android:id="@+id/pickupListTitle"
+                              android:textColor="@color/activity_title" android:textStyle="bold"
+                              android:textAlignment="center"
+                              android:fontFamily="@font/roboto"/>
+
+                    <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
+                                                               android:layout_height="wrap_content" android:layout_below="@+id/pickupListTitle"
+                                                               android:id="@+id/pickupsRecyclerView" />
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:layout_below="@id/pickupListTitle"
+                              android:id="@+id/resultsEmpty"
+                              android:textColor="@color/colorPrimaryDark" android:layout_marginTop="@dimen/margin30"
+                              android:textSize="@dimen/text18" android:visibility="gone" android:text="@string/emptyList"
+                              android:textAlignment="center" android:fontFamily="@font/roboto"/>
+
+                </RelativeLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

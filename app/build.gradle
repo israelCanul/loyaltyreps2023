@@ -1,0 +1,113 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
+apply plugin: 'io.fabric'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.xcaret.loyaltyreps"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 29
+        versionName "1.0.11"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.android.support:appcompat-v7:29.0.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.android.support:design:29.0.0'
+    implementation 'com.android.support:support-v4:29.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version" // For Kotlin use
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation 'androidx.fragment:fragment:1.1.0'
+    implementation 'com.google.android.material:material:1.0.0'// For Kotlin use navigation-ui-ktx
+    implementation 'com.google.code.gson:gson:2.8.2'
+
+    implementation 'com.amitshekhar.android:android-networking:1.0.1'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    kapt "android.arch.lifecycle:compiler:1.1.1"
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.9.0'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.9.0'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.0'
+    implementation 'androidx.viewpager:viewpager:1.0.0'
+
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.koushikdutta.ion:ion:2.2.1'
+
+    implementation 'com.github.razir.progressbutton:progressbutton:1.0.2'
+    implementation 'org.apache.commons:commons-lang3:3.4'
+
+    implementation 'io.smooch:core:5.19.0'
+    implementation 'io.smooch:ui:5.19.0'
+    implementation 'com.google.firebase:firebase-core:17.2.1'
+    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
+    implementation 'com.github.warkiz.widget:indicatorseekbar:2.1.2'
+    implementation 'com.github.thinkSky1206:SeekBarHint:0.1.0'
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+
+    //lottie
+    implementation "com.airbnb.android:lottie:$lottie_rersion"
+
+    // Room and Lifecycle dependencies
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
+    implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_coroutine"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_coroutine"
+
+    //file picker
+    implementation 'com.github.hedzr:android-file-chooser:v1.2.0-final'
+
+    //image zoom
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+
+    //permissions request library
+    implementation 'com.karumi:dexter:5.0.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-rc01'
+
+    //retrofit with moshi converter
+    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.14.2"
+
+}
+
+apply plugin: 'com.google.gms.google-services'

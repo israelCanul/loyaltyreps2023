@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".view.fragments.SalesFragment" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent"
+                                                       android:background="@color/colorPrimaryLight">
+
+        <View android:layout_width="0dp" android:layout_height="280dp"
+              android:background="@drawable/gradient_background" app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintHorizontal_bias="0.497"
+              app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:paddingTop="@dimen/margin15"
+                                               android:paddingStart="@dimen/margin30" android:paddingEnd="@dimen/margin30"
+                                               android:layout_height="match_parent" android:orientation="vertical"
+                                               app:layout_constraintEnd_toEndOf="parent"
+                                               app:layout_constraintStart_toStartOf="parent"
+                                               app:layout_constraintBottom_toBottomOf="parent"
+                                               app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:orientation="vertical" android:background="@drawable/backgroun_pickup_form"
+                              android:padding="@dimen/general_padding" android:id="@+id/chart">
+
+                    <LinearLayout android:layout_width="match_parent" android:weightSum="2"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="horizontal">
+
+                        <Button android:layout_width="0dp" android:layout_height="wrap_content"
+                                android:layout_weight="1" android:textColor="@color/colorWhite"
+                                android:paddingTop="@dimen/margin15" android:textAlignment="center"
+                                android:paddingBottom="@dimen/margin15" android:paddingEnd="0dp" android:paddingStart="0dp"
+                                android:background="@drawable/button_green" android:text="@string/sales_bymonth"
+                                android:id="@+id/reportByMonth" android:layout_marginStart="0dp"
+                                android:layout_marginEnd="@dimen/margin5" android:fontFamily="@font/roboto"
+                                android:textSize="@dimen/general_text" android:textStyle="bold"/>
+
+                        <Button android:layout_width="0dp" android:layout_height="wrap_content"
+                                android:background="@drawable/button_white_green_border"
+                                android:layout_weight="1" android:textColor="@color/colorAccent"
+                                android:id="@+id/reportByYear"
+                                android:text="@string/sales_byear" android:layout_marginStart="@dimen/margin5"
+                                android:layout_marginEnd="0dp"
+                                android:paddingTop="@dimen/margin10" android:textAlignment="center"
+                                android:paddingBottom="@dimen/margin10" android:paddingEnd="0dp"
+                                android:paddingStart="0dp"
+                                android:fontFamily="@font/roboto" android:textSize="@dimen/general_text"
+                                android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:textColor="@color/primary_text" android:textStyle="bold"
+                              android:textSize="@dimen/text18" android:textAlignment="center" android:text="@string/month"
+                              android:layout_marginTop="@dimen/margin30" android:id="@+id/monthNYear"
+                              android:fontFamily="@font/roboto"/>
+
+                    <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+                                 android:id="@+id/progressLoading"/>
+
+                    <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent" android:id="@+id/chartRecyclerView"
+                                                               android:layout_height="125dp" android:orientation="horizontal"
+                                                               android:layout_marginTop="@dimen/margin15"/>
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:textColor="@color/primary_text" android:textStyle="bold"
+                              android:textSize="@dimen/text18" android:textAlignment="center"
+                              android:text="@string/total_pax" android:id="@+id/tot_pax"
+                              android:fontFamily="@font/roboto"/>
+
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"
+                              android:layout_below="@id/chart" android:layout_marginTop="@dimen/margin30" android:padding="@dimen/general_padding"
+                              android:background="@drawable/backgroun_pickup_form">
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:textColor="@color/primary_text"
+                              android:textSize="@dimen/text16" android:textAlignment="center"
+                              android:text="@string/days_left" android:id="@+id/days_left"
+                              android:fontFamily="@font/roboto"/>
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:textAlignment="textEnd"
+                              android:textSize="@dimen/general_text" android:text="@string/total_points"
+                              android:layout_marginTop="@dimen/margin15"
+                              android:textColor="@color/primary_text" android:id="@+id/total_points_top_rep"
+                              android:fontFamily="@font/roboto"/>
+
+                    <View android:layout_width="1dp" android:layout_height="10dp" android:background="@color/primary_text" android:layout_gravity="end"
+                          android:layout_marginEnd="@dimen/margin15"/>
+
+                    <androidx.appcompat.widget.AppCompatSeekBar android:layout_width="match_parent"
+                                                                android:layout_height="wrap_content"
+                                                                android:thumb="@drawable/lore_face_progress"
+                                                                android:splitTrack="false"
+                                                                android:saveEnabled="false"
+                                                                android:progressDrawable="@drawable/progress_ventas"
+                                                                android:id="@+id/mSeekBar"
+                                                                tools:targetApi="o"/>
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:text="@string/total_points"
+                              android:textColor="@color/primary_text" android:textSize="@dimen/small"
+                              android:id="@+id/text_progress"
+                              android:textAlignment="center" android:fontFamily="@font/roboto"/>
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:textColor="@color/primary_text"
+                              android:layout_marginTop="@dimen/margin30" android:layout_marginStart="@dimen/general_padding"
+                              android:layout_marginEnd="@dimen/general_padding"
+                              android:textSize="@dimen/general_text" android:textAlignment="center"
+                              android:text="@string/accumulate_points"
+                              android:id="@+id/expirationDate" android:fontFamily="@font/roboto"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

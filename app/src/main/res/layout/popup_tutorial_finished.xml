@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorTransparent"
+            android:gravity="center_vertical">
+
+        <Button
+                android:id="@+id/watchTutorial"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_white_border_bgtransparent"
+                android:paddingStart="@dimen/margin50"
+                android:paddingEnd="@dimen/margin50" android:textAllCaps="true"
+                android:textSize="@dimen/general_text"
+                android:textColor="@color/colorWhite" android:layout_centerHorizontal="true"
+                android:text="@string/watch_again" android:fontFamily="@font/roboto"/>
+
+        <Button
+                android:id="@+id/gotoMainView"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/watchTutorial"
+                android:text="@string/continue_tohome"
+                android:layout_marginTop="30dp"
+                style="@style/GreenButtonStyle"/>
+
+    </RelativeLayout>
+
+</layout>

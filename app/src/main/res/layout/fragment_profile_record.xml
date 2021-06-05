@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".view.fragments.profile.ProfileRecordFragment">
+
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+                                           android:layout_height="match_parent"
+                                           android:focusableInTouchMode="true"
+                                           android:id="@+id/mainContainer">
+
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                           android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                               android:layout_height="wrap_content"
+                                                               android:id="@+id/beganTraining"
+                                                               app:layout_constraintTop_toTopOf="parent"
+                                                               android:layout_marginEnd="30dp"
+                                                               app:layout_constraintEnd_toEndOf="parent"
+                                                               android:layout_marginStart="30dp"
+                                                               app:layout_constraintStart_toStartOf="parent"
+                                                               android:layout_marginTop="20dp"
+                                                               android:visibility="gone">
+
+                <com.airbnb.lottie.LottieAnimationView android:layout_width="100dp"
+                                                       android:id="@+id/lottieAnimationView"
+                                                       android:layout_height="100dp" android:elevation="5dp"
+                                                       tools:src="@drawable/lore_face_progress"
+                                                       app:layout_constraintEnd_toEndOf="parent"
+                                                       app:layout_constraintStart_toStartOf="parent"
+                                                       app:layout_constraintHorizontal_bias="0.497"
+                                                       app:layout_constraintTop_toTopOf="parent"
+                                                       app:lottie_rawRes="@raw/lore_historial_perfil"
+                                                       app:lottie_autoPlay="true"
+                                                       app:lottie_loop="true"
+                                                       app:lottie_speed="1"/>
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="0dp" android:background="@drawable/backgroun_pickup_form"
+                        android:layout_height="wrap_content" app:layout_constraintEnd_toEndOf="parent"
+                        android:padding="@dimen/general_padding"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginTop="65dp" app:layout_constraintTop_toTopOf="@+id/lottieAnimationView">
+
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:text="@string/beginTraining" android:layout_marginTop="@dimen/margin50"
+                              android:textAlignment="center"
+                              style="@style/GeneralTextGrey"/>
+
+                    <Button
+                            android:id="@+id/gotoQuiz"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_height="wrap_content"
+                            android:text="@string/goto_training" android:layout_marginTop="30dp"
+                            style="@style/GreenButtonStyle"/>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="0dp" android:weightSum="2"
+                                                               android:layout_height="wrap_content"
+                                                               android:orientation="horizontal"
+                                                               android:id="@+id/recordButtons"
+                                                               app:layout_constraintEnd_toEndOf="@id/beganTraining"
+                                                               app:layout_constraintStart_toStartOf="@id/beganTraining"
+                                                               app:layout_constraintTop_toBottomOf="@id/beganTraining"
+                                                               android:layout_marginTop="20dp">
+
+                <Button android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:textColor="@color/colorWhite"
+                        android:background="@drawable/button_green"
+                        android:text="@string/prompt_profile_hint_positive_record"
+                        android:paddingTop="@dimen/margin15"
+                        android:paddingBottom="@dimen/margin15"
+                        android:paddingStart="0dp"
+                        android:paddingEnd="0dp"
+                        android:id="@+id/positiveRecordButton"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintEnd_toStartOf="@+id/negativeRecordButton" android:layout_marginEnd="5dp"
+                        android:textSize="@dimen/general_text" android:fontFamily="@font/roboto"
+                />
+
+                <Button android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:background="@drawable/button_green_border_bgtransparent"
+                        android:layout_weight="1" android:textColor="@color/colorAccent"
+                        android:id="@+id/negativeRecordButton"
+                        android:text="@string/prompt_profile_hint_negative_record"
+                        android:paddingTop="@dimen/margin15"
+                        android:paddingBottom="@dimen/margin15"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/positiveRecordButton"
+                        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="5dp"
+                        android:textSize="@dimen/general_text" android:fontFamily="@font/roboto"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/margin20"
+                    android:descendantFocusability="blocksDescendants"
+                    app:layout_constraintTop_toBottomOf="@+id/recordButtons"
+                    app:layout_constraintStart_toStartOf="@+id/recordButtons"
+                    app:layout_constraintEnd_toEndOf="@+id/recordButtons" android:id="@+id/listContainer">
+
+                <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
+                                                           android:layout_height="wrap_content"
+                                                           android:id="@+id/recordButtonsRecyclerView"
+                                                           tools:listitem="@layout/cardview_profile_record_item"/>
+
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

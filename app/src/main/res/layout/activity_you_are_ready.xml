@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".view.YouAreReadyActivity">
+
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+                                           android:layout_height="match_parent"
+                                           android:background="@color/colorPrimaryLight">
+
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+        >
+
+            <TextView
+                    android:id="@+id/welcomeTitle"
+                    style="@style/ActivityTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:textColor="@color/activity_title"
+                    android:text="@string/you_are_ready_title" android:textSize="@dimen/text26"
+                    android:layout_marginTop="@dimen/margin30"/>
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:id="@+id/welcoMessage"
+                      android:text="@string/you_are_ready_message"
+                      android:textAlignment="center"
+                      android:layout_below="@+id/welcomeTitle"
+                      android:layout_marginTop="@dimen/margin15"
+                      style="@style/GeneralTextGrey"/>
+
+            <com.airbnb.lottie.LottieAnimationView android:layout_width="wrap_content"
+                                                   android:layout_height="wrap_content"
+                                                   android:id="@+id/lore_animated"
+                                                   android:layout_centerHorizontal="true"
+                                                   android:layout_below="@id/welcoMessage"
+                                                   app:lottie_rawRes="@raw/lore_bienvenida"
+                                                   app:lottie_autoPlay="true"
+                                                   app:lottie_loop="true"
+                                                   app:lottie_speed="1"/>
+
+            <Button
+                    android:id="@+id/gotoHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_below="@id/lore_animated"
+                    android:text="@string/goto_main"
+                    android:layout_marginTop="30dp"
+                    style="@style/GreenButtonStyle"/>
+
+            <Button
+                    android:id="@+id/goToQuiz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/gotoHome"
+                    android:text="@string/goto_main_quiz"
+                    android:layout_marginTop="30dp"
+                    android:visibility="gone"
+                    style="@style/TransparentButton"/>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

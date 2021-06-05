@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <ToggleButton
+            android:layout_width="match_parent" android:textOff="@string/choice"
+            android:textOn="@string/choice"
+            android:text="@string/choice"
+            android:layout_height="wrap_content" android:background="@color/colorTransparent"
+            android:id="@+id/quizChoice" android:drawableStart="@drawable/toggle_off"
+            android:layout_marginTop="10dp" android:layout_marginStart="30dp"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="viewStart" android:textAllCaps="false"
+            android:drawablePadding="@dimen/margin5" android:textSize="@dimen/general_text"
+            android:fontFamily="@font/roboto"/>
+
+</LinearLayout>

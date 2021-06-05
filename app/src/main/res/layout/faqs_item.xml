@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <View android:layout_width="match_parent" android:layout_height="1dp"
+          android:background="@color/colorPrimaryDark"/>
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:text="@string/app_name" android:id="@+id/faqTitle"
+              android:layout_marginTop="@dimen/general_padding" android:textSize="@dimen/general_text"
+              android:paddingStart="@dimen/general_padding" android:paddingEnd="@dimen/general_padding"
+              android:layout_marginBottom="@dimen/general_padding"
+              android:drawableEnd="@drawable/icon_next_blue"
+              style="@style/GeneralTextGrey"/>
+
+</LinearLayout>

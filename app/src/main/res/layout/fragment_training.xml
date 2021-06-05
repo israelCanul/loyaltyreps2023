@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".view.fragments.training.TrainingFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent"
+                                                       android:background="@color/colorPrimaryLight">
+
+        <View android:layout_width="0dp" android:layout_height="325dp"
+              android:background="@drawable/gradient_background" app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintHorizontal_bias="0.497"
+              app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+                                               android:layout_height="match_parent"
+                                               android:scrollbars="none"
+                                               android:paddingStart="@dimen/margin30"
+                                               android:paddingEnd="@dimen/margin30"
+                                               android:id="@+id/trainingCointainer"
+                                               android:descendantFocusability="blocksDescendants"
+                                               app:layout_constraintEnd_toEndOf="parent"
+                                               app:layout_constraintStart_toStartOf="parent"
+                                               app:layout_constraintBottom_toBottomOf="parent"
+                                               app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                               android:layout_height="wrap_content"
+                                                               android:paddingBottom="@dimen/general_padding">
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_marginTop="20dp"
+                        app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:listitem="@layout/cardview_park"
+                        tools:itemCount="1"
+                        android:id="@+id/toursRecyclerView"/>
+
+                <ImageButton
+                        android:layout_width="0dp" android:scaleType="fitCenter"
+                        android:contentDescription="@string/goto_training"
+                        android:layout_height="160dp" tools:src="@drawable/lore_guia_operativa"
+                        android:id="@+id/loreGuia"
+                        app:layout_constraintTop_toBottomOf="@+id/toursRecyclerView"
+                        app:layout_constraintStart_toStartOf="@+id/toursRecyclerView"
+                        app:layout_constraintEnd_toEndOf="@+id/toursRecyclerView"
+                        android:background="@color/colorTransparent" android:layout_marginTop="20dp"/>
+
+                <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                          android:background="@drawable/backgroun_pickup_form"
+                          android:text="@string/training_message"
+                          android:padding="@dimen/general_padding"
+                          android:textAlignment="center"
+                          style="@style/GeneralTextGrey"
+                          app:layout_constraintTop_toBottomOf="@+id/loreGuia"
+                          app:layout_constraintStart_toStartOf="@+id/loreGuia"
+                          app:layout_constraintEnd_toEndOf="@+id/loreGuia"
+                          android:id="@+id/reto" android:layout_marginTop="10dp"/>
+
+                <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        app:layout_constraintTop_toBottomOf="@+id/reto"
+                        app:layout_constraintStart_toStartOf="@+id/reto"
+                        app:layout_constraintEnd_toEndOf="@+id/reto"
+                        android:descendantFocusability="blocksDescendants" android:id="@+id/relativeLayout">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:id="@+id/videosRecyclerView"
+                            android:layout_height="wrap_content"
+                            tools:listitem="@layout/cardview_training_video"/>
+
+                </RelativeLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content"
+                     android:id="@+id/progressBar" app:layout_constraintEnd_toEndOf="parent"
+                     android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+                     android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+                     app:layout_constraintBottom_toBottomOf="@+id/trainingCointainer" android:layout_marginTop="8dp"
+                     app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
+            app:startDestination="@id/actionXHome">
+
+    <fragment android:id="@+id/actionXHome"
+              android:name="com.xcaret.loyaltyreps.view.fragments.HomeFragment"
+              android:label="@string/menu_home"
+              tools:layout="@layout/fragment_home">
+
+        <action android:id="@+id/to_pickUpsFragment"
+                app:destination="@id/pickUpsFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+        <action android:id="@+id/to_trainingFragment"
+                app:destination="@id/trainingFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+        <action android:id="@+id/to_newsFeedFragment"
+                app:destination="@id/newsFeedFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+        <action android:id="@+id/to_supportFragment"
+                app:destination="@id/supportFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+        <action android:id="@+id/to_salesFragment"
+                app:destination="@id/salesFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+        <action android:id="@+id/to_welcomeMainQuizFragment"
+                app:destination="@id/welcomeMainQuizFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+        <action android:id="@+id/action_actionXHome_to_actionXShop"
+                app:destination="@id/actionXShop"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+        <action android:id="@+id/action_actionXHome_to_profileFragment"
+                app:destination="@id/profileFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/actionXParks"
+              android:name="com.xcaret.loyaltyreps.view.fragments.xparks.ParksFragment"
+              android:label="@string/section_parks"
+              tools:layout="@layout/fragment_parks">
+
+        <action android:id="@+id/to_parkDetailsFragment"
+                app:destination="@id/parkDetailsFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/actionXShop"
+              android:name="com.xcaret.loyaltyreps.view.fragments.store.ShopFragment"
+              android:label="@string/menu_shop"
+              tools:layout="@layout/fragment_shop">
+
+        <action android:id="@+id/to_productDetailsFragment"
+                app:destination="@id/productDetailsFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/parkDetailsFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.xparks.ParkDetailsFragment"
+              android:label="@string/section_parks" tools:layout="@layout/fragment_park_details"/>
+
+    <fragment android:id="@+id/pickUpsFragment" android:name="com.xcaret.loyaltyreps.view.fragments.PickUpsFragment"
+              android:label="@string/section_pickup" tools:layout="@layout/fragment_pick_ups"/>
+
+    <fragment android:id="@+id/productDetailsFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.store.ProductDetailsFragment"
+              android:label="@string/menu_shop" tools:layout="@layout/fragment_product_details">
+
+        <argument android:name="xProduct" app:argType="com.xcaret.loyaltyreps.model.XProduct"/>
+
+        <action android:id="@+id/action_productDetailsFragment_to_actionXShop"
+                app:destination="@id/actionXShop"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+        <action android:id="@+id/action_productDetailsFragment_to_shopResponseFragment2"
+                app:destination="@id/shopResponseFragment2" app:popUpTo="@+id/actionXShop"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/trainingFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.training.TrainingFragment"
+              android:label="@string/section_training" tools:layout="@layout/fragment_training">
+
+        <action android:id="@+id/to_XVideoActivity"
+                app:destination="@id/XVideoActivity"
+                app:enterAnim="@anim/slide_up"
+                app:exitAnim="@anim/slide_down"
+                app:popEnterAnim="@anim/slide_down"
+                app:popExitAnim="@anim/slide_up"/>
+
+        <action android:id="@+id/to_trainingParkDetailsFragment"
+                app:destination="@id/trainingParkDetailsFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+        <action android:id="@+id/to_trainingVideoQuizFragment"
+                app:destination="@id/trainingVideoQuizFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right" app:popUpTo="@+id/trainingFragment"/>
+
+    </fragment>
+
+    <activity android:id="@+id/XVideoActivity" android:name="com.xcaret.loyaltyreps.view.XVideoActivity"
+              android:label="activity_xvideo" tools:layout="@layout/activity_xvideo">
+
+        <argument android:name="xvideo_url" app:argType="string"/>
+
+    </activity>
+
+    <fragment android:id="@+id/trainingParkDetailsFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.training.TrainingParkDetailsFragment"
+              android:label="@string/goto_training" tools:layout="@layout/fragment_training_park_details">
+
+        <action android:id="@+id/to_XVideoActivity"
+                app:destination="@id/XVideoActivity"
+                app:enterAnim="@anim/slide_up"
+                app:exitAnim="@anim/slide_down"
+                app:popEnterAnim="@anim/slide_down"
+                app:popExitAnim="@anim/slide_up"/>
+
+        <action android:id="@+id/to_trainingParkTDetailsFragment"
+                app:destination="@id/trainingParkTDetailsFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+        <action android:id="@+id/action_trainingParkDetailsFragment_to_fullSlideActivity"
+                app:destination="@id/fullSlideActivity"
+                app:enterAnim="@anim/slide_up"
+                app:exitAnim="@anim/slide_down"
+                app:popEnterAnim="@anim/slide_up"
+                app:popExitAnim="@anim/slide_down"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/trainingParkTDetailsFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.training.TrainingParkTDetailsFragment"
+              android:label="@string/goto_training" tools:layout="@layout/fragment_training_park_tdetails"/>
+
+    <fragment android:id="@+id/trainingVideoQuizFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.training.TrainingVideoQuizFragment"
+              android:label="@string/goto_training" tools:layout="@layout/fragment_training_video_quiz">
+
+        <action android:id="@+id/action_trainingVideoQuizFragment_to_trainingResultFragment"
+                app:destination="@id/trainingResultFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right" app:popUpTo="@+id/trainingFragment"/>
+
+        <action android:id="@+id/action_trainingVideoQuizFragment_to_trainingResultFailsFragment"
+                app:destination="@id/trainingResultFailsFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right" app:popUpTo="@+id/trainingFragment"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/newsFeedFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.newsfeed.NewsFeedFragment"
+              android:label="@string/section_newsfeed" tools:layout="@layout/fragment_news_feed">
+
+        <action android:id="@+id/to_newsDetailsFragment"
+                app:destination="@id/newsDetailsFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/newsDetailsFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.newsfeed.NewsDetailsFragment"
+              android:label="@string/section_newsfeed" tools:layout="@layout/fragment_news_details"/>
+
+    <fragment android:id="@+id/actionXComplimentaries"
+              android:name="com.xcaret.loyaltyreps.view.fragments.complimentary.ComplimetariesFragment"
+              android:label="@string/section_complimentaries" tools:layout="@layout/fragment_complimetaries">
+
+        <action android:id="@+id/to_complimentaryDetailsFragment"
+                app:destination="@id/complimentaryDetailsFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/complimentaryDetailsFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.complimentary.ComplimentaryDetailsFragment"
+              android:label="@string/section_complimentaries" tools:layout="@layout/fragment_complimentary_details">
+
+        <action android:id="@+id/action_complimentaryDetailsFragment_to_successFullReservationFragment"
+                app:destination="@id/successFullReservationFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/supportFragment" android:name="com.xcaret.loyaltyreps.view.fragments.support.SupportFragment"
+              android:label="@string/goto_support" tools:layout="@layout/fragment_support">
+
+        <action android:id="@+id/to_supportQuestionDetailsFragment"
+                app:destination="@id/supportQuestionDetailsFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/supportQuestionDetailsFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.support.SupportQuestionDetailsFragment"
+              android:label="@string/goto_support"
+              tools:layout="@layout/fragment_support_question_details"/>
+
+    <fragment android:id="@+id/salesFragment" android:name="com.xcaret.loyaltyreps.view.fragments.SalesFragment"
+              android:label="@string/goto_sails" tools:layout="@layout/fragment_sales"/>
+
+    <fragment android:id="@+id/profileFragment" android:name="com.xcaret.loyaltyreps.view.fragments.profile.ProfileFragment"
+              android:label="@string/section_profile" tools:layout="@layout/fragment_profile"/>
+
+    <fragment android:id="@+id/welcomeMainQuizFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.mainquiz.WelcomeMainQuizFragment"
+              android:label="@string/quiz" tools:layout="@layout/fragment_welcome_main_quiz">
+
+        <action android:id="@+id/action_welcomeMainQuizFragment_to_mainQuizFragment"
+                app:destination="@id/mainQuizFragment"
+                app:enterAnim="@anim/slide_in_left"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_right"/>
+
+        <action android:id="@+id/action_welcomeMainQuizFragment_to_trainingFragment"
+                app:destination="@id/trainingFragment"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/mainQuizFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.mainquiz.MainQuizFragment"
+              android:label="@string/quiz" tools:layout="@layout/fragment_main_quiz">
+
+        <action android:id="@+id/action_mainQuizFragment_to_quizResultFragment"
+                app:destination="@id/quizResultFragment"
+                app:enterAnim="@anim/slide_up"
+                app:exitAnim="@anim/slide_down"
+                app:popEnterAnim="@anim/slide_down"
+                app:popExitAnim="@anim/slide_up"/>
+
+        <action android:id="@+id/action_mainQuizFragment_to_welcomeMainQuizFragment"
+                app:destination="@id/welcomeMainQuizFragment"/>
+
+        <action android:id="@+id/action_mainQuizFragment_to_quizFaildFragment" app:destination="@id/quizFaildFragment"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/quizResultFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.mainquiz.QuizResultFragment"
+              android:label="@string/quiz" tools:layout="@layout/fragment_quiz_result">
+
+        <action android:id="@+id/action_quizResultFragment_to_actionXHome" app:destination="@id/actionXHome"/>
+        <action android:id="@+id/action_quizResultFragment_to_actionXShop" app:destination="@id/actionXShop"/>
+        <action android:id="@+id/action_quizResultFragment_to_trainingFragment" app:destination="@id/trainingFragment"/>
+
+        <action android:id="@+id/action_quizResultFragment_to_welcomeMainQuizFragment"
+                app:destination="@id/welcomeMainQuizFragment"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/trainingResultFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.training.TrainingResultFragment"
+              android:label="@string/goto_training" tools:layout="@layout/fragment_training_result">
+
+        <action android:id="@+id/action_trainingResultFragment_to_trainingFragment"
+                app:destination="@id/trainingFragment"/>
+
+        <action android:id="@+id/action_trainingResultFragment_to_trainingFragment2"
+                app:destination="@id/trainingFragment"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/trainingResultFailsFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.training.TrainingResultFailsFragment"
+              android:label="@string/goto_training" tools:layout="@layout/fragment_training_result_fails">
+        <action android:id="@+id/action_trainingResultFailsFragment_to_trainingFragment"
+                app:destination="@id/trainingFragment"/>
+    </fragment>
+
+    <fragment android:id="@+id/moduleNotAvailableFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.ModuleNotAvailableFragment"
+              tools:layout="@layout/fragment_module_not_available"/>
+
+    <fragment android:id="@+id/successFullReservationFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.complimentary.SuccessFullReservationFragment"
+              android:label="@string/menu_courtesies"
+              tools:layout="@layout/fragment_success_full_reservation"/>
+    <fragment android:id="@+id/shopResponseFragment2"
+              android:name="com.xcaret.loyaltyreps.view.fragments.store.ShopResponseFragment"
+              android:label="@string/goto_shop" tools:layout="@layout/fragment_shop_response">
+
+        <action android:id="@+id/action_shopResponseFragment2_to_supportFragment"
+                app:destination="@id/supportFragment"/>
+
+    </fragment>
+    <fragment android:id="@+id/quizFaildFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.mainquiz.QuizFaildFragment"
+              android:label="@string/quiz" tools:layout="@layout/fragment_quiz_faild">
+
+        <action android:id="@+id/action_quizFaildFragment_to_welcomeMainQuizFragment"
+                app:destination="@id/welcomeMainQuizFragment"/>
+
+    </fragment>
+
+    <fragment android:id="@+id/fullPicSlideFragment"
+              android:name="com.xcaret.loyaltyreps.view.fragments.training.FullPicSlideFragment"
+              android:label="fragment_full_pic_slide" tools:layout="@layout/fragment_full_pic_slide"/>
+    <activity android:id="@+id/fullSlideActivity"
+              android:name="com.xcaret.loyaltyreps.view.fragments.training.FullSlideActivity"
+              android:label="activity_full_slide" tools:layout="@layout/activity_full_slide"/>
+
+</navigation>

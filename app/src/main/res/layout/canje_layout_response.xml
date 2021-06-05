@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:background="@color/colorPrimaryLight"
+                                             android:padding="@dimen/general_padding">
+
+    <TextView
+            android:id="@+id/canjeTitle"
+            style="@style/ActivityTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="@string/meet_lore_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:fontFamily="@font/roboto"/>
+
+    <TextView
+            android:id="@+id/textView3"
+            android:textAlignment="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/meet_lore_desc"
+            app:layout_constraintEnd_toEndOf="@+id/lorePic"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/lorePic"
+            app:layout_constraintTop_toBottomOf="@+id/lorePic" android:layout_marginTop="20dp"
+            style="@style/GeneralTextGrey"/>
+
+    <ImageView
+            android:id="@+id/lorePic"
+            android:contentDescription="@string/app_name"
+            android:layout_width="0dp"
+            android:layout_height="265dp"
+            android:layout_marginTop="8dp" android:scaleType="centerInside"
+            app:layout_constraintTop_toBottomOf="@+id/canjeTitle" app:layout_constraintEnd_toEndOf="@+id/canjeTitle"
+            app:layout_constraintStart_toStartOf="@+id/canjeTitle"/>
+
+    <Button
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login" android:layout_marginTop="30dp"
+            style="@style/GreenButtonStyle"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintEnd_toEndOf="@+id/textView3"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@+id/textView3"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

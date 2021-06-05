@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="40dp"
+                android:layout_height="120dp"
+                android:layout_gravity="bottom">
+
+    <View android:layout_width="20dp" android:layout_height="175dp"
+          android:id="@+id/parkStatus" android:layout_above="@+id/border"/>
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/textDark"
+          android:layout_above="@id/parkLogo" android:id="@+id/border" android:layout_marginBottom="@dimen/margin5"/>
+
+    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:scaleType="centerInside"
+               android:id="@+id/parkLogo" android:layout_alignParentBottom="true"
+               android:contentDescription="@string/app_name"/>
+
+</RelativeLayout>

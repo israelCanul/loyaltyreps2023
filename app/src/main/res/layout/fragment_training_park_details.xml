@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".view.fragments.training.TrainingParkDetailsFragment">
+
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:background="@color/colorPrimaryLight" android:scrollbars="none"
+                                           android:layout_height="match_parent" android:paddingStart="@dimen/margin30" android:paddingEnd="@dimen/margin30">
+
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                           android:layout_height="match_parent"
+                                                           android:descendantFocusability="blocksDescendants">
+
+            <TextView
+                    android:id="@+id/parktitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/activity_title"
+                    android:textSize="@dimen/text22"
+                    tools:text="@string/app_name"
+                    android:fontFamily="@font/roboto"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                      android:text="@string/app_name"
+                      android:textSize="@dimen/general_text"
+                      android:textColor="@color/secondary_text"
+                      android:justificationMode="inter_word"
+                      android:id="@+id/xparkDescription"
+                      android:fontFamily="@font/roboto"
+                      android:layout_marginTop="15dp"
+                      app:layout_constraintTop_toBottomOf="@+id/parktitle"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintEnd_toEndOf="parent"
+                      tools:targetApi="o"/>
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="200dp" app:cardCornerRadius="@dimen/general_padding"
+                    app:cardElevation="0dp"
+                    app:layout_constraintTop_toBottomOf="@+id/xparkDescription"
+                    app:layout_constraintStart_toStartOf="@+id/xparkDescription"
+                    app:layout_constraintEnd_toEndOf="@+id/xparkDescription" android:layout_marginTop="10dp"
+                    android:id="@+id/xparkCardview">
+
+                <ImageView
+                        android:layout_width="match_parent" android:contentDescription="@string/app_name"
+                        android:layout_height="match_parent" tools:src="@tools:sample/avatars"
+                        android:scaleType="centerCrop"
+                        android:id="@+id/xparkVideoCover"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                    android:layout_width="40dp" android:src="@drawable/exo_icon_play" android:contentDescription="@string/playme"
+                    android:layout_height="40dp" tools:src="@tools:sample/avatars" android:translationZ="10dp"
+                    android:id="@+id/imageView4" app:layout_constraintEnd_toEndOf="@+id/xparkCardview"
+                    app:layout_constraintStart_toStartOf="@+id/xparkCardview"
+                    app:layout_constraintTop_toTopOf="@+id/xparkCardview"
+                    app:layout_constraintBottom_toBottomOf="@+id/xparkCardview" tools:targetApi="lollipop"/>
+
+            <TableLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/xparkCardview"
+                    app:layout_constraintEnd_toEndOf="@+id/xparkCardview"
+                    app:layout_constraintStart_toStartOf="@+id/xparkCardview" android:layout_marginTop="20dp"
+                    android:id="@+id/detailsTablelayout"/>
+
+            <RelativeLayout android:id="@+id/slideContainer" android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            app:layout_constraintTop_toBottomOf="@+id/detailsTablelayout"
+                            app:layout_constraintStart_toStartOf="@+id/detailsTablelayout"
+                            app:layout_constraintEnd_toEndOf="@+id/detailsTablelayout">
+
+                <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/xParkSlideViewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"/>
+
+            </RelativeLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/slideIndicator"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    app:tabBackground="@drawable/dot_selector"
+                    app:tabGravity="center"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabPaddingStart="@dimen/margin10"
+                    app:tabPaddingEnd="@dimen/margin10"
+                    app:layout_constraintTop_toBottomOf="@+id/slideContainer"
+                    app:layout_constraintStart_toStartOf="@+id/slideContainer"
+                    app:layout_constraintEnd_toEndOf="@+id/slideContainer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

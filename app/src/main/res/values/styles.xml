@@ -1,0 +1,149 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="textInputStyle">@style/Widget.Design.TextInputLayout</item>
+        <item name="bottomNavigationStyle">@style/Widget.Design.BottomNavigationView</item>
+        <item name="actionBarStyle">@style/ThemeActionBar</item>
+        <item name="android:textColor">@color/primary_text</item>
+
+    </style>
+
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:background">@color/black</item>
+    </style>
+
+    <style name="ThemeActionBar"
+           parent="Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="elevation">0dp</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <!-- Support library compatibility -->
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="DetailTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="textInputStyle">@style/Widget.Design.TextInputLayout</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="error_appearance" parent="Theme.AppCompat.Light">
+        <item name="android:textColor">@color/error</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="ActivityTitle" parent="AppTheme">
+        <item name="android:textSize">@dimen/title</item>
+        <item name="android:textColor">@color/activity_title</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ActivityTextContent" parent="AppTheme">
+        <item name="android:textSize">@dimen/general_text</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="PickUpForm" parent="AppTheme">
+        <item name="android:textSize">@dimen/text12</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="Spinner" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="ShopeTabLayout" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/text16</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="ReservationForm" parent="AppTheme">
+        <item name="android:textSize">@dimen/text13</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+    <style name="ProfileInputs">
+        <item name="android:ems">10</item>
+        <item name="android:textSize">@dimen/general_text</item>
+    </style>
+
+    <style name="EditTextGreyForm" parent="TextAppearance.AppCompat">
+        <item name="android:textColorHint">@color/primary_text</item>
+        <item name="android:textSize">@dimen/general_text</item>
+        <item name="android:textColorPrimary">@color/primary_text</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/primary_text</item> <!-- propiedad de android lolipop en adelante-->
+        <item name="colorControlActivated">@color/colorAccent</item> <!-- propiedad de android -->
+        <item name="android:textColorHighlight">@color/colorAccent</item>
+        <item name="android:textColorLink">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+    <style name="EditInputStyle">
+        <item name="android:background">@color/colorTransparent</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/text18</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textColorHighlight">@color/primary_text</item>
+    </style>
+    <style name="GeneralTextGrey">
+        <item name="android:textSize">@dimen/general_text</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+    <style name="GreenButtonStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:paddingStart">@dimen/margin30</item>
+        <item name="android:paddingEnd">@dimen/margin30</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:background">@drawable/button_green</item>
+        <item name="android:textSize">@dimen/general_text</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:elevation" tools:targetApi="lollipop">0dp</item>
+        <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
+    </style>
+
+    <style name="TransparentButton">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:paddingStart">@dimen/margin30</item>
+        <item name="android:paddingEnd">@dimen/margin30</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:background">@drawable/button_green_border</item>
+        <item name="android:textSize">@dimen/general_text</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:elevation" tools:targetApi="lollipop">0dp</item>
+        <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
+    </style>
+
+</resources>

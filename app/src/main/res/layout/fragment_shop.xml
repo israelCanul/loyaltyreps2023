@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".view.fragments.store.ShopFragment">
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimaryLight">
+
+        <com.google.android.material.tabs.TabLayout
+                android:id="@+id/store_tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/colorPrimaryDark"
+                app:tabMode="fixed"
+                app:tabPaddingEnd="15dp"
+                app:tabPaddingStart="15dp"
+                app:tabIndicatorHeight="3dp"
+                app:tabIndicatorColor="@color/tab_indicator"
+                app:tabTextAppearance="@style/ShopeTabLayout" />
+
+        <TextView
+                android:id="@+id/statusCompra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/store_tablayout"
+                android:background="@color/failedResponse"
+                android:padding="@dimen/margin15"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text13"
+                android:visibility="gone"
+                tools:text="@string/app_name" />
+
+        <androidx.viewpager.widget.ViewPager android:layout_width="match_parent" android:layout_height="wrap_content"
+                                             android:id="@+id/shopViewPager" android:layout_below="@+id/statusCompra"/>
+
+        <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content"
+                     android:id="@+id/mprogressBar" android:layout_centerInParent="true"/>
+
+        <!--TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="@string/runout_ofproducts"
+                  android:layout_marginEnd="30dp"
+                  android:textAlignment="center"
+                  android:textSize="@dimen/general_text"
+                  android:id="@+id/runoutOfItems"
+                  android:fontFamily="@font/roboto"
+                  android:textColor="@color/primary_text"
+                  android:layout_centerInParent="true" /-->
+
+    </RelativeLayout>
+
+</layout>

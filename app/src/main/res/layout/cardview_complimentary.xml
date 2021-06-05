@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                   xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
+                                   app:cardElevation="0dp"
+                                   android:layout_width="match_parent" app:cardCornerRadius="@dimen/general_padding" android:layout_marginBottom="@dimen/general_padding"
+                                   android:layout_height="wrap_content" android:id="@+id/compContainer" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="wrap_content"
+                                                       android:paddingBottom="@dimen/general_padding">
+
+        <ImageView android:layout_width="0dp"
+                   android:layout_height="200dp" android:contentDescription="@string/goto_training"
+                   app:layout_constraintEnd_toEndOf="parent" android:scaleType="centerCrop"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent" tools:srcCompat="@tools:sample/avatars"
+                   android:id="@+id/compCover"/>
+
+        <TextView
+                android:text="@string/app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/compTitle"
+                android:textColor="@color/activity_title"
+                android:textSize="@dimen/text18" android:textAlignment="center"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/compCover"
+                android:layout_marginStart="20dp" app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+                android:text="@string/app_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/compAvailability"
+                android:layout_marginTop="20dp" android:textAlignment="textEnd"
+                app:layout_constraintTop_toBottomOf="@+id/compCover" android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@+id/compTitle"
+                app:layout_constraintHorizontal_bias="0.947"
+                style="@style/GeneralTextGrey"/>
+
+        <TextView
+                android:text="@string/ask_availavility"
+                android:layout_width="0dp" android:textSize="@dimen/text12" android:textStyle="italic"
+                android:layout_height="wrap_content" android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/compNotice" android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@+id/compAvailability"
+                app:layout_constraintStart_toStartOf="@+id/compTitle"
+                android:layout_marginTop="15dp" app:layout_constraintTop_toBottomOf="@+id/compTitle"
+                android:fontFamily="@font/roboto"/>
+
+        <Button
+                android:text="@string/make_reservation_text"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/compAction"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp" app:layout_constraintTop_toBottomOf="@+id/compNotice"
+                style="@style/GreenButtonStyle"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

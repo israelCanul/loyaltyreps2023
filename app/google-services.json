@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "678568893211",
+    "firebase_url": "https://xcaret-loyalty-reps.firebaseio.com",
+    "project_id": "xcaret-loyalty-reps",
+    "storage_bucket": "xcaret-loyalty-reps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678568893211:android:87c638c8e463843c",
+        "android_client_info": {
+          "package_name": "com.xcaret.loyaltyreps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678568893211-sdsav7nf4cupkernuv9ccv42tni3ts8o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6LR5-Yi7OvFUbIQCkxXsnMst5AHeHAik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678568893211-sdsav7nf4cupkernuv9ccv42tni3ts8o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "678568893211-u7pp3h7t09k144rc0th6j9j869bei1gt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.xcaret.LoyaltyReps"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".view.fragments.profile.ProfileInterestsFragment">
+
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+                                           android:layout_height="match_parent"
+                                           android:id="@+id/mainContainer">
+
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                           android:layout_height="wrap_content"
+                                                           android:background="@drawable/backgroun_pickup_form"
+                                                           android:padding="@dimen/general_padding"
+                                                           android:layout_marginTop="@dimen/margin20"
+                                                           android:layout_marginStart="30dp"
+                                                           android:layout_marginEnd="30dp">
+
+            <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp"
+                                                                   android:layout_height="wrap_content"
+                                                                   app:layout_constraintTop_toTopOf="parent"
+                                                                   app:layout_constraintStart_toStartOf="parent"
+                                                                   app:layout_constraintEnd_toEndOf="parent"
+                                                                   android:id="@+id/textInputLayout3">
+
+                <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent"
+                                                                         android:layout_height="wrap_content"
+                                                                         android:hint="@string/prompt_profile_hint_birthdate"
+                                                                         tools:text="@string/app_name"
+                                                                         android:text="@string/app_name"
+                                                                         android:focusable="false"
+                                                                         android:enabled="false"
+                                                                         android:inputType="textCapWords"
+                                                                         android:textAllCaps="true"
+                                                                         android:id="@+id/userBirthDAte"
+                                                                         android:fontFamily="@font/roboto"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
+                    app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
+                    app:layout_constraintStart_toStartOf="@+id/textInputLayout3" android:layout_marginTop="15dp">
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:text="@string/prompt_profile_hint_estado_civil" style="@style/PickUpForm"
+                          android:layout_marginStart="@dimen/margin5" android:fontFamily="@font/roboto"/>
+
+                <androidx.appcompat.widget.AppCompatSpinner style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_marginStart="@dimen/margin2"
+                                                            android:layout_marginEnd="@dimen/margin2"
+                                                            android:textAlignment="textStart"
+                                                            android:spinnerMode="dialog"
+                                                            android:id="@+id/spinnerEstadoCivil"/>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:text="@string/prompt_profile_hint_children" style="@style/PickUpForm"
+                          android:layout_marginStart="@dimen/margin5" android:layout_marginTop="@dimen/margin15"
+                          android:fontFamily="@font/roboto"/>
+
+                <androidx.appcompat.widget.AppCompatSpinner style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_marginStart="@dimen/margin2"
+                                                            android:layout_marginEnd="@dimen/margin2"
+                                                            android:textAlignment="textStart"
+                                                            android:spinnerMode="dialog"
+                                                            android:id="@+id/spinnerHijos"/>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:text="@string/prompt_profile_hint_estate" style="@style/PickUpForm"
+                          android:layout_marginStart="@dimen/margin5" android:layout_marginTop="@dimen/margin15"
+                          android:fontFamily="@font/roboto"/>
+
+                <androidx.appcompat.widget.AppCompatSpinner style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_marginStart="@dimen/margin2"
+                                                            android:layout_marginEnd="@dimen/margin2"
+                                                            android:textAlignment="textStart"
+                                                            android:spinnerMode="dialog"
+                                                            android:id="@+id/spinnerEstado"/>
+
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:text="@string/prompt_profile_hint_municipio" style="@style/PickUpForm"
+                          android:layout_marginStart="@dimen/margin5" android:layout_marginTop="@dimen/margin15"
+                          android:fontFamily="@font/roboto"/>
+
+                <androidx.appcompat.widget.AppCompatSpinner style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_marginStart="@dimen/margin2"
+                                                            android:layout_marginEnd="@dimen/margin2"
+                                                            android:textAlignment="textStart"
+                                                            android:spinnerMode="dialog"
+                                                            android:id="@+id/spinnerMunicipio"/>
+            </LinearLayout>
+
+            <TextView
+                    android:text="@string/prompt_profile_hint_hobbies"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView11" android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayout" android:textAlignment="viewStart"
+                    android:fontFamily="@font/roboto" android:textSize="@dimen/text18"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:spanCount="2"
+                    tools:listitem="@layout/cardview_hobby_item"
+                    app:layout_constraintTop_toBottomOf="@+id/textView11"
+                    app:layout_constraintEnd_toEndOf="@+id/textView11"
+                    app:layout_constraintStart_toStartOf="@+id/textView11" android:id="@+id/hobbiesRecyclerView"/>
+
+            <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content"
+                         android:id="@+id/progressBar" android:visibility="gone"
+                         app:layout_constraintTop_toBottomOf="@+id/hobbiesRecyclerView"
+                         app:layout_constraintEnd_toEndOf="@+id/hobbiesRecyclerView"
+                         app:layout_constraintStart_toStartOf="@+id/hobbiesRecyclerView"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_green"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorWhite"
+                    android:text="@string/prompt_profile_hint_save_data"
+                    android:id="@+id/saveInteresesButton"
+                    app:layout_constraintEnd_toEndOf="@+id/progressBar"
+                    app:layout_constraintStart_toStartOf="@+id/progressBar"
+                    app:layout_constraintHorizontal_bias="0.497" android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/progressBar"
+                    style="@style/GreenButtonStyle"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

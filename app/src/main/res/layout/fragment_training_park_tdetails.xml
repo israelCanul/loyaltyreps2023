@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".view.fragments.training.TrainingParkTDetailsFragment">
+
+        <RelativeLayout android:layout_width="match_parent" android:paddingStart="@dimen/margin30" android:paddingEnd="@dimen/margin30"
+                        android:layout_height="match_parent" android:scrollbars="none">
+
+                <TextView
+                        android:id="@+id/xtParkName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/activity_title"
+                        android:textSize="@dimen/text22"
+                        android:text="@string/app_name" android:layout_marginTop="@dimen/margin20"
+                        android:fontFamily="@font/roboto"/>
+
+                <WebView android:layout_width="match_parent" android:layout_height="match_parent"
+                         android:text="@string/app_name" android:layout_below="@id/xtParkName"
+                         android:fitsSystemWindows="true" android:textSize="@dimen/text12"
+                         android:layout_marginBottom="@dimen/general_padding" android:textColor="@color/primary_text"
+                         android:id="@+id/xtParkDescription" android:layout_marginTop="20dp"/>
+
+        </RelativeLayout>
+
+</layout>
