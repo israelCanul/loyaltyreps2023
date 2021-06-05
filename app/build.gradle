@@ -6,7 +6,7 @@ apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'io.fabric'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     defaultConfig {
         applicationId "com.xcaret.loyaltyreps"
         minSdkVersion 19
