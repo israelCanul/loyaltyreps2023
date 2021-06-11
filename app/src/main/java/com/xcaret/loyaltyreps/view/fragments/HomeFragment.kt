@@ -67,6 +67,7 @@ class HomeFragment : Fragment()  {
     override fun onResume() {
         super.onResume()
         loadUserInfo()
+        println("entro de nuevo")
     }
 
     private fun loadStaticViews(){
@@ -78,6 +79,8 @@ class HomeFragment : Fragment()  {
     }
 
     private fun loadUserInfo(){
+        // es aqui donde deberia trabajar
+        //pendiente Israel canul
         xUserViewModel.currentXUser.observe(this, Observer {
                 xuser ->
                 xuser?.let {

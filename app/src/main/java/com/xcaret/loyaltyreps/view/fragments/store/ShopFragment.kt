@@ -186,6 +186,8 @@ class ShopFragment : Fragment() {
     }
 
     private fun loadUserDataFromServer() {
+        // de aqui es donde se debe obtener los datos para actualizar en el home
+        //Israel Canul
         val user2update = XUser()
         AndroidNetworking.get("${AppPreferences.XCARET_API_URL_ROOT}rep/getDetalleRepById/${AppPreferences.idRep}")
             .setTag("user_info")
