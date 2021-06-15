@@ -112,9 +112,9 @@ class ComplimentaryDetailsFragment : Fragment() {
         binding.reservationAgency.setText(xUser.agencia)
         binding.reservationRCX.setText(xUser.correo)
 
-        if (!complimentaryTem!!.infants){
-            binding.textView16.visibility = View.GONE
-        }
+//        if (!complimentaryTem!!.infants){
+//            binding.textView16.visibility = View.GONE
+//        }
 
         loadNumberOfAdults()
         handleClick(xUser)
@@ -203,11 +203,11 @@ class ComplimentaryDetailsFragment : Fragment() {
             try{
                 val kid = parent.selectedItem as Hijo
                 noKids = kid.desc.toInt()
-                maxInfants = maxKids - noKids
-
-                if (maxInfants > 0) {
+                //maxInfants = maxKids - noKids
+                maxInfants = complimentaryTem!!.noPaxPorUtilizar + 1
+                //if (maxInfants > 0) {
                     loadNumberOfInfants()
-                }
+                //}
             } catch (error: java.lang.Exception) {
                 error.printStackTrace()
             }

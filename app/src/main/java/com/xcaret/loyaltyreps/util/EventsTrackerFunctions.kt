@@ -6,7 +6,10 @@ import com.xcaret.loyaltyreps.model.XProduct
 import org.json.JSONObject
 
 object EventsTrackerFunctions {
-
+    //para los eventos
+    /*
+    * Israel Canul Firebase
+    * */
     lateinit var firebaseAnalytics: FirebaseAnalytics
 
     val eventLogin = "login"
