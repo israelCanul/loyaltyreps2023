@@ -1,7 +1,6 @@
 package com.xcaret.loyaltyreps.view.fragments
 
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -12,19 +11,23 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import com.androidnetworking.AndroidNetworking
+import com.androidnetworking.common.Priority
+import com.androidnetworking.error.ANError
+import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.bumptech.glide.Glide
-import com.crashlytics.android.Crashlytics
+import com.xcaret.loyaltyreps.MainActivity
 import com.xcaret.loyaltyreps.R
 import com.xcaret.loyaltyreps.database.XCaretLoyaltyDatabase
 import com.xcaret.loyaltyreps.databinding.FragmentHomeBinding
+import com.xcaret.loyaltyreps.model.XUser
 import com.xcaret.loyaltyreps.util.AppPreferences
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModel
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModelFactory
+import org.json.JSONObject
 import java.text.NumberFormat
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.concurrent.thread
-import kotlin.math.round
 import kotlin.math.roundToInt
 
 /**
@@ -35,6 +38,7 @@ class HomeFragment : Fragment()  {
 
     lateinit var binding: FragmentHomeBinding
     lateinit var xUserViewModel: XUserViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,6 +59,8 @@ class HomeFragment : Fragment()  {
 
         loadUserInfo()
 
+        loadUserDataFromServer()
+
         loadStaticViews()
         handleActions()
 
@@ -67,7 +73,9 @@ class HomeFragment : Fragment()  {
     override fun onResume() {
         super.onResume()
         loadUserInfo()
-        println("entro de nuevo")
+        loadUserDataFromServer()
+
+
     }
 
     private fun loadStaticViews(){
@@ -79,8 +87,6 @@ class HomeFragment : Fragment()  {
     }
 
     private fun loadUserInfo(){
-        // es aqui donde deberia trabajar
-        //pendiente Israel canul
         xUserViewModel.currentXUser.observe(this, Observer {
                 xuser ->
                 xuser?.let {
@@ -167,6 +173,45 @@ class HomeFragment : Fragment()  {
         val myLevel = if (totalPoints > maxPoints) maxLevel else totalPoints * maxLevel / maxPoints
 
         return myLevel
+    }
+
+    fun loadUserDataFromServer() {
+
+        // de aqui es donde se debe obtener los datos para actualizar en el home
+        //Israel Canul
+        val user2update = XUser()
+        AndroidNetworking.get("${AppPreferences.XCARET_API_URL_ROOT}rep/getDetalleRepById/${AppPreferences.idRep}")
+            .setTag("user_info")
+            .addHeaders("Authorization", "Bearer ${AppPreferences.userToken}")
+            .setPriority(Priority.MEDIUM)
+            .build()
+            .getAsJSONObject(object : JSONObjectRequestListener {
+                override fun onError(anError: ANError?) {
+                }
+                override fun onResponse(response: JSONObject) {
+                    if (response.length() > 0){
+                        println(response.getJSONObject("value").getBoolean("cnMainQuiz"))
+                        //obtenemos los campos necesarios de la respuesta
+                        user2update.puntosParaArticulos = response.getJSONObject("value").getInt("puntosParaArticulos")
+                        user2update.puntosParaBoletos = response.getJSONObject("value").getInt("puntosParaBoletos")
+                        user2update.estatus = response.getJSONObject("value").getBoolean("estatus")
+                        user2update.idEstatusArchivos = response.getJSONObject("value").getInt("idEstatusArchivos")
+                        user2update.cnMainQuiz = response.getJSONObject("value").getBoolean("cnMainQuiz")
+                        //user2update.cnMainQuiz = false
+                        //actualizamos el current user
+                        xUserViewModel.updatePuntosArticuloRifa(user2update)
+                        xUserViewModel.updateStatusUser(user2update)
+                        //actualizamos los controles en la vista
+                        val totalPoints = user2update.puntosParaArticulos + user2update.puntosParaBoletos
+                        AppPreferences.userTotalPoints = totalPoints
+                        val puntos_formated = NumberFormat.getNumberInstance(Locale.US).format(user2update.puntosParaArticulos)
+                        binding.xUserPoints.text = puntos_formated//(it.puntosParaArticulos).toString()
+                        binding.xUserStatus.text = if (user2update.cnMainQuiz && user2update.estatus && user2update.idEstatusArchivos == 3) "Estatus: Activo" else "Estatus: Inactivo"
+
+                    }
+                }
+
+            })
     }
 
 }

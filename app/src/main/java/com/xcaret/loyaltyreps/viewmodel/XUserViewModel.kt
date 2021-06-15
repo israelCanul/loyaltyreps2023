@@ -194,6 +194,22 @@ class XUserViewModel (
             update(oldUser)
         }
     }
+    fun updateStatusUser(xUser: XUser){
+        /*
+        * Modificado 14/06/2021
+        * Author: Israel Iran Canul Chi
+        * Funcion para actualizar el estatus de un usuario de acuerdo a el estatus, idEstatusArchivos, cnMainQuiz
+        * */
+        uiScope.launch {
+            val oldUser = currentUser.value ?: return@launch
+
+            oldUser.estatus = xUser.estatus
+            oldUser.idEstatusArchivos = xUser.idEstatusArchivos
+            oldUser.cnMainQuiz = xUser.cnMainQuiz
+
+            update(oldUser)
+        }
+    }
 
     fun updatePuntosArticuloRifa(xUser: XUser){
         uiScope.launch {

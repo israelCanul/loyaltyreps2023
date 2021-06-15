@@ -318,6 +318,10 @@ class ComplimentaryDetailsFragment : Fragment() {
         binding.progressBar.visibility = View.VISIBLE
         val jsonObject = JSONObject()
         try {
+            //{
+            //  count: 2,
+            //  names: ["pere","marar"]
+            //}
             jsonObject.put("titularReservacion", fullName)
             jsonObject.put("adultos", noAdults)
             jsonObject.put("menores", noKids)
