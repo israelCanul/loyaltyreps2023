@@ -1,11 +1,11 @@
 package com.xcaret.loyaltyreps.view.fragments.complimentary
 
 
-import android.app.DatePickerDialog
+//import android.app.DatePickerDialog
+
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +16,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -24,20 +25,20 @@ import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.StringRequestListener
 import com.google.android.material.snackbar.Snackbar
-import org.json.JSONException
-import org.json.JSONObject
-
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
+import com.xcaret.loyaltyreps.MainActivity
 import com.xcaret.loyaltyreps.R
 import com.xcaret.loyaltyreps.database.XCaretLoyaltyDatabase
 import com.xcaret.loyaltyreps.databinding.FragmentComplimentaryDetailsBinding
 import com.xcaret.loyaltyreps.model.Complimentary
 import com.xcaret.loyaltyreps.model.Hijo
-import com.xcaret.loyaltyreps.model.XComplimentary
 import com.xcaret.loyaltyreps.model.XUser
 import com.xcaret.loyaltyreps.util.AppPreferences
 import com.xcaret.loyaltyreps.util.EventsTrackerFunctions
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModel
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModelFactory
+import org.json.JSONException
+import org.json.JSONObject
 import java.util.*
 
 /**
@@ -265,12 +266,17 @@ class ComplimentaryDetailsFragment : Fragment() {
     }
 
     private fun selectDate(){
+        /*
+        * Se cambio la libreria nativa del DatePickerDialog por com.wdullaer:materialdatetimepicker para mas perzonalizacion
+        * Author: Israel Canul
+        *
+        * */
         val c = Calendar.getInstance()
         val cyear = c.get(Calendar.YEAR)
         val cmonth = c.get(Calendar.MONTH)
         val cday = c.get(Calendar.DAY_OF_MONTH)
-        val date_now = System.currentTimeMillis() - 1000
-        val datePickerDialog = DatePickerDialog(activity!!,
+
+       val datePickerDialog = DatePickerDialog.newInstance(
             DatePickerDialog.OnDateSetListener { _, year, month, day ->
                 var format = ""
                 if (month + 1 < 10){
@@ -288,11 +294,37 @@ class ComplimentaryDetailsFragment : Fragment() {
                 binding.requestReservation.isEnabled = true
                 fechaVisita = AppPreferences.nomalDateToFormat(finalDate)
 
-            }, cyear, cmonth, cday)
+            }, cyear, cmonth, cday);
+            /*
+            * Agregamos la logica para los dias no disponibles
+            * Author: Israel Canul
+            * [INICIO]
+            * */
+            val minDate = Calendar.getInstance()
+            minDate.add(Calendar.DAY_OF_MONTH, 3)
+            val minDateToPick = minDate.clone() as Calendar
+            val maxDate = Calendar.getInstance()
+            maxDate.add(Calendar.DAY_OF_MONTH, 365);
+            val dis: MutableList<Calendar> = listOfNotNull<Calendar>(null).toMutableList()
+            while (minDate.getTimeInMillis() < maxDate.getTimeInMillis()){
+                var dayOfWeek = minDate.get(Calendar.DAY_OF_WEEK)
+                if (dayOfWeek == Calendar.SUNDAY || dayOfWeek == Calendar.SATURDAY) {
+                    var temp:Calendar = minDate.clone() as Calendar
+                    dis.add(temp)
+                }
+                minDate.add(Calendar.DAY_OF_MONTH,1)
+            }
 
-        datePickerDialog.datePicker.minDate = date_now + 1000*60*60*24*3
-        datePickerDialog.setCanceledOnTouchOutside(false)
-        datePickerDialog.show()
+        datePickerDialog.disabledDays = dis.toTypedArray()
+        /*
+        * Agregamos la logica para los dias no disponibles
+        * Author: Israel Canul
+        * [FINAL]
+        * */
+        datePickerDialog.minDate = minDateToPick
+        datePickerDialog.show(getChildFragmentManager(), "datepicker")
+
+
     }
 
     private fun validateDate() : Boolean {

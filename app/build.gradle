@@ -109,6 +109,9 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit"
     implementation "com.squareup.okhttp3:logging-interceptor:3.14.2"
 
+    //Material DateTime Picker
+    implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
+
 }
 
 apply plugin: 'com.google.gms.google-services'
