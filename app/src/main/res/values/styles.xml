@@ -146,4 +146,13 @@
         <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
     </style>
 
+    <style name="CInput">
+        <item name="android:textSize">@dimen/general_text</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:inputType">text</item>
+    </style>
+
 </resources>

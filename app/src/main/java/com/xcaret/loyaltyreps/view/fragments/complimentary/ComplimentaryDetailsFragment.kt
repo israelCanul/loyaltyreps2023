@@ -9,11 +9,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.ImageButton
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -25,6 +23,8 @@ import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.StringRequestListener
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import com.xcaret.loyaltyreps.MainActivity
 import com.xcaret.loyaltyreps.R
@@ -132,7 +132,7 @@ class ComplimentaryDetailsFragment : Fragment() {
     private fun loadNumberOfAdults(){
         adulstList.clear()
         //for (item in 0 until complimentaryTem!!.noPaxBeneficio + 1) {
-        for (item in 0 until complimentaryTem!!.noPaxPorUtilizar + 1) {
+        for (item in 1 until complimentaryTem!!.noPaxPorUtilizar + 1) {
             adulstList.add(
                 Hijo(item, item.toString())
             )
@@ -147,22 +147,48 @@ class ComplimentaryDetailsFragment : Fragment() {
     private val adultSpinnerListener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
             try{
-                if (position == 0){
+                /*if (position == 0){
                     var currAdults = 0
+                    println("after currAdults")
                     for (item in 0 until adulstList.size){
                         if (adulstList[item].desc == noAdults.toString()) {
+                            println()
                             currAdults = item
                         }
                     }
+                    println("before parentSelection")
+                    println(currAdults)
                     parent.setSelection(currAdults)
-                } else {
+                } else {*/
                     val hij = parent.selectedItem as Hijo
                     noAdults = hij.desc.toInt()
+                    if(noAdults>1){
+                        binding.labelVisitersAdults.visibility = TextView.VISIBLE
+                    }else{
+                        binding.labelVisitersAdults.visibility = TextView.GONE
+                    }
+                    binding.namesAdults?.removeAllViews()
+                    for (i in 1 until noAdults){
+
+                        var textInputLayout = TextInputLayout(context)
+                        val lp = LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                        )
+                        lp.setMargins(0, 0, 0, 0)
+                        textInputLayout.layoutParams = lp
+                        var inputText = TextInputEditText(ContextThemeWrapper(activity, R.style.CInput))
+                        inputText.setHint("Nombre y Apellido (visitante "+i+")")
+                        inputText.isEnabled = true
+                        textInputLayout.addView(inputText)
+                        binding.namesAdults?.addView(textInputLayout)
+                    }
                     maxKids = adulstList.size - noAdults
-                }
+                //}
+                println("before loadNumberOfKids")
 
                 if (maxKids > 0) {
-                    loadNumberOfKids()
+                   loadNumberOfKids()
                 }
 
             } catch (error: java.lang.Exception) {
