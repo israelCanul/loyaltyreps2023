@@ -329,4 +329,6 @@
     <string name="tu_canje_fue_exitoso">¡Tu canje fue exitoso!</string>
     <string name="support">SOPORTE</string>
     <string name="VAdultos">Visitantes Adultos</string>
+    <string name="VInfants">"Visitantes Infantes "</string>
+    <string name="VChildren">Visitantes Niños</string>
 </resources>
