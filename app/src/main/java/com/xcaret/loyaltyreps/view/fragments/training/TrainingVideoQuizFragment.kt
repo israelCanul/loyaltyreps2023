@@ -81,6 +81,7 @@ class TrainingVideoQuizFragment : Fragment(){
         super.onResume()
         initializeViews()
         handleClicks()
+        println("llegamos a video");
     }
 
     private fun initializeViews(){
