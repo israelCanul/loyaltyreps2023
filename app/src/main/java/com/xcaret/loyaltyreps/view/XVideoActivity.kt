@@ -22,6 +22,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.audio.AudioAttributes
+import com.google.android.exoplayer2.ui.AspectRatioFrameLayout
 import com.google.android.exoplayer2.upstream.*
 import com.google.android.exoplayer2.util.Util
 import com.xcaret.loyaltyreps.R
@@ -105,7 +106,7 @@ class XVideoActivity : AppCompatActivity() {
 
         player!!.setAudioAttributes(audioAttributes, true)
         player!!.playWhenReady = shouldAutoPlay
-
+        binding.xvideoPlayer.resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT
 
 
         val mediaSource = ExtractorMediaSource.Factory(mediaDataSourceFactory)
