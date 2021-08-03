@@ -1,14 +1,15 @@
 package com.xcaret.loyaltyreps.view.fragments
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.view.*
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.SearchView
+
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.androidnetworking.AndroidNetworking
@@ -334,7 +335,7 @@ class PickUpsFragment : Fragment() {
         } catch (e: JSONException) {
             e.printStackTrace()
         }
-
+        println(jsonObject)
         EventsTrackerFunctions.trackPickupEvent(jsonObject.toString())
 
         AndroidNetworking.post(AppPreferences.XCARET_API_URL+"getPickupHotel")
@@ -375,6 +376,15 @@ class PickUpsFragment : Fragment() {
     private fun searchHotelSchedule(){
         searchHotel.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.resultados.visibility = View.VISIBLE
+                println("aqui llego en el search")
+                binding.container!!.post { binding.container!!.scrollTo(0,  binding.linearLayout.bottom) }
+                val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+                imm!!.toggleSoftInput(
+                    InputMethodManager.SHOW_FORCED,
+                    InputMethodManager.HIDE_IMPLICIT_ONLY
+                )
+
                 return false
             }
 

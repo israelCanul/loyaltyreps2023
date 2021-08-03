@@ -120,13 +120,13 @@ class ComplimetariesFragment : Fragment() {
                     }
                     binding.runoutOfItems.visibility = View.VISIBLE
                     binding.progressBar.visibility = View.GONE
-                    /*println("myresponse detail $anError")
+                    println("myresponse detail $anError")
                     println("myresponse detail ${anError!!.errorCode}")
                     println("myresponse detail ${anError.errorDetail}")
                     if (anError.errorDetail == "connectionError"){
                         binding.runoutOfItems.visibility = View.VISIBLE
                         binding.progressBar.visibility = View.GONE
-                    }*/
+                    }
                 }
                 override fun onResponse(response: JSONObject?) {
                     println("myresponse $response")

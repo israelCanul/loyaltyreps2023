@@ -17,21 +17,21 @@ object AppPreferences {
     //lateinit var xUser: XUser
 
     //punk API
-    var PUNK_API_URL = "https://app.loyaltyreps.com/api/v1/"
-    val PUNK_API_TOKEN = "ab24d47537ac191b37b7617a98687cb5d5d42d5a"
-    //punkdeve
-    /*var PUNK_API_URL = "https://xcaret.punklabs.ninja/api/v1/"
+    /*var PUNK_API_URL = "https://app.loyaltyreps.com/api/v1/"
     val PUNK_API_TOKEN = "ab24d47537ac191b37b7617a98687cb5d5d42d5a"*/
+    //punkdeve
+    var PUNK_API_URL = "https://xcaret.punklabs.ninja/api/v1/"
+    val PUNK_API_TOKEN = "ab24d47537ac191b37b7617a98687cb5d5d42d5a"
 
     //Xcaret Loyalty API production
-    var XCARET_API_URL = "https://api.loyaltyreps.com/api/Sivex/"
+    /*var XCARET_API_URL = "https://api.loyaltyreps.com/api/Sivex/"
     var XCARET_API_URL_ROOT = "https://api.loyaltyreps.com/api/"
-    var XCARET_LONGIN = "https://api.loyaltyreps.com/"
+    var XCARET_LONGIN = "https://api.loyaltyreps.com/"*/
 
     //Xcaret Dev
-    /*var XCARET_API_URL = "https://apidev.loyaltyreps.com/api/Sivex/"
+    var XCARET_API_URL = "https://apidev.loyaltyreps.com/api/Sivex/"
     var XCARET_API_URL_ROOT = "https://apidev.loyaltyreps.com/api/"
-    var XCARET_LONGIN = "https://apidev.loyaltyreps.com/"*/
+    var XCARET_LONGIN = "https://apidev.loyaltyreps.com/"
 
     //UseruploadFiles
     var virtualCardIDRul = "${XCARET_API_URL_ROOT}Files/getTarjetaImage/"
