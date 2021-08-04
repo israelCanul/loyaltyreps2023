@@ -15,18 +15,19 @@
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintHorizontal_bias="0.497"
               app:layout_constraintTop_toTopOf="parent"/>
-        <androidx.core.widget.NestedScrollView
-                android:id="@+id/container"
-                android:layout_width="match_parent"
-                android:focusable="true"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+        <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+                                               android:focusable="true"
+                                               android:layout_height="match_parent"
+                                               app:layout_constraintEnd_toEndOf="parent"
+                                               app:layout_constraintStart_toStartOf="parent"
+                                               app:layout_constraintBottom_toBottomOf="parent"
+                                               app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                    android:id="@+id/container"
                     android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
                     android:layout_height="wrap_content">
 
                 <com.airbnb.lottie.LottieAnimationView
@@ -176,7 +177,6 @@
                                 android:backgroundTint="@color/colorAccent"
                                 android:spinnerMode="dialog"
                                 android:textAlignment="textStart"
-
                                 tools:targetApi="lollipop" />
 
                     </LinearLayout>
@@ -195,32 +195,25 @@
                                 android:background="@drawable/backgroun_pickup_form"
                                 android:focusable="false"
                                 android:textSize="@dimen/general_text"
-                                android:visibility="gone"
                                 app:iconifiedByDefault="false"
                                 app:queryBackground="@android:color/transparent"
                                 app:queryHint="@string/search_hotel" />
 
-                        <!--<View
+                        <AutoCompleteTextView
+                                android:id="@+id/searchOrigin"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:hint="Hotel"
+                                android:completionThreshold="1"
+                                android:completionHint="Hotel"
+                                >
+                        </AutoCompleteTextView>
+                        <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
                                 android:layout_marginStart="@dimen/margin5"
                                 android:layout_marginEnd="@dimen/margin5"
-                                android:background="@color/colorAccent" />-->
-
-                        <AutoCompleteTextView
-                                android:textColor="@color/primary_text"
-                                android:id="@+id/searchOrigin"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:completionThreshold="1"
-                                android:drawableRight="@android:drawable/ic_menu_search"
-                                android:hint="Hotel"
-                                android:textSize="@dimen/general_text"
-                                android:fontFamily="@font/roboto"
-                                android:layout_marginTop="@dimen/margin10"
-                                android:padding="@dimen/margin12"
-                                android:singleLine="true"
-                                android:visibility="invisible"></AutoCompleteTextView>
+                                android:background="@color/colorAccent" />
 
                     </LinearLayout>
 
@@ -236,7 +229,6 @@
                         android:descendantFocusability="blocksDescendants"
                         android:orientation="vertical"
                         android:padding="@dimen/general_padding"
-                        android:visibility="invisible"
                         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
                         app:layout_constraintStart_toStartOf="@+id/linearLayout"
                         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
@@ -253,7 +245,6 @@
                             android:textStyle="bold" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                            android:minHeight="500dp"
                             android:id="@+id/pickupsRecyclerView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -274,7 +265,7 @@
 
                 </RelativeLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
 

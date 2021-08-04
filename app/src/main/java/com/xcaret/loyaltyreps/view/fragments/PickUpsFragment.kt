@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import android.widget.*
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat.getSystemService
 
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -23,12 +24,14 @@ import org.json.JSONObject
 import com.xcaret.loyaltyreps.R
 import com.xcaret.loyaltyreps.adapter.XHotelAdapter
 import com.xcaret.loyaltyreps.databinding.FragmentPickUpsBinding
+
 import com.xcaret.loyaltyreps.model.PickUpHotel
 import com.xcaret.loyaltyreps.model.XTour
 import com.xcaret.loyaltyreps.model.XTourSchedule
 import com.xcaret.loyaltyreps.model.XZone
 import com.xcaret.loyaltyreps.util.AppPreferences
 import com.xcaret.loyaltyreps.util.EventsTrackerFunctions
+import kotlinx.android.synthetic.main.fragment_item_list_dialog_item.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -41,8 +44,11 @@ class PickUpsFragment : Fragment() {
     lateinit var tourSpinnerAdapter: ArrayAdapter<XTour>
     lateinit var scheduleSpinnerAdapter: ArrayAdapter<XTourSchedule>
     lateinit var searchViewAdapter: XHotelAdapter
+    lateinit var hotelsAdapter: ArrayAdapter<String>
+    lateinit var searchViewHotel: AutoCompleteTextView
 
     var pickupsList: ArrayList<PickUpHotel> = ArrayList()
+    var hotelNameList: ArrayList<String> = ArrayList<String>()
 
     var idProducto: String = ""
     var fechaVisita: String = ""
@@ -51,6 +57,7 @@ class PickUpsFragment : Fragment() {
     var cnAllotmentHorario: String = ""
     var horario: String = ""
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,27 +65,25 @@ class PickUpsFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_pick_ups, container, false)
-
-        //mView = binding.root
+        //obtenemos el view AutoCompleteTextView
+        searchViewHotel = binding.searchOrigin;
+        hotelsAdapter = ArrayAdapter<String>(context!!,android.R.layout.simple_list_item_1, hotelNameList)
+        searchViewHotel.setAdapter(hotelsAdapter)
 
         return  binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         loadTours()
         loadZones()
         loadResources()
-
         searchHotelSchedule()
 
     }
-
     private fun loadResources(){
         populateTourSpinner()
     }
-
     private fun loadTours(){
         AppPreferences.xTourList.clear()
         AppPreferences.xTourList.add(
@@ -320,6 +325,7 @@ class PickUpsFragment : Fragment() {
 
     private fun populateHotelPickUpSchedules(){
         pickupsList.clear()
+        hotelNameList.clear()
         binding.pickupsRecyclerView.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
         searchViewAdapter = XHotelAdapter(activity!!, pickupsList)
         binding.pickupsRecyclerView.adapter = searchViewAdapter
@@ -358,6 +364,13 @@ class PickUpsFragment : Fragment() {
                                     pickupSchedule.getString("hrPickup")
                                 )
                             )
+                            hotelNameList.add(pickupSchedule.getString("dsNombreHotel"))
+                        }
+                        if(hotelNameList.size >= 0){
+                            hotelsAdapter.notifyDataSetChanged()
+                            searchViewHotel.visibility = View.VISIBLE
+                        }else{
+                            searchViewHotel.visibility = View.GONE
                         }
                         binding.pickupsRecyclerView.adapter!!.notifyDataSetChanged()
                     } else {
@@ -368,32 +381,50 @@ class PickUpsFragment : Fragment() {
                 override fun onError(anError: ANError?) {
                     println("eeerrrror"+anError)
                 }
-
             })
-
     }
 
     private fun searchHotelSchedule(){
-        searchHotel.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+
+            searchViewHotel.setOnItemClickListener { parent, view, position, id ->
+                binding.resultados.visibility = View.VISIBLE
+                binding.container!!.post {
+                    binding.container!!.scrollTo(
+                        0,
+                        binding.linearLayout.bottom
+                    )
+                }
+                searchViewAdapter.filter.filter(hotelNameList.get(position))
+                /*val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+                imm!!.toggleSoftInput(
+                    InputMethodManager.SHOW_FORCED,
+                    InputMethodManager.HIDE_IMPLICIT_ONLY
+                )*/
+                searchViewHotel.clearFocus()
+                val inputMethodManager = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(searchViewHotel.windowToken, 0)
+
+            }
+
+
+
+
+        /*searchHotel.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 binding.resultados.visibility = View.VISIBLE
-                println("aqui llego en el search")
-                binding.container!!.post { binding.container!!.scrollTo(0,  binding.linearLayout.bottom) }
+                binding.container!!.post { binding.container!!.scrollTo (0, binding.linearLayout.bottom) }
                 val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
                 imm!!.toggleSoftInput(
                     InputMethodManager.SHOW_FORCED,
                     InputMethodManager.HIDE_IMPLICIT_ONLY
                 )
-
                 return false
             }
-
             override fun onQueryTextChange(newText: String): Boolean {
                 searchViewAdapter.filter.filter(newText)
                 return false
             }
-
-        })
+        })*/
     }
 
 }
