@@ -80,18 +80,38 @@
                               android:layout_below="@id/chart" android:layout_marginTop="@dimen/margin30" android:padding="@dimen/general_padding"
                               android:background="@drawable/backgroun_pickup_form">
 
-                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                              android:textColor="@color/primary_text"
-                              android:textSize="@dimen/text16" android:textAlignment="center"
-                              android:text="@string/days_left" android:id="@+id/days_left"
-                              android:fontFamily="@font/roboto"/>
+                    <TextView
+                            android:id="@+id/days_left"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto"
+                            android:text="@string/days_left"
+                            android:textAlignment="center"
+                            android:textColor="@color/primary_text"
+                            android:textSize="@dimen/text16" />
 
-                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                              android:textAlignment="textEnd"
-                              android:textSize="@dimen/general_text" android:text="@string/total_points"
-                              android:layout_marginTop="@dimen/margin15"
-                              android:textColor="@color/primary_text" android:id="@+id/total_points_top_rep"
-                              android:fontFamily="@font/roboto"/>
+                    <TextView
+                            android:id="@+id/howrepsleveswork"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/icon_information"
+                            android:gravity="right|center_vertical"
+                            android:text="¿Cómo funcionan los niveles de reps? "
+                            android:textColor="@color/colorPrimary"
+                            android:textStyle="italic" />
+
+                    <TextView
+                            android:id="@+id/total_points_top_rep"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|center_vertical"
+                            android:layout_marginTop="@dimen/margin15"
+                            android:fontFamily="@font/roboto"
+                            android:gravity="right"
+                            android:text="@string/total_points"
+                            android:textColor="@color/primary_text"
+                            android:textSize="@dimen/general_text" />
 
                     <View android:layout_width="1dp" android:layout_height="10dp" android:background="@color/primary_text" android:layout_gravity="end"
                           android:layout_marginEnd="@dimen/margin15"/>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/backgroun_pickup_form"
+        android:orientation="vertical"
+        android:padding="@dimen/general_padding">
+
+    <ImageButton
+            android:id="@+id/closeMe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@color/colorTransparent"
+            android:contentDescription="@string/close_app"
+            app:srcCompat="@drawable/icon_close" />
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin10"
+            android:fontFamily="@font/roboto"
+            android:text="@string/sales_rep_title"
+            android:textAlignment="center"
+            android:textColor="@color/activity_title"
+            android:textSize="@dimen/activity_title"
+            android:textStyle="bold" />
+
+    <TextView
+            style="@style/GeneralTextGrey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin15"
+            android:layout_marginTop="@dimen/margin15"
+            android:layout_marginBottom="@dimen/margin30"
+            android:layout_marginEnd="0dp"
+            android:gravity="left"
+            android:text="@string/sales_rep_description" />
+
+
+</LinearLayout>

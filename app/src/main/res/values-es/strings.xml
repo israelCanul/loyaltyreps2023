@@ -331,4 +331,7 @@
     <string name="VAdultos">Visitantes Adultos</string>
     <string name="VInfants">"Visitantes Infantes "</string>
     <string name="VChildren">Visitantes Niños</string>
+    <string name="sales_rep_description">Nivel 1: de 0 a 2000 puntos \nNivel 2: de 2000 a 4000 puntos \nNivel 3: de 4000 a 6000 puntos \nNivel 4: de 6000 a 2000 puntos \nNivel 5: de 8000 a 10000 puntos \nNivel 6: de 10000 a 12000 puntos \nNivel 7: de 12000 a 14000 puntos \nNivel 8: de 14000 a 16000 puntos \nNivel 9: de 16000 a 18000 puntos \nNivel 10: 1800 o + (Top Rep)
+    </string>
+    <string name="sales_rep_title">Los niveles funcionan así: </string>
 </resources>

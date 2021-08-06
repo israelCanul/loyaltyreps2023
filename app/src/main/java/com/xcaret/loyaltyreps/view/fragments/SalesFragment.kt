@@ -1,12 +1,15 @@
 package com.xcaret.loyaltyreps.view.fragments
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
@@ -17,6 +20,7 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
+import com.bumptech.glide.Glide
 import org.apache.commons.lang3.StringUtils
 import org.json.JSONObject
 
@@ -67,6 +71,8 @@ class SalesFragment : Fragment() {
 
         println("userToken --- ${AppPreferences.userToken}")
         println("userToken --- ${AppPreferences.userToken}")
+
+        handleInformationClicks()
 
         return binding.root
     }
@@ -271,6 +277,25 @@ class SalesFragment : Fragment() {
         val mmx = seekBarParams.leftMargin + mSeekBar.paddingLeft + mSeekBar.thumb.bounds.left - seek_text.width /2
         seek_text.x = mmx.toFloat()*/
 
+    }
+
+    private fun handleInformationClicks(){
+        binding.howrepsleveswork.setOnClickListener {
+            informationPopup(R.layout.sales_popup_rep_info)
+        }
+    }
+
+    private fun informationPopup(layoutId: Int){
+        val alertBuilder = AlertDialog.Builder(activity)
+        val dialogView = activity!!.layoutInflater.inflate(layoutId, null)
+        alertBuilder.setView(dialogView)
+        val alertDialog = alertBuilder.create()
+        alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        alertDialog.show()
+        dialogView.findViewById<ImageButton>(R.id.closeMe).setOnClickListener {
+            alertDialog.dismiss()
+        }
+        alertDialog.setCancelable(false)
     }
 
 
