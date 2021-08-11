@@ -24,6 +24,9 @@ object EventsTrackerFunctions {
     val supportQuestion = "pregunta_soporte"
     val redeemArticle = "canje_articulo"
     val quizCompleted = "quiz_completado"
+    val pickupTrainingPark = "parque_training"
+    val pickupTrainingParkSection = "parque_training_section"
+
 
     fun trackLogin(rcxRrx: String){
         val params = Bundle()
@@ -86,6 +89,24 @@ object EventsTrackerFunctions {
         params.putString("rcx", AppPreferences.userRCX)
         firebaseAnalytics.logEvent(event, params)
     }
+    fun trackTrainingParkEvent(park: String){
+        val params = Bundle()
+        params.let {
+            it.putString("rcx", AppPreferences.userRCX)
+            it.putString("park", park)
+        }
+        firebaseAnalytics.logEvent(pickupTrainingPark, params)
+    }
+    fun trackTrainingParkSectionEvent(park: String, section: String){
+        val params = Bundle()
+        params.let {
+            it.putString("rcx", AppPreferences.userRCX)
+            it.putString("park", park)
+            it.putString("section", section)
+        }
+        firebaseAnalytics.logEvent(pickupTrainingParkSection, params)
+    }
+
 /*
 
 func trackPickupSearchEvent(_ searchText:String,query:PickUpQuery){

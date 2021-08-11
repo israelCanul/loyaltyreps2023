@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.androidnetworking.AndroidNetworking
@@ -19,11 +20,16 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_training_park_details.*
 import org.json.JSONObject
 import com.xcaret.loyaltyreps.adapter.XTrainingSlideAdapter
+import com.xcaret.loyaltyreps.database.XCaretLoyaltyDatabase
 import com.xcaret.loyaltyreps.databinding.FragmentTrainingParkDetailsBinding
 import com.xcaret.loyaltyreps.model.XImageSlide
 import com.xcaret.loyaltyreps.model.XTraining
 import com.xcaret.loyaltyreps.util.AppPreferences
+import com.xcaret.loyaltyreps.viewmodel.XUserViewModel
+import com.xcaret.loyaltyreps.viewmodel.XUserViewModelFactory
 import java.lang.Exception
+import androidx.lifecycle.Observer
+import com.xcaret.loyaltyreps.util.EventsTrackerFunctions
 
 class TrainingParkDetailsFragment : Fragment() {
 
@@ -32,9 +38,11 @@ class TrainingParkDetailsFragment : Fragment() {
     var END_POINT = "training_section?park_id="
     var xpark_id = ""
     var xvideoUrl = ""
+    var userTarjeta = ""
 
     var mImages: ArrayList<XImageSlide> = ArrayList()
     private var slideSize = 0
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,6 +55,8 @@ class TrainingParkDetailsFragment : Fragment() {
 
         loadXParkDetails(xpark_id)
         binding.xparkVideoCover.setOnClickListener { videoCoverClicked() }
+
+
 
         return binding.root
     }
@@ -64,6 +74,8 @@ class TrainingParkDetailsFragment : Fragment() {
                         binding.parktitle.text = arguments?.getString("xpark_name")
 
                         binding.xparkDescription.text = HtmlCompat.fromHtml(response!!.getString("description"), HtmlCompat.FROM_HTML_MODE_LEGACY)
+
+                        EventsTrackerFunctions.trackTrainingParkEvent(arguments?.getString("xpark_name").toString())
 
                         Glide.with(this@TrainingParkDetailsFragment)
                             .load(response.getString("cover_img")).into(binding.xparkVideoCover)
@@ -101,11 +113,14 @@ class TrainingParkDetailsFragment : Fragment() {
             })
     }
 
+
+
     private fun videoCoverClicked(){
         val bundle = Bundle().also {
             it.putString("xvideo_url", xvideoUrl)
             it.putString("video_id", "1")
         }
+        EventsTrackerFunctions.trackTrainingParkSectionEvent(binding.parktitle.text.toString(),"video")
         findNavController().navigate(com.xcaret.loyaltyreps.R.id.to_XVideoActivity, bundle)
     }
 
@@ -117,6 +132,8 @@ class TrainingParkDetailsFragment : Fragment() {
 
         item_row2.setOnClickListener {
             val mbundle = Bundle()
+            println("aqui va el evento con name: " + xTraining.name)
+            EventsTrackerFunctions.trackTrainingParkSectionEvent(binding.parktitle.text.toString(),xTraining.name.toString())
             mbundle.putParcelable("xtraining_item", xTraining)
             findNavController().navigate(com.xcaret.loyaltyreps.R.id.to_trainingParkTDetailsFragment, mbundle)
         }
