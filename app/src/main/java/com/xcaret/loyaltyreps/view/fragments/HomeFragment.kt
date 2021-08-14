@@ -197,10 +197,16 @@ class HomeFragment : Fragment()  {
                         user2update.estatus = response.getJSONObject("value").getBoolean("estatus")
                         user2update.idEstatusArchivos = response.getJSONObject("value").getInt("idEstatusArchivos")
                         user2update.cnMainQuiz = response.getJSONObject("value").getBoolean("cnMainQuiz")
+                        user2update.idEdoCivil = response.getJSONObject("value").getInt("idEdoCivil")
+                        user2update.hijos = response.getJSONObject("value").getInt("hijos")
+                        user2update.idEstadoNacimiento = response.getJSONObject("value").getInt("idEstadoNacimiento")
+                        user2update.idMunicipioNacimiento = response.getJSONObject("value").getInt("idMunicipioNacimiento")
+                        user2update.intereses = response.getJSONObject("value").getString("intereses")
                         //user2update.cnMainQuiz = false
                         //actualizamos el current user
                         xUserViewModel.updatePuntosArticuloRifa(user2update)
                         xUserViewModel.updateStatusUser(user2update)
+                        xUserViewModel.onUpdateInterestsTop(user2update)
                         //actualizamos los controles en la vista
                         val totalPoints = user2update.puntosParaArticulos + user2update.puntosParaBoletos
                         AppPreferences.userTotalPoints = totalPoints

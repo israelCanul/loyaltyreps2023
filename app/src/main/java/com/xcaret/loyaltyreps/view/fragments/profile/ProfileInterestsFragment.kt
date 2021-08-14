@@ -52,6 +52,7 @@ class ProfileInterestsFragment : Fragment() {
     private var idEstadoNacimiento = 0
     private var hijos = 0
     private var idMunicipio = 0
+    private var municipioSelected = 0
 
     lateinit var estadoCivilListAdapter: ArrayAdapter<XEstadoCivil>
     lateinit var estadosMexicoAdapter: ArrayAdapter<XEstado>
@@ -82,18 +83,19 @@ class ProfileInterestsFragment : Fragment() {
         loadEstadoCivilList()
         populateEstadoCivilSpinner()
 
-        loadEstados()
-        populateEstadosMexicoSpinner()
 
-        populateMunicipioXEstados()
+
+        //populateMunicipioXEstados()
 
         return binding.root
     }
+
 
     private fun loadUserCurrInfo(){
         xUserViewModel.currentXUser.observe(this, Observer {
                 xuser ->
                 xuser?.let {
+
                     imcurrentUser = it
                     binding.userBirthDAte.setText(xuser.fechaNacimiento)
 
@@ -101,7 +103,7 @@ class ProfileInterestsFragment : Fragment() {
                     idEdoCivil = it.idEdoCivil
                     idEstadoNacimiento = it.idEstadoNacimiento
                     idMunicipio = it.idMunicipioNacimiento
-
+                    println("ususario intereses " + it)
 
                     try {
                         val result = it.intereses.split(",").map(String::toInt)
@@ -110,11 +112,10 @@ class ProfileInterestsFragment : Fragment() {
                         error.printStackTrace()
                     }
 
+                    loadEstados()
+
                     loadMunicipiosByEstado(idEstadoNacimiento.toString())
-                    populateMunicipioXEstados()
-
                     loadHijos()
-
 
                     binding.saveInteresesButton.setOnClickListener {
                         updateHobbies()
@@ -220,6 +221,7 @@ class ProfileInterestsFragment : Fragment() {
                             )
                         }
                         notifyAdapterEstados()
+                        populateEstadosMexicoSpinner()
                     } catch (except: Exception){
                         except.printStackTrace()
                     }
@@ -290,7 +292,11 @@ class ProfileInterestsFragment : Fragment() {
                         val listOfEC = response.getJSONArray("value")
                         for (item in 0 until listOfEC.length()){
                             val estadoC = listOfEC.getJSONObject(item)
-
+                            println("idmunicipio " + item +" compared with "+estadoC.getInt("idMunicipio"))
+                            if( idMunicipio == estadoC.getInt("idMunicipio")){
+                                municipioSelected = item + 1
+                                println("idmunicipio selected" + idMunicipio)
+                            }
                             AppPreferences.municipiosList.add(
                                 Municipio(
                                     estadoC.getInt("idMunicipio"),
@@ -301,6 +307,7 @@ class ProfileInterestsFragment : Fragment() {
                             )
                         }
                         notifyAdapterMunicipio()
+
                     } catch (except: Exception){
                         except.printStackTrace()
                     }
@@ -316,6 +323,7 @@ class ProfileInterestsFragment : Fragment() {
         try {
             activity!!.runOnUiThread(Runnable {
                 municipioXEstadoAdapter.notifyDataSetChanged()
+                populateMunicipioXEstados()
             })
         } catch (error: Exception) {
             error.printStackTrace()
@@ -325,8 +333,8 @@ class ProfileInterestsFragment : Fragment() {
     private fun populateMunicipioXEstados(){
         municipioXEstadoAdapter = ArrayAdapter(activity!!, R.layout.spinner_item, AppPreferences.municipiosList)
         binding.spinnerMunicipio.adapter = municipioXEstadoAdapter
-
         binding.spinnerMunicipio.onItemSelectedListener = municipioXEstadoSpinnerListener
+        binding.spinnerMunicipio.setSelection(municipioSelected)
     }
 
     private val municipioXEstadoSpinnerListener = object : AdapterView.OnItemSelectedListener {
@@ -537,3 +545,4 @@ class ProfileInterestsFragment : Fragment() {
     }
 
 }
+

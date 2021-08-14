@@ -220,13 +220,19 @@ class ProfileFragment : Fragment() {
 
                 override fun onResponse(response: JSONObject) {
                     if (response.length() > 0){
+                        print( "ususari" + response)
                         user2update.idEstatusArchivos = response.getJSONObject("value").getInt("idEstatusArchivos")
                         user2update.cnTarjetaActiva = response.getJSONObject("value").getBoolean("cnTarjetaActiva")
                         user2update.dsEstatusArchivos = response.getJSONObject("value").getString("dsEstatusArchivos")
+                        user2update.idEdoCivil = response.getJSONObject("value").getInt("idEdoCivil")
+                        user2update.hijos = response.getJSONObject("value").getInt("hijos")
+                        user2update.idEstadoNacimiento = response.getJSONObject("value").getInt("idEstadoNacimiento")
+                        user2update.idMunicipioNacimiento = response.getJSONObject("value").getInt("idMunicipioNacimiento")
+                        user2update.intereses = response.getJSONObject("value").getString("intereses")
                         xUserViewModel.updateStatusArchivos(user2update)
+                        xUserViewModel.onUpdateInterestsTop(user2update)
                     }
                 }
-
             })
     }
 
