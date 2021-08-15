@@ -231,6 +231,7 @@ class ProfileFragment : Fragment() {
                         user2update.intereses = response.getJSONObject("value").getString("intereses")
                         xUserViewModel.updateStatusArchivos(user2update)
                         xUserViewModel.onUpdateInterestsTop(user2update)
+                        xUserViewModel.onUpdateInterests(user2update.intereses)
                     }
                 }
             })

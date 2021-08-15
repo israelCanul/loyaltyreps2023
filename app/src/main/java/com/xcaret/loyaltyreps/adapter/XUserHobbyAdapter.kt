@@ -45,13 +45,12 @@ class XUserHobbyAdapter(
         selected = ContextCompat.getDrawable(context, R.drawable.toggle_on)!!
         unselected = ContextCompat.getDrawable(context, R.drawable.toggle_off)!!
 
-
         for (mid in listOfIds){
             if (mid == mHobby.id) {
+                AppPreferences.selectedInterestsIds.add(mHobby.id)
                 holder.m_toggle.setCompoundDrawablesWithIntrinsicBounds(selected, null, null, null)
             }
         }
-
         holder.m_toggle.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked){
                 buttonView.setCompoundDrawablesWithIntrinsicBounds(selected, null, null, null)

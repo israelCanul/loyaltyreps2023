@@ -207,6 +207,7 @@ class HomeFragment : Fragment()  {
                         xUserViewModel.updatePuntosArticuloRifa(user2update)
                         xUserViewModel.updateStatusUser(user2update)
                         xUserViewModel.onUpdateInterestsTop(user2update)
+                        xUserViewModel.onUpdateInterests(user2update.intereses)
                         //actualizamos los controles en la vista
                         val totalPoints = user2update.puntosParaArticulos + user2update.puntosParaBoletos
                         AppPreferences.userTotalPoints = totalPoints

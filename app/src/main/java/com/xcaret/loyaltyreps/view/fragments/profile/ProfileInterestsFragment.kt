@@ -53,6 +53,8 @@ class ProfileInterestsFragment : Fragment() {
     private var hijos = 0
     private var idMunicipio = 0
     private var municipioSelected = 0
+    private var fillInterest = false
+    private var fillHobies = false
 
     lateinit var estadoCivilListAdapter: ArrayAdapter<XEstadoCivil>
     lateinit var estadosMexicoAdapter: ArrayAdapter<XEstado>
@@ -80,11 +82,6 @@ class ProfileInterestsFragment : Fragment() {
         loadUserCurrInfo()
         loadViews()
 
-        loadEstadoCivilList()
-        populateEstadoCivilSpinner()
-
-
-
         //populateMunicipioXEstados()
 
         return binding.root
@@ -95,7 +92,6 @@ class ProfileInterestsFragment : Fragment() {
         xUserViewModel.currentXUser.observe(this, Observer {
                 xuser ->
                 xuser?.let {
-
                     imcurrentUser = it
                     binding.userBirthDAte.setText(xuser.fechaNacimiento)
 
@@ -103,7 +99,12 @@ class ProfileInterestsFragment : Fragment() {
                     idEdoCivil = it.idEdoCivil
                     idEstadoNacimiento = it.idEstadoNacimiento
                     idMunicipio = it.idMunicipioNacimiento
-                    println("ususario intereses " + it)
+                    hijos = it.hijos
+
+                    if(idEstadoNacimiento != 0 && idMunicipio != 0 && idEdoCivil != 0 && (hijos >= 0 && hijos >= 10)){
+                        //aqui pusimos una validacion para intentar pasar puntos por completar intereses
+                        fillInterest = true
+                    }
 
                     try {
                         val result = it.intereses.split(",").map(String::toInt)
@@ -111,12 +112,11 @@ class ProfileInterestsFragment : Fragment() {
                     } catch (error: Exception){
                         error.printStackTrace()
                     }
-
+                    loadEstadoCivilList()
+                    populateEstadoCivilSpinner()
                     loadEstados()
-
                     loadMunicipiosByEstado(idEstadoNacimiento.toString())
                     loadHijos()
-
                     binding.saveInteresesButton.setOnClickListener {
                         updateHobbies()
                     }
@@ -413,13 +413,11 @@ class ProfileInterestsFragment : Fragment() {
     private fun loadHobbies(listOfIds: List<Int>){
         listOfHobbies.clear()
         AppPreferences.selectedInterestsIds.clear()
-
         binding.progressBar.visibility = View.VISIBLE
         binding.hobbiesRecyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         binding.hobbiesRecyclerView.setHasFixedSize(true)
         hobbiesAdapter = XUserHobbyAdapter(activity!!, listOfHobbies, listOfIds)
         binding.hobbiesRecyclerView.adapter = hobbiesAdapter
-
         AndroidNetworking.get(AppPreferences.XCARET_API_URL_ROOT+"hobby/getall")
             .setPriority(Priority.MEDIUM)
             .addHeaders("Authorization", "bearer ${AppPreferences.userToken}")
@@ -448,14 +446,11 @@ class ProfileInterestsFragment : Fragment() {
                 override fun onError(anError: ANError?) {
                 }
             })
-
     }
-
     private fun loadViews(){
         selected = ContextCompat.getDrawable(activity!!, R.drawable.toggle_on)!!
         unselected = ContextCompat.getDrawable(activity!!, R.drawable.toggle_off)!!
     }
-
     private fun updateHobbies(){
         val mprofile = activity as MainActivity?
         if (AppPreferences.selectedInterestsIds.isNotEmpty()) {
@@ -525,12 +520,14 @@ class ProfileInterestsFragment : Fragment() {
                 override fun onError(anError: ANError?) {
                     mprofile!!.requestResponse(resources.getString(R.string.profile_update_respose_error))
                 }
-
                 override fun onResponse(response: JSONObject) {
                     if (response.getJSONObject("value").getInt("error") == 0) {
                         xUserViewModel.onUpdateInterestsTop(updateUser)
                         //snackBarMessage("¡Felididades: Tus datos se actualizaron con éxito!")
                         mprofile!!.requestResponse(resources.getString(R.string.profile_update_respose_success))
+                        if(idEstadoNacimiento != 0 && idMunicipio != 0 && idEdoCivil != 0 && fillInterest == false ){
+                           //aqui va la logica de puntos por completar intereses
+                        }
                     }
                 }
             })

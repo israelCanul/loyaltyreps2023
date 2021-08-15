@@ -295,10 +295,8 @@
     <string name="reservations_exceeded">Haz excedido el número de\nsolicitudes. Por favor, inténtalo\nmañana
         nuevamente.
     </string>
-    <string name="reservations_success_response">¡Tu reservación\nfue exitosa!</string>
-    <string name="reservations_success_response_desc">Nos pondremos en contacto vía correo\nelectrónico para enviarte tu
-        confirmación.
-    </string>
+    <string name="reservations_success_response">¡Solicitud enviada!</string>
+    <string name="reservations_success_response_desc">Dentro de las próximas 72 horas recibirás vía mail la confirmación al correo que registraste en la app.</string>
     <string name="how_to_get_card">Recuerda que es indispensable contar\ncon 3 meses de antigüedad y estar
         activo para que puedas visualizar tu tarjeta.
     </string>
@@ -334,4 +332,5 @@
     <string name="sales_rep_description">Nivel 1: de 0 a 2000 puntos \nNivel 2: de 2000 a 4000 puntos \nNivel 3: de 4000 a 6000 puntos \nNivel 4: de 6000 a 2000 puntos \nNivel 5: de 8000 a 10000 puntos \nNivel 6: de 10000 a 12000 puntos \nNivel 7: de 12000 a 14000 puntos \nNivel 8: de 14000 a 16000 puntos \nNivel 9: de 16000 a 18000 puntos \nNivel 10: 1800 o + (Top Rep)
     </string>
     <string name="sales_rep_title">Los niveles funcionan así: </string>
+    <string name="default_notification_channel_id">general_channel</string>
 </resources>
