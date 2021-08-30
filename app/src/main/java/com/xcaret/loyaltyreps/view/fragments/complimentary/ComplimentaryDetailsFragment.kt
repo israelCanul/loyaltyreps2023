@@ -382,7 +382,7 @@ class ComplimentaryDetailsFragment : Fragment() {
 
     private fun snackBarMessage(apiResponse: String){
         Snackbar.make(binding.complimentaryFragment,
-            apiResponse,
+            "Inactivo",
             Snackbar.LENGTH_LONG)
             .show()
     }

@@ -388,23 +388,21 @@ class PickUpsFragment : Fragment() {
 
             searchViewHotel.setOnItemClickListener { parent, view, position, id ->
                 binding.resultados.visibility = View.VISIBLE
-                binding.container!!.post {
+                /*binding.container!!.post {
                     binding.container!!.scrollTo(
                         0,
                         binding.linearLayout.bottom
                     )
-                }
-                searchViewAdapter.filter.filter(hotelNameList.get(position))
-                /*val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-                imm!!.toggleSoftInput(
-                    InputMethodManager.SHOW_FORCED,
-                    InputMethodManager.HIDE_IMPLICIT_ONLY
-                )*/
+                }*/
+                searchViewAdapter.filter.filter(searchViewHotel.text)
+
                 searchViewHotel.clearFocus()
                 val inputMethodManager = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.hideSoftInputFromWindow(searchViewHotel.windowToken, 0)
 
+
             }
+
 
 
 

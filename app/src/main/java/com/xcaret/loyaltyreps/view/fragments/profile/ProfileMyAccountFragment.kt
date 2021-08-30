@@ -204,7 +204,7 @@ class ProfileMyAccountFragment : Fragment() {
         xUserViewModel.currentXUser.observe(this, Observer {
             xuser ->
             xuser?.let {
-                binding.currUserStatus.text = if (it.cnMainQuiz && it.estatus && it.idEstatusArchivos == 3) "Activo" else "Inactivo"
+                binding.currUserStatus.text = if (it.cnMainQuiz && it.idEstatusArchivos == 3) "Validado" else "Pendiente"
                 binding.userRCX.setText(it.rcx.toUpperCase())
                 binding.userName.setText(it.nombre)
                 binding.userLastName.setText(it.apellidoPaterno)

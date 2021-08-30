@@ -49,8 +49,9 @@ class XHotelAdapter (
                 } else {
                     val filteredList = ArrayList<PickUpHotel>()
                     for (row in pickUpHotels) {
-                        if (flattenToAscii(row.dsNombreHotel).toLowerCase().contains(charString.toLowerCase())
-                            || flattenToAscii(row.hrPickup).contains(charSequence!!)) {
+                        if(row.dsNombreHotel.toLowerCase().contains(charString.toLowerCase())){
+                        //if (flattenToAscii(row.dsNombreHotel).toLowerCase().contains(charString.toLowerCase())
+                        //    || flattenToAscii(row.hrPickup).contains(charSequence!!)) {
                             filteredList.add(row)
                         }
                     }
