@@ -296,7 +296,7 @@
         nuevamente.
     </string>
     <string name="reservations_success_response">¡Solicitud enviada!</string>
-    <string name="reservations_success_response_desc">Dentro de las próximas 72 horas recibirás vía mail la confirmación al correo que registraste en la app.</string>
+    <string name="reservations_success_response_desc">De acuerdo a disponibilidad, recibirás dentro de las próximas 72 hrs la confirmación a tu correo registrado en esta App</string>
     <string name="how_to_get_card">Recuerda que es indispensable contar\ncon 3 meses de antigüedad y estar
         activo para que puedas visualizar tu tarjeta.
     </string>

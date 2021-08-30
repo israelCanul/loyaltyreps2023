@@ -26,6 +26,11 @@ object EventsTrackerFunctions {
     val quizCompleted = "quiz_completado"
     val pickupTrainingPark = "parque_training"
     val pickupTrainingParkSection = "parque_training_section"
+    val buttonClicked = "button_clicked"
+    val parqueSection = "parque_section"
+    val newsSection = "news_section"
+    val ventasSection = "ventas_section"
+    val perfilSection = "perfil_section"
 
 
     fun trackLogin(rcxRrx: String){
@@ -106,7 +111,46 @@ object EventsTrackerFunctions {
         }
         firebaseAnalytics.logEvent(pickupTrainingParkSection, params)
     }
-
+    fun trackClickButtonEvent(button: String){
+        val params = Bundle()
+        params.let {
+            it.putString("rcx", AppPreferences.userRCX)
+            it.putString("button", button)
+        }
+        firebaseAnalytics.logEvent(buttonClicked, params)
+    }
+    fun trackParkSectionEvent(query: String){
+        val params = Bundle()
+        params.let {
+            it.putString("rcx", AppPreferences.userRCX)
+            it.putString("query", query)
+        }
+        firebaseAnalytics.logEvent(parqueSection, params)
+    }
+    fun trackNewsSectionEvent(newSelected: String){
+        val params = Bundle()
+        params.let {
+            it.putString("rcx", AppPreferences.userRCX)
+            it.putString("new", newSelected)
+        }
+        firebaseAnalytics.logEvent(newsSection, params)
+    }
+    fun trackVentasSectionEvent(graficaSelected: String){
+        val params = Bundle()
+        params.let {
+            it.putString("rcx", AppPreferences.userRCX)
+            it.putString("resumen", graficaSelected)
+        }
+        firebaseAnalytics.logEvent(ventasSection, params)
+    }
+    fun trackPerfilSectionEvent(apartadoSelected: String){
+        val params = Bundle()
+        params.let {
+            it.putString("rcx", AppPreferences.userRCX)
+            it.putString("apartado", apartadoSelected)
+        }
+        firebaseAnalytics.logEvent(perfilSection, params)
+    }
 /*
 
 func trackPickupSearchEvent(_ searchText:String,query:PickUpQuery){
