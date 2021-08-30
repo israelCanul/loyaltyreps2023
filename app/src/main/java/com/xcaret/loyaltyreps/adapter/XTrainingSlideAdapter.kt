@@ -18,7 +18,8 @@ class XTrainingSlideAdapter(
     var context: Context,
     private var images: ArrayList<XImageSlide>,
     var resource: Int ?= null,
-    var origin: Int? = null
+    var origin: Int? = null,
+    var park: String? = null
     ): PagerAdapter() {
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
@@ -42,6 +43,7 @@ class XTrainingSlideAdapter(
                 .into(imageViewItem)
             imageViewItem.setOnClickListener {
                 val bundle = Bundle()
+                bundle.putString("parkName",park)
                 bundle.putParcelableArrayList("images", images)
                 bundle.putInt("position", position)
                 it.findNavController().navigate(R.id.action_trainingParkDetailsFragment_to_fullSlideActivity, bundle)

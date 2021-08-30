@@ -8,25 +8,27 @@ import com.xcaret.loyaltyreps.R
 import com.xcaret.loyaltyreps.adapter.XTrainingSlideAdapter
 import com.xcaret.loyaltyreps.databinding.ActivityFullSlideBinding
 import com.xcaret.loyaltyreps.model.XImageSlide
+import com.xcaret.loyaltyreps.util.EventsTrackerFunctions
 
 class FullSlideActivity : AppCompatActivity() {
 
     lateinit var images: ArrayList<XImageSlide>
     lateinit var binding: ActivityFullSlideBinding
-
+    lateinit var parkName: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_full_slide)
 
-        images = intent.extras.getParcelableArrayList("images")!!
+        images = intent.extras?.getParcelableArrayList("images")!!
+        parkName = intent.extras?.getString("parkName", "")!!
 
         binding.xParkSlideViewPager.adapter = XTrainingSlideAdapter(this,
             images, R.layout.full_slide_item, 0)
 
         val slideSize = binding.xParkSlideViewPager.adapter!!.count -1
 
-        binding.xParkSlideViewPager.currentItem = intent.extras.getInt("position")
+        binding.xParkSlideViewPager.currentItem = intent.extras?.getInt("position")!!
         binding.slideIndicator.setupWithViewPager(binding.xParkSlideViewPager)
 
         binding.xParkSlideViewPager.addOnPageChangeListener(object  : ViewPager.OnPageChangeListener {
@@ -44,6 +46,9 @@ class FullSlideActivity : AppCompatActivity() {
                 }
             }
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                if(parkName !=""){
+                    EventsTrackerFunctions.trackTrainingParkSectionEvent(parkName,"galeria")
+                }
                 if (checkDirection) {
                     if (thresholdOffset > positionOffset && positionOffsetPixels > thresholdOffsetPixels) {
 

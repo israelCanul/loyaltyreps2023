@@ -22,6 +22,7 @@ import com.xcaret.loyaltyreps.database.XCaretLoyaltyDatabase
 import com.xcaret.loyaltyreps.databinding.FragmentHomeBinding
 import com.xcaret.loyaltyreps.model.XUser
 import com.xcaret.loyaltyreps.util.AppPreferences
+import com.xcaret.loyaltyreps.util.EventsTrackerFunctions.trackClickButtonEvent
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModel
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModelFactory
 import org.json.JSONObject
@@ -157,7 +158,10 @@ class HomeFragment : Fragment()  {
 
     private fun handleActions(){
         binding.goToPickups.setOnClickListener { findNavController().navigate(R.id.to_pickUpsFragment) }
-        binding.cardGoToTraining.setOnClickListener {  findNavController().navigate(R.id.to_trainingFragment) }
+        binding.cardGoToTraining.setOnClickListener {
+            trackClickButtonEvent("Training")
+            findNavController().navigate(R.id.to_trainingFragment)
+        }
         binding.cardGoToSupport.setOnClickListener { findNavController().navigate(R.id.to_supportFragment) }
         binding.cardGoToNewsFeed.setOnClickListener { findNavController().navigate(R.id.to_newsFeedFragment) }
         binding.cardGoToSales.setOnClickListener {

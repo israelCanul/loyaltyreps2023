@@ -132,7 +132,6 @@ class TrainingParkDetailsFragment : Fragment() {
 
         item_row2.setOnClickListener {
             val mbundle = Bundle()
-            println("aqui va el evento con name: " + xTraining.name)
             EventsTrackerFunctions.trackTrainingParkSectionEvent(binding.parktitle.text.toString(),xTraining.name.toString())
             mbundle.putParcelable("xtraining_item", xTraining)
             findNavController().navigate(com.xcaret.loyaltyreps.R.id.to_trainingParkTDetailsFragment, mbundle)
@@ -144,7 +143,7 @@ class TrainingParkDetailsFragment : Fragment() {
     @SuppressLint("ClickableViewAccessibility")
     private fun loadXTPSlide(images: ArrayList<XImageSlide>){
         binding.xParkSlideViewPager.adapter = XTrainingSlideAdapter(context!!,
-            images, com.xcaret.loyaltyreps.R.layout.cardview_slite_item, 1)
+            images, com.xcaret.loyaltyreps.R.layout.cardview_slite_item, 1,binding.parktitle.text.toString())
 
         slideSize = images.size
 
@@ -155,14 +154,17 @@ class TrainingParkDetailsFragment : Fragment() {
             var checkDirection: Boolean = false
 
             override fun onPageScrollStateChanged(state: Int) {
+
                 if (!scrollStarted && state == ViewPager.SCROLL_STATE_DRAGGING) {
                     scrollStarted = true
                     checkDirection = true
+
                 } else {
                     scrollStarted = false
                 }
             }
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
                 if (checkDirection) {
                     if (thresholdOffset > positionOffset && positionOffsetPixels > thresholdOffsetPixels) {
 
