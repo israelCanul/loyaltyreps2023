@@ -34,6 +34,7 @@ import com.xcaret.loyaltyreps.R
 import com.xcaret.loyaltyreps.databinding.FragmentParkDetailsBinding
 import com.xcaret.loyaltyreps.model.XParkInfographic
 import com.xcaret.loyaltyreps.util.AppPreferences
+import com.xcaret.loyaltyreps.util.EventsTrackerFunctions.trackParkSectionEvent
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -46,6 +47,7 @@ class ParkDetailsFragment : Fragment() {
     var END_POINT = "infographics/"
     var xpark_id = ""
     var infographic_url = ""
+    var xparkName:String = ""
 
     var xparksinfogs: ArrayList<XParkInfographic> = ArrayList()
     var langSpinnerAdapter: ArrayAdapter<XParkInfographic>? = null
@@ -65,6 +67,7 @@ class ParkDetailsFragment : Fragment() {
 
         xpark_id = arguments?.getString("xpark_id").toString()
 
+        xparkName = arguments?.getString("xpark_name").toString()
         loadParksInfographics()
 
         populateParksInfographicSpinner()
@@ -92,7 +95,9 @@ class ParkDetailsFragment : Fragment() {
                                     minfog.getInt("park")
                                 )
                             )
+
                         }
+
                     } catch (excep: Exception) {
                         excep.printStackTrace()
                     }
@@ -110,6 +115,7 @@ class ParkDetailsFragment : Fragment() {
 
         binding.selectLanguage.adapter = langSpinnerAdapter
         binding.selectLanguage.onItemSelectedListener = langSpinnerListener
+
 
     }
 
@@ -131,7 +137,8 @@ class ParkDetailsFragment : Fragment() {
             Glide.with(activity!!).load(mLang.image).into(binding.parkLangInfographic)
             infographic_url = mLang.image!!
             (parent.getChildAt(0) as TextView).setTextColor(Color.parseColor("#ffffff"))
-
+            //println("firebase se" + xparkName.toLowerCase().capitalize() + "_" + mLang.language)
+            trackParkSectionEvent(xparkName.toLowerCase().capitalize() + "_" + mLang.language)
         }
         override fun onNothingSelected(parent: AdapterView<*>) {
         }
@@ -193,6 +200,9 @@ class ParkDetailsFragment : Fragment() {
             putExtra(Intent.EXTRA_STREAM, finalUri)
             type = "image/*"
         }
+        val langShare = binding.selectLanguage.selectedItem as XParkInfographic
+        //println("firebase se" + xparkName.toLowerCase().capitalize() + "_" + langShare.language)
+        trackParkSectionEvent(xparkName.toLowerCase().capitalize() + "_" + langShare.language + "_Share")
         startActivity(Intent.createChooser(shareIntent, resources.getText(R.string.share_using)))
     }
 

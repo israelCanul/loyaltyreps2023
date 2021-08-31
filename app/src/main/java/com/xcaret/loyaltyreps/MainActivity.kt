@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
@@ -25,6 +26,7 @@ import com.xcaret.loyaltyreps.databinding.ActivityMainBinding
 import com.xcaret.loyaltyreps.model.XUser
 import com.xcaret.loyaltyreps.util.AppPreferences
 import com.xcaret.loyaltyreps.util.AppPreferences.idRep
+import com.xcaret.loyaltyreps.util.EventsTrackerFunctions
 import com.xcaret.loyaltyreps.view.LoadPDFActivity
 import com.xcaret.loyaltyreps.view.LoginActivity
 import com.xcaret.loyaltyreps.view.fragments.profile.ProfileMyAccountFragment
@@ -49,9 +51,8 @@ class MainActivity : AppCompatActivity() {
 
         xUserViewModel = ViewModelProviders.of(
             this, viewModelFactory).get(XUserViewModel::class.java)
-
-
         setupNavigation()
+
 
     }
 
@@ -61,6 +62,12 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(this, navController, appBarConfiguration)
         binding.bottomNavigationView.itemIconTintList = null
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            if(destination.label.toString().toLowerCase() != getString(R.string.menu_home).toLowerCase()){
+                //println("firebase seleccionado: " + destination.label)
+                EventsTrackerFunctions.trackClickButtonEvent(destination.label.toString())
+            }
+        }
     }
 
     override fun onSupportNavigateUp() =

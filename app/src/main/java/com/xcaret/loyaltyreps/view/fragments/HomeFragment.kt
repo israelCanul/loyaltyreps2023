@@ -162,23 +162,25 @@ class HomeFragment : Fragment()  {
             trackClickButtonEvent("Training")
             findNavController().navigate(R.id.to_trainingFragment)
         }
-        binding.cardGoToSupport.setOnClickListener { findNavController().navigate(R.id.to_supportFragment) }
-        binding.cardGoToNewsFeed.setOnClickListener { findNavController().navigate(R.id.to_newsFeedFragment) }
+        binding.cardGoToSupport.setOnClickListener {
+            trackClickButtonEvent("Soporte")
+            findNavController().navigate(R.id.to_supportFragment)
+        }
+        binding.cardGoToNewsFeed.setOnClickListener {
+            trackClickButtonEvent("Newsfeed")
+            findNavController().navigate(R.id.to_newsFeedFragment)
+        }
         binding.cardGoToSales.setOnClickListener {
+            trackClickButtonEvent("Ventas")
             findNavController().navigate(R.id.to_salesFragment)
         }
     }
-
     private fun getXUserLevel(totalPoints: Float) : Float {
-
         val maxLevel = AppPreferences.userMaxLevel.toFloat()
         val maxPoints = AppPreferences.userMaxPoints.toFloat()
-
         val myLevel = if (totalPoints > maxPoints) maxLevel else totalPoints * maxLevel / maxPoints
-
         return myLevel
     }
-
     fun loadUserDataFromServer() {
 
         // de aqui es donde se debe obtener los datos para actualizar en el home

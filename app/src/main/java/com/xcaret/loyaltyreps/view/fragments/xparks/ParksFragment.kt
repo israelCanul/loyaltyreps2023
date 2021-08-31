@@ -84,7 +84,10 @@ class ParksFragment : Fragment() {
 
     private fun onXParkClicked(xPark: XPark){
         //Toast.makeText(activity, "parkClicked---"+xPark.name, Toast.LENGTH_SHORT).show()
-        val bundle = Bundle().also { it.putString("xpark_id", xPark.id.toString()) }
+        val bundle = Bundle().also {
+            it.putString("xpark_name", xPark.name)
+            it.putString("xpark_id", xPark.id.toString())
+        }
         findNavController().navigate(R.id.to_parkDetailsFragment, bundle)
     }
 
