@@ -29,6 +29,7 @@ import com.xcaret.loyaltyreps.adapter.ChartAdapter
 import com.xcaret.loyaltyreps.databinding.FragmentSalesBinding
 import com.xcaret.loyaltyreps.model.ChartItem
 import com.xcaret.loyaltyreps.util.AppPreferences
+import com.xcaret.loyaltyreps.util.EventsTrackerFunctions.trackVentasSectionEvent
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -67,6 +68,9 @@ class SalesFragment : Fragment() {
 
         binding.reportByMonth.performClick()
 
+        //se ejecuta el evento de firebase
+        trackVentasSectionEvent("Mes")
+
         setUserSalesTermometer()
 
         println("userToken --- ${AppPreferences.userToken}")
@@ -93,6 +97,8 @@ class SalesFragment : Fragment() {
             binding.reportByMonth.setTextColor(Color.WHITE)
             binding.monthNYear.text = monthYear
             binding.totPax.text = totalPax
+            //se ejecuta el evento de firebase
+            trackVentasSectionEvent("Mes")
         }
 
         binding.reportByYear.setOnClickListener {
@@ -103,6 +109,8 @@ class SalesFragment : Fragment() {
             binding.reportByMonth.setTextColor(Color.parseColor("#67a33c"))
             binding.monthNYear.text = currYear
             binding.totPax.text = totalYearPax
+            //se ejecuta el evento de firebase
+            trackVentasSectionEvent("Año")
         }
 
     }

@@ -23,6 +23,7 @@ import com.xcaret.loyaltyreps.R
 import com.xcaret.loyaltyreps.databinding.FragmentNewsDetailsBinding
 import com.xcaret.loyaltyreps.model.XNews
 import com.xcaret.loyaltyreps.util.AppPreferences
+import com.xcaret.loyaltyreps.util.EventsTrackerFunctions.trackNewsSectionEvent
 import kotlinx.android.synthetic.main.fragment_item_list_dialog_item.view.*
 import org.w3c.dom.Text
 
@@ -45,6 +46,8 @@ class NewsDetailsFragment : Fragment() {
 
         xNewsItem = arguments!!.getParcelable("xnews") as XNews
 
+        //println("firebase " + xNewsItem!!.title.toString())
+        trackNewsSectionEvent(xNewsItem!!.title.toString())
 
         loadNewsDetails()
     }

@@ -8,10 +8,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.InputMethodManager
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.coordinatorlayout.widget.CoordinatorLayout.Behavior.setTag
 import androidx.core.content.ContextCompat.getSystemService
@@ -37,6 +34,7 @@ import com.xcaret.loyaltyreps.model.XUser
 import com.xcaret.loyaltyreps.util.AppPreferences
 import com.xcaret.loyaltyreps.util.AppPreferences.idRep
 import com.xcaret.loyaltyreps.util.EventsTrackerFunctions
+import com.xcaret.loyaltyreps.util.EventsTrackerFunctions.trackPerfilSectionEvent
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModel
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModelFactory
 import org.json.JSONException
@@ -92,6 +90,17 @@ class ProfileFragment : Fragment() {
                 inputMethodManager.hideSoftInputFromWindow(view!!.windowToken, 0)
             }
             override fun onPageSelected(position: Int) {
+                var tab:String = "Perfil"
+                when(position){
+                    1->{
+                        tab = "Intereses"
+                    }
+                    2 ->{
+                        tab = "Historial"
+                    }
+                }
+                //println("firebase en records" + tab)
+                trackPerfilSectionEvent(tab)
             }
         })
 
