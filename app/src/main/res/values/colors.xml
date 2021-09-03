@@ -29,6 +29,7 @@
 
     <color name="failedResponse">#d90203</color>
     <color name="disabled">#aaaaaa</color>
+    <color name="gold">#d4af37</color>
 
     <item name="visible" type="id"/>
     <item name="masked" type="id"/>

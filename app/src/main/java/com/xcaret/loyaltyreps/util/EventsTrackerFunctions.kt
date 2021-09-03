@@ -107,7 +107,7 @@ object EventsTrackerFunctions {
         params.let {
             it.putString("rcx", AppPreferences.userRCX)
             it.putString("park", park)
-            it.putString("section", section)
+            it.putString("section", park + "_" + section)
         }
         firebaseAnalytics.logEvent(pickupTrainingParkSection, params)
     }

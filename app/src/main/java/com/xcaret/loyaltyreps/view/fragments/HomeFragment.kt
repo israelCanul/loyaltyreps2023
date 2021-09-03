@@ -1,12 +1,15 @@
 package com.xcaret.loyaltyreps.view.fragments
 
 
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -75,8 +78,6 @@ class HomeFragment : Fragment()  {
         super.onResume()
         loadUserInfo()
         loadUserDataFromServer()
-
-
     }
 
     private fun loadStaticViews(){
@@ -112,37 +113,51 @@ class HomeFragment : Fragment()  {
                         binding.gotoStore.setOnClickListener { findNavController().navigate(R.id.actionXShop) }
                     }
 
-                    val totalPoints = it.puntosParaArticulos + it.puntosParaBoletos
+                    val totalPoints = it.puntosPorVentas
                     AppPreferences.userTotalPoints = totalPoints
 
-                    println("puntosParaArticulos: ${it.puntosParaArticulos}")
-                    println("puntosParaBoletos: ${it.puntosParaBoletos}")
-                    println("puntosParaBoletos: ${AppPreferences.userTotalPoints}")
+//                    println("puntosParaArticulos: ${it.puntosParaArticulos}")
+//                    println("puntosParaArticulos: ${NumberFormat.getNumberInstance(Locale.US).format(it.puntosParaArticulos)}")
+//                    println("puntosParaBoletos: ${it.puntosParaBoletos}")
+//                    println("puntosParaBoletos: ${AppPreferences.userTotalPoints}")
 
                     val fullName = "${it.nombre} ${it.apellidoPaterno}"
                     val puntos_formated = NumberFormat.getNumberInstance(Locale.US).format(it.puntosParaArticulos)
-                    binding.xUserName.text = fullName
+
                     binding.xUserStatus.text = if (it.cnMainQuiz && it.estatus && it.idEstatusArchivos == 3) "Estatus: Activo" else "Estatus: Inactivo"
                     binding.xUserPoints.text = puntos_formated//(it.puntosParaArticulos).toString()
-                    val user_level = "${getXUserLevel(totalPoints.toFloat()).roundToInt()}"
+                    val user_level = "${getXUserLevel(totalPoints.toInt())}"
                     binding.xuserLevel.text = user_level
 
-                    val animationLevel = getXUserLevel(totalPoints.toFloat()).roundToInt()
-                    //println("topreplevel $animationLevel")
-                    Handler().postDelayed({
+                    if(getXUserLevel(totalPoints.toInt()) >= 10){
+//                    if(true){
+                        binding.xUserName.text = fullName + "\n Top Rep"
+                        binding.xUserName.setTextColor(ContextCompat.getColor(context!!,R.color.gold))
+                    }else{
+                        binding.xUserName.text = fullName
+                    }
+
+
+                    var animationLevel = getXUserLevel(totalPoints.toInt()) * 0.1;
+                    //animationLevel = 2 * 0.1
+                    //println("topreplevel $totalPoints $animationLevel")
+
+                    Handler(Looper.getMainLooper()).postDelayed({
                         binding.lottieAnimationView2.playAnimation()
                         thread {
+                            binding.lottieAnimationView2.setMinAndMaxProgress(0f, 1f)
+                            binding.lottieAnimationView2.progress = animationLevel.toFloat()//
                             while (binding.lottieAnimationView2.isAnimating){ // Loop that checks the progress of your animation
-                                if (animationLevel != 10){
-                                    if (binding.lottieAnimationView2.progress >= ("0.$animationLevel").toFloat()){// If animation reaches 50%
+                                //if (animationLevel != 10){
+                                    if (binding.lottieAnimationView2.progress >= animationLevel.toFloat()){// If animation reaches 50%
                                         activity!!.runOnUiThread {
                                             binding.lottieAnimationView2.pauseAnimation()// Pause Animation
                                         }
                                     }
-                                }
+                                //}
                             }
                         }
-                    },500)
+                    },1000)
 
                     if (it.cnMainQuiz && it.estatus && it.idEstatusArchivos == 3){
                         binding.goToProfile.visibility = View.VISIBLE
@@ -175,10 +190,43 @@ class HomeFragment : Fragment()  {
             findNavController().navigate(R.id.to_salesFragment)
         }
     }
-    private fun getXUserLevel(totalPoints: Float) : Float {
-        val maxLevel = AppPreferences.userMaxLevel.toFloat()
-        val maxPoints = AppPreferences.userMaxPoints.toFloat()
-        val myLevel = if (totalPoints > maxPoints) maxLevel else totalPoints * maxLevel / maxPoints
+    private fun getXUserLevel(totalPoints: Int) : Int {
+        //val maxLevel = AppPreferences.userMaxLevel.toFloat()
+        //val maxPoints = AppPreferences.userMaxPoints.toFloat()
+        //var myLevel = if (totalPoints > maxPoints) maxLevel else totalPoints * maxLevel / maxPoints
+        var myLevel:Int = 1;
+        when(totalPoints){
+            in 0..1999 ->{
+                println("topreplevel in 1 $totalPoints")
+                myLevel = 1
+            }
+            in 2000..3999 ->{
+                myLevel = 2
+            }
+            in 4000..5999 ->{
+                myLevel = 3
+            }
+            in 6000..7999 ->{
+                myLevel = 4
+            }
+            in 8000..9999 ->{
+                myLevel = 5
+            }
+            in 10000..11999 ->{
+                myLevel = 6
+            }
+            in 12000..13999 ->{
+                myLevel = 7
+            }
+            in 14000..15999 ->{
+                myLevel = 8
+            }
+            in 16000..17999 ->{
+                myLevel = 9
+            }
+            else -> myLevel = 10
+        }
+
         return myLevel
     }
     fun loadUserDataFromServer() {
@@ -196,7 +244,7 @@ class HomeFragment : Fragment()  {
                 }
                 override fun onResponse(response: JSONObject) {
                     if (response.length() > 0){
-                        println(response.getJSONObject("value").getBoolean("cnMainQuiz"))
+                        println(response.getJSONObject("value"))
                         //obtenemos los campos necesarios de la respuesta
                         user2update.puntosParaArticulos = response.getJSONObject("value").getInt("puntosParaArticulos")
                         user2update.puntosParaBoletos = response.getJSONObject("value").getInt("puntosParaBoletos")

@@ -1,6 +1,7 @@
 package com.xcaret.loyaltyreps.view.fragments
 
 import android.app.DatePickerDialog
+import android.app.usage.UsageEvents
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
@@ -377,7 +378,6 @@ class PickUpsFragment : Fragment() {
                         binding.resultsEmpty.visibility = View.VISIBLE
                     }
                 }
-
                 override fun onError(anError: ANError?) {
                     println("eeerrrror"+anError)
                 }
@@ -385,27 +385,31 @@ class PickUpsFragment : Fragment() {
     }
 
     private fun searchHotelSchedule(){
+        searchViewHotel.setOnKeyListener { v, keyCode, event ->
+            println("puntosParaArticulos " + keyCode + " " + event)
 
-            searchViewHotel.setOnItemClickListener { parent, view, position, id ->
+            if(keyCode == 66 ){
                 binding.resultados.visibility = View.VISIBLE
-                /*binding.container!!.post {
-                    binding.container!!.scrollTo(
-                        0,
-                        binding.linearLayout.bottom
-                    )
-                }*/
                 searchViewAdapter.filter.filter(searchViewHotel.text)
-
                 searchViewHotel.clearFocus()
                 val inputMethodManager = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.hideSoftInputFromWindow(searchViewHotel.windowToken, 0)
-
-
             }
-
-
-
-
+            true
+        }
+        searchViewHotel.setOnItemClickListener { parent, view, position, id ->
+            binding.resultados.visibility = View.VISIBLE
+            /*binding.container!!.post {
+                binding.container!!.scrollTo(
+                    0,
+                    binding.linearLayout.bottom
+                )
+            }*/
+            searchViewAdapter.filter.filter(searchViewHotel.text)
+            searchViewHotel.clearFocus()
+            val inputMethodManager = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(searchViewHotel.windowToken, 0)
+        }
 
         /*searchHotel.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {

@@ -45,7 +45,7 @@
     <string name="home_frag_status">Estatus:</string>
     <string name="home_frag_statusopt">Inactivo</string>
     <string name="home_frag_0">0</string>
-    <string name="home_frag_points">puntos totales\n(rifa + artículos)</string>
+    <string name="home_frag_points">puntos para canje</string>
     <string name="home_frag_profile">Perfil</string>
     <string name="home_frag_quiz">Quiz</string>
 
@@ -329,9 +329,8 @@
     <string name="VAdultos">Visitantes Adultos</string>
     <string name="VInfants">"Visitantes Infantes "</string>
     <string name="VChildren">Visitantes Niños</string>
-    <string name="sales_rep_description">Nivel 1: de 0 a 2000 puntos \nNivel 2: de 2000 a 4000 puntos \nNivel 3: de 4000 a 6000 puntos \nNivel 4: de 6000 a 2000 puntos \nNivel 5: de 8000 a 10000 puntos \nNivel 6: de 10000 a 12000 puntos \nNivel 7: de 12000 a 14000 puntos \nNivel 8: de 14000 a 16000 puntos \nNivel 9: de 16000 a 18000 puntos \nNivel 10: 1800 o + (Top Rep)
-    </string>
-    <string name="sales_rep_title">Los niveles funcionan así: </string>
+    <string name="sales_rep_description">Por cada pax vendido en modalidad Tour se te otorga un total de 15 puntos (niño o adulto) y por cada pax vendido en Paquete 30 puntos  (niño o adulto). Si logras acumular 18,000 puntos durante el periodo enero-junio o julio-diciembre, podrás cambiar tu nivel a Top Rep el semestre siguiente y con ello gozar de más cortesías.</string>
+    <string name="sales_rep_title">Cada venta cuenta</string>
     <string name="default_notification_channel_id">general_channel</string>
 
 </resources>
