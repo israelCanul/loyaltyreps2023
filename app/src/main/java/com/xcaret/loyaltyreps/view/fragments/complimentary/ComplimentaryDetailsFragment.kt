@@ -22,6 +22,10 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import com.xcaret.loyaltyreps.R
 import com.xcaret.loyaltyreps.database.XCaretLoyaltyDatabase
@@ -32,11 +36,11 @@ import com.xcaret.loyaltyreps.model.XUser
 import com.xcaret.loyaltyreps.util.AppPreferences
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModel
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModelFactory
-import kotlinx.android.synthetic.main.fragment_complimentary_details.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -65,7 +69,7 @@ class ComplimentaryDetailsFragment : Fragment() {
     var nameKids: JSONArray? = JSONArray()
     var noInfants = 0
     var nameInfants: JSONArray? = JSONArray()
-
+    var diasBL = ArrayList<String>()
 
 
     var fechaVisita: String = ""
@@ -85,8 +89,9 @@ class ComplimentaryDetailsFragment : Fragment() {
         binding.lifecycleOwner = this
 
 
+
         try {
-            complimentaryTem = arguments!!.getParcelable("complimentary") as Complimentary
+            complimentaryTem = arguments!!.getParcelable("complimentary") as Complimentary?
 
             loadDataFromDao()
 
@@ -99,10 +104,41 @@ class ComplimentaryDetailsFragment : Fragment() {
     }
 
     private fun loadDataFromDao(){
-        xUserViewModel.currentXUser.observe(this, Observer {
+        xUserViewModel.currentXUser.observe(viewLifecycleOwner, Observer {
                 xuser ->
             xuser?.let {
                 populateInfo(it)
+            }
+        })
+    }
+    fun getDataFromFirebase(idServicio: String) {
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("servicios/" + idServicio+"/blackListDays")
+
+        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(p0: DataSnapshot) {
+                println("DataBaseChanges " + p0.value)
+                var dias = p0.value
+                dias = dias.toString().split(",")
+                diasBL = dias as ArrayList<String>
+//                fun getDay(day: String) = run {
+//                    when(day){
+//                        "Lunes" -> 0
+//                        "Martes" -> 1
+//                        "Miercoles" -> 2
+//                        "Jueves" -> 3
+//                        "Viernes" -> 4
+//                        "Sabado" -> 5
+//                        "Domingo" -> 6
+//                        else -> null
+//                    }
+//                }
+
+
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("Not yet implemented")
             }
         })
     }
@@ -116,6 +152,7 @@ class ComplimentaryDetailsFragment : Fragment() {
         binding.reservationAgency.setText(xUser.agencia)
         binding.reservationRCX.setText(xUser.correo)
 
+        getDataFromFirebase(complimentaryTem!!.idServicio)
 //        if (!complimentaryTem!!.infants){
 //            binding.textView16.visibility = View.GONE
 //        }
@@ -374,7 +411,15 @@ class ComplimentaryDetailsFragment : Fragment() {
         val dis: MutableList<Calendar> = listOfNotNull<Calendar>(null).toMutableList()
         while (minDate.getTimeInMillis() < maxDate.getTimeInMillis()){
             var dayOfWeek = minDate.get(Calendar.DAY_OF_WEEK)
-            if (dayOfWeek == Calendar.SUNDAY || dayOfWeek == Calendar.SATURDAY) {
+//            println("fechas desde firebase "+diasBL)
+//            println("fechas desde firebase dia a preguntar "+dayOfWeek)
+//            println("fechas desde firebase Ejemplos  Sunday"+Calendar.SUNDAY + "-Saturday" + Calendar.SATURDAY+ "-Wednesday" +Calendar.WEDNESDAY)
+//            println("fechas desde firebase pregunta ? " + diasBL.indexOf(dayOfWeek.toString()))
+//            if(diasBL.indexOf(dayOfWeek.toString()) >= 0){
+//                println("fechas desde firebase Encontrado " + dayOfWeek)
+//            }
+//            if (dayOfWeek == Calendar.SUNDAY || dayOfWeek == Calendar.SATURDAY) {
+            if(diasBL.indexOf(dayOfWeek.toString()) >= 0){
                 var temp:Calendar = minDate.clone() as Calendar
                 dis.add(temp)
             }
