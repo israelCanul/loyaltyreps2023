@@ -121,20 +121,6 @@ class ComplimentaryDetailsFragment : Fragment() {
                 var dias = p0.value
                 dias = dias.toString().split(",")
                 diasBL = dias as ArrayList<String>
-//                fun getDay(day: String) = run {
-//                    when(day){
-//                        "Lunes" -> 0
-//                        "Martes" -> 1
-//                        "Miercoles" -> 2
-//                        "Jueves" -> 3
-//                        "Viernes" -> 4
-//                        "Sabado" -> 5
-//                        "Domingo" -> 6
-//                        else -> null
-//                    }
-//                }
-
-
             }
 
             override fun onCancelled(p0: DatabaseError) {
