@@ -29,6 +29,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:hardwareAccelerated="true"
+            android:requestLegacyExternalStorage="true"
             android:theme="@style/AppTheme">
 
         <activity android:name=".view.fragments.training.FullSlideActivity"
