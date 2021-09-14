@@ -4,11 +4,13 @@ import android.app.DatePickerDialog
 import android.app.usage.UsageEvents
 import android.content.Context
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat.getSystemService
 
@@ -70,6 +72,7 @@ class PickUpsFragment : Fragment() {
         searchViewHotel = binding.searchOrigin;
         hotelsAdapter = ArrayAdapter<String>(context!!,android.R.layout.simple_list_item_1, hotelNameList)
         searchViewHotel.setAdapter(hotelsAdapter)
+        binding.searchHotel.setBackgroundResource(R.drawable.bg_white_norounded)
 
         return  binding.root
     }
@@ -370,8 +373,10 @@ class PickUpsFragment : Fragment() {
                         if(hotelNameList.size >= 0){
                             hotelsAdapter.notifyDataSetChanged()
                             searchViewHotel.visibility = View.VISIBLE
+                            binding.searchHotel.visibility = View.VISIBLE
                         }else{
                             searchViewHotel.visibility = View.GONE
+                            binding.searchHotel.visibility = View.GONE
                         }
                         binding.pickupsRecyclerView.adapter!!.notifyDataSetChanged()
                     } else {
@@ -411,22 +416,29 @@ class PickUpsFragment : Fragment() {
             inputMethodManager.hideSoftInputFromWindow(searchViewHotel.windowToken, 0)
         }
 
-        /*searchHotel.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+        searchHotel.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 binding.resultados.visibility = View.VISIBLE
-                binding.container!!.post { binding.container!!.scrollTo (0, binding.linearLayout.bottom) }
-                val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-                imm!!.toggleSoftInput(
-                    InputMethodManager.SHOW_FORCED,
-                    InputMethodManager.HIDE_IMPLICIT_ONLY
-                )
+//                binding.container!!.post { binding.container!!.scrollTo (0, binding.linearLayout.bottom) }
+//                val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+//                imm!!.toggleSoftInput(
+//                    InputMethodManager.SHOW_FORCED,
+//                    InputMethodManager.HIDE_IMPLICIT_ONLY
+//                )
+                val inputMethodManager = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(searchViewHotel.windowToken, 0)
+                searchHotel.clearFocus()
+                searchViewHotel.dismissDropDown()
                 return false
             }
+            @RequiresApi(Build.VERSION_CODES.Q)
             override fun onQueryTextChange(newText: String): Boolean {
+                searchViewHotel.setText(newText,true)
+                searchViewHotel.showDropDown()
                 searchViewAdapter.filter.filter(newText)
                 return false
             }
-        })*/
+        })
     }
 
 }

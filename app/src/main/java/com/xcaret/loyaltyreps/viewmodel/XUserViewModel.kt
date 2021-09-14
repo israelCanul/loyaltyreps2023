@@ -158,6 +158,15 @@ class XUserViewModel (
             update(oldUser)
         }
     }
+    fun updateUserPointsForSales(xUser: XUser){
+        uiScope.launch {
+            val oldUser = currentUser.value ?: return@launch
+
+            oldUser.puntosPorVentas = xUser.puntosPorVentas
+
+            update(oldUser)
+        }
+    }
     fun updateUserAssignPoints(xUser: XUser){
         uiScope.launch {
             val oldUser = currentUser.value ?: return@launch

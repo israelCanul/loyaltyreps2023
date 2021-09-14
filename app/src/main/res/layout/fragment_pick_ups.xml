@@ -186,19 +186,50 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="vertical">
-
-                        <androidx.appcompat.widget.SearchView
-                                android:id="@+id/searchHotel"
+                        <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/margin10"
-                                android:background="@drawable/backgroun_pickup_form"
-                                android:focusable="false"
-                                android:textSize="@dimen/general_text"
-                                android:visibility="gone"
-                                app:iconifiedByDefault="false"
-                                app:queryBackground="@android:color/transparent"
-                                app:queryHint="@string/search_hotel" />
+                                android:paddingTop="@dimen/margin10"
+                                android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.SearchView
+                                    android:id="@+id/searchHotel"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@drawable/backgroun_pickup_form"
+                                    android:elevation="2dp"
+                                    android:focusable="false"
+                                    android:visibility="invisible"
+                                    android:textSize="@dimen/general_text"
+                                    app:iconifiedByDefault="false"
+                                    app:layout_constraintBottom_toTopOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.0"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.44"
+                                    app:queryBackground="@android:color/transparent"
+                                    app:queryHint="@string/search_hotel" />
+
+                            <AutoCompleteTextView
+                                    android:id="@+id/searchOrigin"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:completionThreshold="1"
+                                    android:drawableRight="@android:drawable/ic_menu_search"
+                                    android:fontFamily="@font/roboto"
+                                    android:hint="Hotel"
+                                    android:padding="@dimen/margin12"
+                                    android:singleLine="true"
+                                    android:textColor="@color/primary_text"
+                                    android:textColorHint="#FFFFFF"
+                                    android:textSize="@dimen/general_text"
+                                    android:visibility="invisible"
+                                    app:layout_constraintBottom_toBottomOf="@+id/searchHotel"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="@+id/searchHotel"></AutoCompleteTextView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                         <!--<View
                                 android:layout_width="match_parent"
@@ -207,20 +238,7 @@
                                 android:layout_marginEnd="@dimen/margin5"
                                 android:background="@color/colorAccent" />-->
 
-                        <AutoCompleteTextView
-                                android:textColor="@color/primary_text"
-                                android:id="@+id/searchOrigin"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:completionThreshold="1"
-                                android:drawableRight="@android:drawable/ic_menu_search"
-                                android:hint="Hotel"
-                                android:textSize="@dimen/general_text"
-                                android:fontFamily="@font/roboto"
-                                android:layout_marginTop="@dimen/margin10"
-                                android:padding="@dimen/margin12"
-                                android:singleLine="true"
-                                android:visibility="invisible"></AutoCompleteTextView>
+
 
                     </LinearLayout>
 

@@ -246,6 +246,7 @@ class HomeFragment : Fragment()  {
                     if (response.length() > 0){
                         println(response.getJSONObject("value"))
                         //obtenemos los campos necesarios de la respuesta
+                        user2update.puntosPorVentas = response.getJSONObject("value").getInt("puntosPorVentas")
                         user2update.puntosParaArticulos = response.getJSONObject("value").getInt("puntosParaArticulos")
                         user2update.puntosParaBoletos = response.getJSONObject("value").getInt("puntosParaBoletos")
                         user2update.estatus = response.getJSONObject("value").getBoolean("estatus")
@@ -262,6 +263,7 @@ class HomeFragment : Fragment()  {
                         xUserViewModel.updateStatusUser(user2update)
                         xUserViewModel.onUpdateInterestsTop(user2update)
                         xUserViewModel.onUpdateInterests(user2update.intereses)
+                        xUserViewModel.updateUserPointsForSales(user2update)
                         //actualizamos los controles en la vista
                         val totalPoints = user2update.puntosParaArticulos + user2update.puntosParaBoletos
                         AppPreferences.userTotalPoints = totalPoints
