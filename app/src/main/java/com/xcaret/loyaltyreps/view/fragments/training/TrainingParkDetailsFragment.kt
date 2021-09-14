@@ -1,35 +1,41 @@
 package com.xcaret.loyaltyreps.view.fragments.training
 
 import android.annotation.SuppressLint
+import android.app.DownloadManager
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.os.Environment
+import android.os.StrictMode
+import android.os.StrictMode.ThreadPolicy
+import android.os.StrictMode.VmPolicy
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.androidnetworking.AndroidNetworking
+import com.androidnetworking.BuildConfig
 import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.fragment_training_park_details.*
-import org.json.JSONObject
 import com.xcaret.loyaltyreps.adapter.XTrainingSlideAdapter
-import com.xcaret.loyaltyreps.database.XCaretLoyaltyDatabase
 import com.xcaret.loyaltyreps.databinding.FragmentTrainingParkDetailsBinding
 import com.xcaret.loyaltyreps.model.XImageSlide
 import com.xcaret.loyaltyreps.model.XTraining
 import com.xcaret.loyaltyreps.util.AppPreferences
-import com.xcaret.loyaltyreps.viewmodel.XUserViewModel
-import com.xcaret.loyaltyreps.viewmodel.XUserViewModelFactory
-import java.lang.Exception
-import androidx.lifecycle.Observer
 import com.xcaret.loyaltyreps.util.EventsTrackerFunctions
+import kotlinx.android.synthetic.main.fragment_training_park_details.*
+import org.json.JSONObject
 
 class TrainingParkDetailsFragment : Fragment() {
 
@@ -42,12 +48,13 @@ class TrainingParkDetailsFragment : Fragment() {
 
     var mImages: ArrayList<XImageSlide> = ArrayList()
     private var slideSize = 0
-
+    var mydownloadID : Long = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, com.xcaret.loyaltyreps.R.layout.fragment_training_park_details, container, false)
 
@@ -56,10 +63,34 @@ class TrainingParkDetailsFragment : Fragment() {
         loadXParkDetails(xpark_id)
         binding.xparkVideoCover.setOnClickListener { videoCoverClicked() }
 
+    var br = object:BroadcastReceiver(){
+        override fun onReceive(context: Context?, intent: Intent?) {
+            var id = intent?.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID,-1)
+            if(id==mydownloadID){
+                Toast.makeText(context, "Download Completed", Toast.LENGTH_LONG).show()
+            }
+        }
 
-
+    }
+    context?.registerReceiver(br,IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
         return binding.root
     }
+
+    fun permitDiskReads(func: () -> Any?) : Any? {
+        if (BuildConfig.DEBUG) {
+            val oldThreadPolicy = StrictMode.getThreadPolicy()
+            StrictMode.setThreadPolicy(
+                StrictMode.ThreadPolicy.Builder(oldThreadPolicy)
+                    .permitDiskReads().build())
+            val anyValue = func()
+            StrictMode.setThreadPolicy(oldThreadPolicy)
+
+            return anyValue
+        } else {
+            return func()
+        }
+    }
+
 
     private fun loadXParkDetails(xparkID: String?){
         mImages.clear()
@@ -80,6 +111,27 @@ class TrainingParkDetailsFragment : Fragment() {
                         Glide.with(this@TrainingParkDetailsFragment)
                             .load(response.getString("cover_img")).into(binding.xparkVideoCover)
                         xvideoUrl = response.getString("video")
+
+                        binding.downloadvideo.setOnClickListener {
+
+
+                            kotlin.run {
+                                var request = DownloadManager.Request(Uri.parse(xvideoUrl))
+                                    .setTitle(arguments?.getString("xpark_name").toString())
+                                    .setDescription(arguments?.getString("xpark_name").toString() + "Downloading")
+                                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
+                                    .setAllowedOverMetered(true)
+                                    //.setDestinationInExternalPublicDir(context?.getExternalFilesDir(Environment.DIRECTORY_DCIM).toString() ,arguments?.getString("xpark_name").toString() + ".mp4")
+                                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,arguments?.getString("xpark_name").toString() + ".mp4")
+                                var dm:DownloadManager = context?.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+                                mydownloadID =  dm.enqueue(request)
+                                Toast.makeText(context, "Downloading ${arguments?.getString("xpark_name").toString()}", Toast.LENGTH_LONG).show()
+                            }
+
+
+                        }
+
+
 
                         for (item in 0 until response.getJSONArray("training_details").length()){
                             val singleItem = response.getJSONArray("training_details").getJSONObject(item)

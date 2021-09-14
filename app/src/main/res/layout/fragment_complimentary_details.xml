@@ -5,25 +5,25 @@
         tools:context=".view.fragments.complimentary.ComplimentaryDetailsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-                                                       android:layout_height="match_parent">
+            android:layout_height="match_parent">
 
         <View android:layout_width="0dp" android:layout_height="300dp"
-              android:background="@drawable/gradient_background" app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintHorizontal_bias="0.497"
-              app:layout_constraintTop_toTopOf="parent"/>
+                android:background="@drawable/gradient_background" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
-                                               android:layout_height="match_parent"
-                                               android:id="@+id/complimentaryFragment"
-                                               app:layout_constraintEnd_toEndOf="parent"
-                                               app:layout_constraintStart_toStartOf="parent"
-                                               app:layout_constraintBottom_toBottomOf="parent"
-                                               app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="match_parent"
+                android:id="@+id/complimentaryFragment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-                                                               android:layout_height="match_parent"
-                                                               android:layout_marginBottom="@dimen/margin15">
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/margin15">
 
                 <TextView
                         android:layout_width="0dp"
@@ -58,11 +58,11 @@
                         app:layout_constraintEnd_toEndOf="@+id/complimentaryDescription">
 
                     <TextView android:text="@string/reservation_instructions"
-                              android:layout_width="match_parent"
-                              android:layout_height="wrap_content"
-                              android:textStyle="italic"
-                              android:textColor="@color/primary_text"
-                              android:textSize="@dimen/general_text" android:fontFamily="@font/roboto"/>
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="italic"
+                            android:textColor="@color/primary_text"
+                            android:textSize="@dimen/general_text" android:fontFamily="@font/roboto"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
@@ -91,129 +91,129 @@
                             android:layout_height="wrap_content" android:layout_marginTop="@dimen/margin15">
 
                         <RelativeLayout android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:id="@+id/textView14"
-                                        app:layout_constraintTop_toTopOf="parent"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintHorizontal_bias="0.5"
-                                        app:layout_constraintEnd_toStartOf="@+id/textView15">
+                                android:layout_height="wrap_content"
+                                android:id="@+id/textView14"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintEnd_toStartOf="@+id/textView15">
 
                             <TextView android:id="@+id/adultText"
-                                      android:text="@string/reservation_adult_txt"
-                                      android:layout_width="match_parent"
-                                      android:textAlignment="center"
-                                      android:layout_height="wrap_content"
-                                      android:textColor="@color/primary_text"
-                                      android:textSize="@dimen/text12" android:fontFamily="@font/roboto"/>
+                                    android:text="@string/reservation_adult_txt"
+                                    android:layout_width="match_parent"
+                                    android:textAlignment="center"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/primary_text"
+                                    android:textSize="@dimen/text12" android:fontFamily="@font/roboto"/>
 
                             <TextView android:id="@+id/adultTextBelow"
-                                      android:text="@string/reservation_adult_txt_desc"
-                                      android:layout_width="match_parent"
-                                      android:layout_below="@+id/adultText"
-                                      android:textAlignment="center"
-                                      android:layout_height="wrap_content"
-                                      android:textColor="@color/primary_text"
-                                      android:textSize="@dimen/text10" android:fontFamily="@font/roboto"/>
+                                    android:text="@string/reservation_adult_txt_desc"
+                                    android:layout_width="match_parent"
+                                    android:layout_below="@+id/adultText"
+                                    android:textAlignment="center"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/primary_text"
+                                    android:textSize="@dimen/text10" android:fontFamily="@font/roboto"/>
 
                             <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                                            android:id="@+id/selectNumberOfAdults" android:layout_marginTop="@dimen/margin5"
-                                            android:background="@drawable/spinner_purple_border_background"
-                                            android:layout_below="@+id/adultTextBelow" android:gravity="end">
+                                    android:id="@+id/selectNumberOfAdults" android:layout_marginTop="@dimen/margin5"
+                                    android:background="@drawable/spinner_purple_border_background"
+                                    android:layout_below="@+id/adultTextBelow" android:gravity="end">
 
                                 <androidx.appcompat.widget.AppCompatSpinner android:backgroundTint="@color/colorTimer"
-                                                                            android:layout_width="wrap_content"
-                                                                            android:layout_height="wrap_content"
-                                                                            android:textAlignment="textStart"
-                                                                            android:spinnerMode="dialog"
-                                                                            tools:targetApi="lollipop"
-                                                                            android:id="@+id/numberOfAdults"/>
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="textStart"
+                                        android:spinnerMode="dialog"
+                                        tools:targetApi="lollipop"
+                                        android:id="@+id/numberOfAdults"/>
 
                             </RelativeLayout>
 
                         </RelativeLayout>
 
                         <RelativeLayout android:id="@+id/textView15"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        app:layout_constraintTop_toTopOf="parent"
-                                        app:layout_constraintStart_toEndOf="@+id/textView14"
-                                        android:layout_marginStart="20dp"
-                                        android:layout_marginEnd="20dp" app:layout_constraintEnd_toStartOf="@+id/textView16"
-                                        app:layout_constraintHorizontal_bias="0.5" android:visibility="visible">
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/textView14"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="20dp" app:layout_constraintEnd_toStartOf="@+id/textView16"
+                                app:layout_constraintHorizontal_bias="0.5" android:visibility="visible">
 
                             <TextView android:id="@+id/kidsText"
-                                      android:text="@string/reservation_kids_txt"
-                                      android:layout_width="match_parent"
-                                      android:layout_height="wrap_content"
-                                      android:textAlignment="center"
-                                      android:textColor="@color/primary_text"
-                                      android:textSize="@dimen/text12" android:fontFamily="@font/roboto"/>
+                                    android:text="@string/reservation_kids_txt"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/primary_text"
+                                    android:textSize="@dimen/text12" android:fontFamily="@font/roboto"/>
 
                             <TextView android:id="@+id/kidsTextBelow"
-                                      android:text="@string/reservation_kids_txt_desc"
-                                      android:layout_width="match_parent"
-                                      android:layout_below="@+id/kidsText"
-                                      android:textAlignment="center"
-                                      android:layout_height="wrap_content"
-                                      android:textColor="@color/primary_text"
-                                      android:textSize="@dimen/text10" android:fontFamily="@font/roboto"/>
+                                    android:text="@string/reservation_kids_txt_desc"
+                                    android:layout_width="match_parent"
+                                    android:layout_below="@+id/kidsText"
+                                    android:textAlignment="center"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/primary_text"
+                                    android:textSize="@dimen/text10" android:fontFamily="@font/roboto"/>
 
                             <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                                            android:id="@+id/selectNumberOfKids" android:layout_marginTop="@dimen/margin5"
-                                            android:background="@drawable/spinner_purple_border_background"
-                                            android:layout_below="@+id/kidsTextBelow" android:gravity="end">
+                                    android:id="@+id/selectNumberOfKids" android:layout_marginTop="@dimen/margin5"
+                                    android:background="@drawable/spinner_purple_border_background"
+                                    android:layout_below="@+id/kidsTextBelow" android:gravity="end">
 
                                 <androidx.appcompat.widget.AppCompatSpinner android:backgroundTint="@color/colorTimer"
-                                                                            android:layout_width="wrap_content"
-                                                                            android:layout_height="wrap_content"
-                                                                            android:textAlignment="textStart"
-                                                                            android:spinnerMode="dialog"
-                                                                            tools:targetApi="lollipop"
-                                                                            android:layout_marginTop="0dp"
-                                                                            android:layout_alignParentTop="true"
-                                                                            android:id="@+id/numberOfKids"/>
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="textStart"
+                                        android:spinnerMode="dialog"
+                                        tools:targetApi="lollipop"
+                                        android:layout_marginTop="0dp"
+                                        android:layout_alignParentTop="true"
+                                        android:id="@+id/numberOfKids"/>
 
                             </RelativeLayout>
 
                         </RelativeLayout>
 
                         <RelativeLayout android:id="@+id/textView16"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent"
-                                        app:layout_constraintStart_toEndOf="@+id/textView15"
-                                        app:layout_constraintHorizontal_bias="0.5" android:visibility="visible">
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/textView15"
+                                app:layout_constraintHorizontal_bias="0.5" android:visibility="visible">
 
                             <TextView android:id="@+id/infantsText"
-                                      android:text="@string/reservation_infants_txt"
-                                      android:layout_width="match_parent"
-                                      android:textAlignment="center"
-                                      android:layout_height="wrap_content"
-                                      android:textColor="@color/primary_text"
-                                      android:textSize="@dimen/text12" android:fontFamily="@font/roboto"/>
+                                    android:text="@string/reservation_infants_txt"
+                                    android:layout_width="match_parent"
+                                    android:textAlignment="center"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/primary_text"
+                                    android:textSize="@dimen/text12" android:fontFamily="@font/roboto"/>
 
                             <TextView android:id="@+id/infantsTextBelow"
-                                      android:text="@string/reservation_infants_txt_desc"
-                                      android:layout_width="match_parent"
-                                      android:layout_below="@+id/infantsText"
-                                      android:textAlignment="center"
-                                      android:layout_height="wrap_content"
-                                      android:textColor="@color/primary_text"
-                                      android:textSize="@dimen/text10" android:fontFamily="@font/roboto"/>
+                                    android:text="@string/reservation_infants_txt_desc"
+                                    android:layout_width="match_parent"
+                                    android:layout_below="@+id/infantsText"
+                                    android:textAlignment="center"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/primary_text"
+                                    android:textSize="@dimen/text10" android:fontFamily="@font/roboto"/>
 
                             <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                                            android:id="@+id/selectNumberOfInfants" android:layout_marginTop="@dimen/margin5"
-                                            android:background="@drawable/spinner_purple_border_background" android:gravity="end"
-                                            android:layout_below="@+id/infantsTextBelow">
+                                    android:id="@+id/selectNumberOfInfants" android:layout_marginTop="@dimen/margin5"
+                                    android:background="@drawable/spinner_purple_border_background" android:gravity="end"
+                                    android:layout_below="@+id/infantsTextBelow">
 
                                 <androidx.appcompat.widget.AppCompatSpinner android:backgroundTint="@color/colorTimer"
-                                                                            android:layout_width="wrap_content"
-                                                                            android:layout_height="wrap_content"
-                                                                            android:textAlignment="textStart"
-                                                                            android:spinnerMode="dialog"
-                                                                            tools:targetApi="lollipop"
-                                                                            android:id="@+id/numberOfInfants"/>
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textAlignment="textStart"
+                                        android:spinnerMode="dialog"
+                                        tools:targetApi="lollipop"
+                                        android:id="@+id/numberOfInfants"/>
 
                             </RelativeLayout>
 

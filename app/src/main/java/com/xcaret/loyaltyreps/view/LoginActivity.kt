@@ -20,6 +20,7 @@ import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.bumptech.glide.Glide
+import com.google.firebase.messaging.FirebaseMessaging
 import org.json.JSONException
 import org.json.JSONObject
 import com.xcaret.loyaltyreps.R
@@ -143,6 +144,9 @@ class LoginActivity : AppCompatActivity() {
             e.printStackTrace()
         }
 
+        println("Token Xcaret " + jsonObject)
+        println("Token Xcaret " + AppPreferences.XCARET_LONGIN+"authenticate/login")
+
         binding.progressBar.visibility = View.VISIBLE
         AndroidNetworking.post(AppPreferences.XCARET_LONGIN+"authenticate/login")
             .addJSONObjectBody(jsonObject) // posting json
@@ -153,6 +157,13 @@ class LoginActivity : AppCompatActivity() {
                 override fun onResponse(response: JSONObject) {
                     if (AppPreferences.userToken!!.isEmpty() &&
                         !AppPreferences.loggedIn){
+
+                        var agencia:Int = response.getJSONObject("value").getInt("idAgencia")
+                        if(agencia > 0){
+                            FirebaseMessaging.getInstance().subscribeToTopic(agencia.toString()).addOnSuccessListener {
+                                println("Firebase Token ${agencia.toString()}")
+                            }
+                        }
 
                         AppPreferences.loggedIn = true
                         AppPreferences.userToken = response.getJSONObject("value").getString("token")
