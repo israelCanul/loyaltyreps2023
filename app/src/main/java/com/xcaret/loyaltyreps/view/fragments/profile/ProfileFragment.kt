@@ -139,7 +139,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun loadUserData(){
-        xUserViewModel.currentXUser.observe(this, Observer {
+        xUserViewModel.currentXUser.observe(viewLifecycleOwner, Observer {
                 xuser ->
                 xuser?.let {
                     userTarjeta = it.rcx
@@ -230,6 +230,7 @@ class ProfileFragment : Fragment() {
                 override fun onResponse(response: JSONObject) {
                     if (response.length() > 0){
                         print( "ususari" + response)
+                        user2update.cnMainQuiz = response.getJSONObject("value").getBoolean("cnMainQuiz")
                         user2update.idEstatusArchivos = response.getJSONObject("value").getInt("idEstatusArchivos")
                         user2update.cnTarjetaActiva = response.getJSONObject("value").getBoolean("cnTarjetaActiva")
                         user2update.dsEstatusArchivos = response.getJSONObject("value").getString("dsEstatusArchivos")
@@ -241,6 +242,7 @@ class ProfileFragment : Fragment() {
                         xUserViewModel.updateStatusArchivos(user2update)
                         xUserViewModel.onUpdateInterestsTop(user2update)
                         xUserViewModel.onUpdateInterests(user2update.intereses)
+                        xUserViewModel.updateStatusUser(user2update)
                     }
                 }
             })

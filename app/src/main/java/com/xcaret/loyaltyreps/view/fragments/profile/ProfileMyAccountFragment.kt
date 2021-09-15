@@ -212,7 +212,7 @@ class ProfileMyAccountFragment : Fragment() {
                 binding.userEmail.setText(it.correo)
                 binding.userPhoneNumber.setText(it.telefono)
 
-                binding.validationStatus.text = it.dsEstatusArchivos
+                binding.validationStatus.text = if (it.cnMainQuiz && it.idEstatusArchivos == 3) "Validado" else "Pendiente"
 
                 /*if (it.cnTarjetaActiva) {
                     binding.userPhoto.isEnabled = false
