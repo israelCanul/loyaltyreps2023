@@ -87,7 +87,7 @@
     <string name="search_news">Buscar noticia</string>
     <string name="success_response1">Tu saldo actual de puntos para artículos es de:</string>
     <string name="success_response1_boletosrifa">Tu saldo actual de puntos para boletos de rifa es de:</string>
-    <string name="success_response2">Contacta a tu asesor para recibir tu compra.</string>
+    <string name="success_response2">Contáctame vía chat para agendar la entrega.</string>
     <string name="call_support">Iniciar chat</string>
     <string name="success_response3">Por favor inténtalo de nuevo. Si el problema persiste, escríbenos en la sección de
         soporte.
