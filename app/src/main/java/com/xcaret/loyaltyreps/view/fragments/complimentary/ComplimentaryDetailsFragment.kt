@@ -59,7 +59,7 @@ class ComplimentaryDetailsFragment : Fragment() {
     private var kidsList: ArrayList<Hijo> = ArrayList()
     private var infantsList: ArrayList<Hijo> = ArrayList()
     var maxKids = 0
-    var maxInfants = 0
+    var maxInfants = 6
     var noAdults = 1
     var noKids = 0
     var noInfants = 0
@@ -82,7 +82,7 @@ class ComplimentaryDetailsFragment : Fragment() {
 
 
         try {
-            complimentaryTem = arguments!!.getParcelable("complimentary") as Complimentary
+            complimentaryTem = arguments?.getParcelable("complimentary") as Complimentary?
 
             loadDataFromDao()
 
@@ -95,7 +95,7 @@ class ComplimentaryDetailsFragment : Fragment() {
     }
 
     private fun loadDataFromDao(){
-        xUserViewModel.currentXUser.observe(this, Observer {
+        xUserViewModel.currentXUser.observe(viewLifecycleOwner, Observer {
                 xuser ->
             xuser?.let {
                 populateInfo(it)
@@ -204,7 +204,7 @@ class ComplimentaryDetailsFragment : Fragment() {
                 val kid = parent.selectedItem as Hijo
                 noKids = kid.desc.toInt()
                 //maxInfants = maxKids - noKids
-                maxInfants = complimentaryTem!!.noPaxPorUtilizar + 1
+                //maxInfants = complimentaryTem!!.noPaxPorUtilizar + 1
                 //if (maxInfants > 0) {
                 loadNumberOfInfants()
                 //}
