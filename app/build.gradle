@@ -11,7 +11,7 @@ android {
         applicationId "com.xcaret.loyaltyreps"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 35
+        versionCode 36
         versionName "1.0.13"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -68,7 +68,7 @@ dependencies {
     implementation 'androidx.viewpager:viewpager:1.0.0'
 
     implementation 'com.squareup.picasso:picasso:2.5.2'
-    implementation 'com.koushikdutta.ion:ion:2.2.1'
+    implementation 'com.koushikdutta.ion:ion:3.1.0'//actualizado a su ultima version
 
     implementation 'com.github.razir.progressbutton:progressbutton:1.0.2'
     implementation 'org.apache.commons:commons-lang3:3.4'
