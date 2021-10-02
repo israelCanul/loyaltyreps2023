@@ -163,9 +163,9 @@ class LoginActivity : AppCompatActivity() {
                             FirebaseMessaging.getInstance().subscribeToTopic(agencia.toString()).addOnSuccessListener {
                                 println("Firebase Token ${agencia.toString()}")
                             }
-                            FirebaseMessaging.getInstance().subscribeToTopic("DEVTEST").addOnSuccessListener {
-                                println("Firebase Token ${agencia.toString()}")
-                            }
+//                            FirebaseMessaging.getInstance().subscribeToTopic("DEVTEST").addOnSuccessListener {
+//                                println("Firebase Token ${agencia.toString()}")
+//                            }
                         }
 
                         AppPreferences.loggedIn = true

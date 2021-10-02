@@ -129,7 +129,6 @@ class SalesFragment : Fragment() {
 
         chartItems.clear()
 
-        println("ahahahahahnoooo ${AppPreferences.idRep}")
         val jsonObject = JSONObject("""
             {
                 "idRep": "${AppPreferences.idRep}",
@@ -160,16 +159,18 @@ class SalesFragment : Fragment() {
                                 val mLogo = "icon_xpark_$citemId"
 
                                 noPaxesM += noPax
-                                chartItems.add(
-                                    ChartItem(
-                                        chartitem.getInt("idParque"),
-                                        chartitem.getString("nombreParque"),
-                                        noPax,
-                                        mLogo,
-                                        mBackground,
-                                        noPaxesM
+                                if(noPax > 0){
+                                    chartItems.add(
+                                        ChartItem(
+                                            chartitem.getInt("idParque"),
+                                            chartitem.getString("nombreParque"),
+                                            noPax,
+                                            mLogo,
+                                            mBackground,
+                                            noPaxesM
+                                        )
                                     )
-                                )
+                                }
                                 totalPax = "Total pax: $noPaxesM"
                                 binding.totPax.text = totalPax
                             }
@@ -221,16 +222,18 @@ class SalesFragment : Fragment() {
                         //val noPaxes: IntArray = intArrayOf(noPax)
 
                         noPaxesY += noPax
-                        chartItemsYear.add(
-                            ChartItem(
-                                chartitem.getInt("idParque"),
-                                chartitem.getString("nombreParque"),
-                                noPax,
-                                mLogo,
-                                mBackground,
-                                noPaxesY
+                        if(noPax > 0){
+                            chartItemsYear.add(
+                                ChartItem(
+                                    chartitem.getInt("idParque"),
+                                    chartitem.getString("nombreParque"),
+                                    noPax,
+                                    mLogo,
+                                    mBackground,
+                                    noPaxesY
+                                )
                             )
-                        )
+                        }
                         totalYearPax = "Total pax: $noPaxesY"
                     }
                     binding.chartRecyclerView.adapter!!.notifyDataSetChanged()

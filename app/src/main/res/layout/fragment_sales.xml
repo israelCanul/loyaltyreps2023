@@ -64,9 +64,13 @@
                     <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
                                  android:id="@+id/progressLoading"/>
 
-                    <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent" android:id="@+id/chartRecyclerView"
-                                                               android:layout_height="125dp" android:orientation="horizontal"
-                                                               android:layout_marginTop="@dimen/margin15"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/chartRecyclerView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="125dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/margin15"
+                            android:orientation="horizontal" />
 
                     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                               android:textColor="@color/primary_text" android:textStyle="bold"

@@ -3,16 +3,26 @@
                 android:orientation="vertical"
                 android:layout_width="40dp"
                 android:layout_height="120dp"
-                android:layout_gravity="bottom">
+                android:layout_gravity="bottom|center">
 
-    <View android:layout_width="20dp" android:layout_height="175dp"
-          android:id="@+id/parkStatus" android:layout_above="@+id/border"/>
+    <View
+            android:layout_centerInParent="true"
+            android:id="@+id/parkStatus"
+            android:layout_width="20dp"
+            android:layout_height="175dp"
+            android:layout_above="@+id/border"
+            android:layout_marginBottom="0dp" />
 
     <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/textDark"
           android:layout_above="@id/parkLogo" android:id="@+id/border" android:layout_marginBottom="@dimen/margin5"/>
 
-    <ImageView android:layout_width="20dp" android:layout_height="20dp" android:scaleType="centerInside"
-               android:id="@+id/parkLogo" android:layout_alignParentBottom="true"
-               android:contentDescription="@string/app_name"/>
+    <ImageView
+            android:layout_centerInParent="true"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:scaleType="centerInside"
+            android:id="@+id/parkLogo"
+            android:layout_alignParentBottom="true"
+            android:contentDescription="@string/app_name"/>
 
 </RelativeLayout>
