@@ -8,6 +8,7 @@ import com.xcaret.loyaltyreps.R
 import com.xcaret.loyaltyreps.adapter.XTrainingSlideAdapter
 import com.xcaret.loyaltyreps.databinding.ActivityFullSlideBinding
 import com.xcaret.loyaltyreps.model.XImageSlide
+import com.xcaret.loyaltyreps.util.DownloadImage
 import com.xcaret.loyaltyreps.util.EventsTrackerFunctions
 
 class FullSlideActivity : AppCompatActivity() {
@@ -70,6 +71,12 @@ class FullSlideActivity : AppCompatActivity() {
         binding.closeMe.setOnClickListener {
             finish()
         }
+        binding.downLoadImageSelected.setOnClickListener{
+            println("Si imprime" + images[binding.xParkSlideViewPager.currentItem].image)
+            var dm : DownloadImage = DownloadImage()
+            dm.save(this, this, images[binding.xParkSlideViewPager.currentItem].image, intent.extras?.getString("parkName", "")!! + binding.xParkSlideViewPager.currentItem)
+        }
+
     }
 
     private fun setItem0() {

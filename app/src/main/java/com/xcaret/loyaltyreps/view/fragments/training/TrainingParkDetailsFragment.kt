@@ -1,12 +1,15 @@
 package com.xcaret.loyaltyreps.view.fragments.training
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.DownloadManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.os.StrictMode
@@ -17,6 +20,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -33,6 +38,7 @@ import com.xcaret.loyaltyreps.databinding.FragmentTrainingParkDetailsBinding
 import com.xcaret.loyaltyreps.model.XImageSlide
 import com.xcaret.loyaltyreps.model.XTraining
 import com.xcaret.loyaltyreps.util.AppPreferences
+import com.xcaret.loyaltyreps.util.DownloadImage
 import com.xcaret.loyaltyreps.util.EventsTrackerFunctions
 import kotlinx.android.synthetic.main.fragment_training_park_details.*
 import org.json.JSONObject
@@ -112,27 +118,12 @@ class TrainingParkDetailsFragment : Fragment() {
                             .load(response.getString("cover_img")).into(binding.xparkVideoCover)
                         xvideoUrl = response.getString("video")
 
+                        // boton para la descarga del video
                         binding.downloadvideo.setOnClickListener {
-
-
-                            kotlin.run {
-                                var request = DownloadManager.Request(Uri.parse(xvideoUrl))
-                                    .setTitle(arguments?.getString("xpark_name").toString())
-                                    .setDescription(arguments?.getString("xpark_name").toString() + "Downloading")
-                                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
-                                    .setAllowedOverMetered(true)
-                                    //.setDestinationInExternalPublicDir(context?.getExternalFilesDir(Environment.DIRECTORY_DCIM).toString() ,arguments?.getString("xpark_name").toString() + ".mp4")
-                                    .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,arguments?.getString("xpark_name").toString() + ".mp4")
-                                var dm:DownloadManager = context?.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-                                mydownloadID =  dm.enqueue(request)
-                                Toast.makeText(context, "Downloading ${arguments?.getString("xpark_name").toString()}", Toast.LENGTH_LONG).show()
-                            }
-
-
+                            // para la descarga del video
+                            var dm : DownloadImage = DownloadImage()
+                            mydownloadID = dm.saveVideo(context!!,activity!!,xvideoUrl,arguments?.getString("xpark_name").toString())
                         }
-
-
-
                         for (item in 0 until response.getJSONArray("training_details").length()){
                             val singleItem = response.getJSONArray("training_details").getJSONObject(item)
                             val xitem = XTraining(
@@ -143,7 +134,6 @@ class TrainingParkDetailsFragment : Fragment() {
                             )
                             creatTableItem(xitem)
                         }
-
                         if (response.getJSONArray("images").length() > 0){
                             for (sitem in 0 until response.getJSONArray("images").length()){
                                 val mimage = response.getJSONArray("images").getJSONObject(sitem)
