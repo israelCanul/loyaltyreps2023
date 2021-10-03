@@ -89,7 +89,7 @@ class HomeFragment : Fragment()  {
     }
 
     private fun loadUserInfo(){
-        xUserViewModel.currentXUser.observe(this, Observer {
+        xUserViewModel.currentXUser.observe(viewLifecycleOwner, Observer {
                 xuser ->
                 xuser?.let {
 
@@ -115,16 +115,12 @@ class HomeFragment : Fragment()  {
 
                     val totalPoints = it.puntosPorVentas
                     AppPreferences.userTotalPoints = totalPoints
-
-//                    println("puntosParaArticulos: ${it.puntosParaArticulos}")
-//                    println("puntosParaArticulos: ${NumberFormat.getNumberInstance(Locale.US).format(it.puntosParaArticulos)}")
-//                    println("puntosParaBoletos: ${it.puntosParaBoletos}")
-//                    println("puntosParaBoletos: ${AppPreferences.userTotalPoints}")
-
                     val fullName = "${it.nombre} ${it.apellidoPaterno}"
                     val puntos_formated = NumberFormat.getNumberInstance(Locale.US).format(it.puntosParaArticulos)
 
-                    binding.xUserStatus.text = if (it.cnMainQuiz && it.estatus && it.idEstatusArchivos == 3) "Estatus: Activo" else "Estatus: Inactivo"
+                    binding.xUserStatus.text = if (it.estatus) "Estatus: Activo" else "Estatus: Inactivo"
+
+
                     binding.xUserPoints.text = puntos_formated//(it.puntosParaArticulos).toString()
                     val user_level = "${getXUserLevel(totalPoints.toInt())}"
                     binding.xuserLevel.text = user_level
@@ -269,7 +265,7 @@ class HomeFragment : Fragment()  {
                         AppPreferences.userTotalPoints = totalPoints
                         val puntos_formated = NumberFormat.getNumberInstance(Locale.US).format(user2update.puntosParaArticulos)
                         binding.xUserPoints.text = puntos_formated//(it.puntosParaArticulos).toString()
-                        binding.xUserStatus.text = if (user2update.cnMainQuiz && user2update.estatus && user2update.idEstatusArchivos == 3) "Estatus: Activo" else "Estatus: Inactivo"
+                        binding.xUserStatus.text = if (user2update.estatus) "Estatus: Activo" else "Estatus: Inactivo"
 
                     }
                 }
