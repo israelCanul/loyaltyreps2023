@@ -250,9 +250,9 @@
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/roboto"
                             android:text="@string/VAdultos"
-                            android:visibility="gone"
-                            android:textColor="@color/secondary_text"
-                            android:textSize="@dimen/general_text" />
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/general_text"
+                            android:visibility="gone" />
 
                     <LinearLayout
                             android:id="@+id/namesAdults"
@@ -275,9 +275,9 @@
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/roboto"
                             android:text="@string/VChildren"
-                            android:visibility="gone"
-                            android:textColor="@color/secondary_text"
-                            android:textSize="@dimen/general_text" />
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/general_text"
+                            android:visibility="gone" />
 
                     <LinearLayout
                             android:id="@+id/namesChildren"
@@ -299,9 +299,9 @@
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/roboto"
                             android:text="@string/VInfants"
-                            android:visibility="gone"
-                            android:textColor="@color/secondary_text"
-                            android:textSize="@dimen/general_text" />
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/general_text"
+                            android:visibility="gone" />
 
                     <LinearLayout
                             android:id="@+id/namesInfants"

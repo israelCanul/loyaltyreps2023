@@ -34,6 +34,7 @@ import com.xcaret.loyaltyreps.model.Complimentary
 import com.xcaret.loyaltyreps.model.Hijo
 import com.xcaret.loyaltyreps.model.XUser
 import com.xcaret.loyaltyreps.util.AppPreferences
+import com.xcaret.loyaltyreps.util.FormManagerComplimentary
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModel
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModelFactory
 import org.json.JSONArray
@@ -70,10 +71,13 @@ class ComplimentaryDetailsFragment : Fragment() {
     var noInfants = 0
     var nameInfants: JSONArray? = JSONArray()
     var diasBL = ArrayList<String>()
-
+    var formManager = FormManagerComplimentary()
 
     var fechaVisita: String = ""
     var fullName: String = ""
+    var repName = ""
+    var repLastP = ""
+    var repLastM = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -147,6 +151,9 @@ class ComplimentaryDetailsFragment : Fragment() {
         println("complimentary " + complimentaryTem)
         binding.complimentaryTitle.text = complimentaryTem!!.name
         fullName = "${xUser.nombre} ${xUser.apellidoPaterno} ${xUser.apellidoMaterno}"
+        repName = xUser.nombre
+        repLastP = xUser.apellidoPaterno
+        repLastM = xUser.apellidoMaterno
         binding.reservationUser.setText(fullName)
         binding.reservationPark.setText(complimentaryTem!!.name)
         binding.reservationAgency.setText(xUser.agencia)
@@ -197,26 +204,9 @@ class ComplimentaryDetailsFragment : Fragment() {
                     binding.labelVisitersAdults.visibility = TextView.GONE
                 }
                 binding.namesAdults?.removeAllViews()
-                for (i in 0 until noAdults){
-                    var textInputLayout = TextInputLayout(context)
-                    val lp = LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT
-                    )
-                    lp.setMargins(0, 0, 0, 0)
-                    textInputLayout.layoutParams = lp
-                    var inputText = TextInputEditText(ContextThemeWrapper(activity, R.style.CInput))
-                    inputText.setHint("Nombre y Apellido (Adulto "+(i+1)+")")
-                    inputText.isEnabled = true
-                    //for the first visiter we set the titular's full name
-                    //and disabled it in order to don´t be edited
-                    if(i == 0){
-                        inputText.isEnabled = false
-                        inputText.setText(fullName.toString())
-                    }
-                    textInputLayout.addView(inputText)
-                    binding.namesAdults?.addView(textInputLayout)
 
+                for (i in 0 until noAdults){
+                    binding.namesAdults?.addView(formManager.CreateAdultOnList(i,activity,context,binding,repName,repLastP,repLastM))
                 }
                 maxKids = adulstList.size - noAdults
 
