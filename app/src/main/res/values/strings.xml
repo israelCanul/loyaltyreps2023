@@ -333,7 +333,9 @@
     <string name="sales_rep_title">Cada venta cuenta</string>
     <string name="default_notification_channel_id">general_channel</string>
     <string name="forgetyourpassword"><u>¿Olvidaste tu contraseña?</u></string>
-
+    <string name="desc_activity_retrieve">Introduce tu RCX/RRX para recuperar tu contraseña</string>
+    <string name="enviar_email">ENVIAR</string>
+    <string name="title_activity_retrieve_password">Recuperar contraseña</string>
 
 
 </resources>

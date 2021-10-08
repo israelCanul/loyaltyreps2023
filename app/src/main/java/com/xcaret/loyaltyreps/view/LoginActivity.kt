@@ -65,7 +65,9 @@ class LoginActivity : AppCompatActivity() {
                 makePhoneCall()
             })
         )
-
+        binding.btnRecuperarContrasena.setOnClickListener {
+            launchRetrievePasswordScreen()
+        }
     }
 
     private fun validMail() : Boolean {
@@ -244,9 +246,9 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
     private fun launchRetrievePasswordScreen(){
-        val homeIntent = Intent(this, WelcomeActivity::class.java)
-        startActivity(homeIntent)
-        finish()
+        val retrieveIntent = Intent(this, RetrievePasswordActivity::class.java)
+        startActivity(retrieveIntent)
+        //finish()
     }
 
 
