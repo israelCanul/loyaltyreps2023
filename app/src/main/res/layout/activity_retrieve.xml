@@ -100,25 +100,44 @@
 
                 </LinearLayout>
 
-                <Button
-                        android:id="@+id/login_button"
-                        android:layout_width="wrap_content"
+                <TextView
+                        android:padding="@dimen/margin20"
+                        android:background="@color/colorPrimary"
+                        android:id="@+id/textResponse"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:enabled="false"
-                        android:background="@drawable/button_primary_border_white"
-
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/desc_activity_retrieve"
+                        android:textAlignment="center"
                         android:textColor="@color/colorWhite"
-                        android:text="@string/enviar_email"
-                        android:paddingStart="@dimen/margin50"
-                        android:paddingEnd="@dimen/margin50"
-                        android:layout_below="@+id/login_form_container"
-                        app:layout_constraintStart_toStartOf="@+id/login_form_container"
-                        app:layout_constraintEnd_toEndOf="@+id/login_form_container"
-                        style="@style/GreenButtonStyle"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginBottom="30dp"
+                        android:textSize="@dimen/Smooch_messageAuthor"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/login_form_container"/>
 
+
+                <Button
+                        android:id="@+id/retrievepassbutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/login_form_container"
+                        android:elevation="2dp"
+                        android:layout_marginTop="28dp"
+                        android:background="@drawable/button_primary_border_white"
+                        android:enabled="true"
+                        android:paddingStart="@dimen/margin50"
+                        android:paddingEnd="@dimen/margin50"
+                        android:text="@string/enviar_email"
+                        android:textColor="@color/colorWhite"
+
+                        app:layout_constraintEnd_toEndOf="@+id/login_form_container"
+                        app:layout_constraintHorizontal_bias="0.497"
+                        app:layout_constraintStart_toStartOf="@+id/login_form_container"
+                        app:layout_constraintTop_toBottomOf="@+id/textResponse" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -145,7 +164,15 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                android:id="@+id/progressBar" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.5"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
