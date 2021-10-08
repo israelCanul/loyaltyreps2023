@@ -243,6 +243,12 @@ class LoginActivity : AppCompatActivity() {
         startActivity(homeIntent)
         finish()
     }
+    private fun launchRetrievePasswordScreen(){
+        val homeIntent = Intent(this, WelcomeActivity::class.java)
+        startActivity(homeIntent)
+        finish()
+    }
+
 
     override fun onBackPressed() {
         val startMain = Intent(Intent.ACTION_MAIN)

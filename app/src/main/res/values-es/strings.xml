@@ -332,4 +332,5 @@
     <string name="sales_rep_description">Por cada pax vendido en modalidad Tour se te otorga un total de 15 puntos (niño o adulto) y por cada pax vendido en Paquete 30 puntos  (niño o adulto). Si logras acumular 18,000 puntos durante el periodo enero-junio o julio-diciembre, podrás cambiar tu nivel a Top Rep el semestre siguiente y con ello gozar de más cortesías.</string>
     <string name="sales_rep_title">Cada venta cuenta</string>
     <string name="default_notification_channel_id">general_channel</string>
+    <string name="forgetyourpassword"><u>¿Olvidaste tu contraseña?</u></string>
 </resources>
