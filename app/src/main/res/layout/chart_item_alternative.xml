@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="horizontal"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom|center">
+
+    <ImageView
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:scaleType="centerInside"
+
+            android:id="@+id/parkLogo"
+            android:layout_alignParentBottom="true"
+            android:contentDescription="@string/app_name"/>
+    <View android:layout_width="1dp" android:layout_height="match_parent" android:background="@color/textDark"
+          android:layout_above="@id/parkLogo" android:id="@+id/border" android:layout_marginBottom="@dimen/margin5"/>
+
+    <View
+            android:layout_centerInParent="true"
+            android:id="@+id/parkStatus"
+            android:layout_width="175dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_primary"
+            android:layout_above="@+id/border"
+            android:layout_marginBottom="0dp" />
+</LinearLayout>

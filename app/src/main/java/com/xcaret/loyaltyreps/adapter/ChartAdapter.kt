@@ -34,7 +34,8 @@ class ChartAdapter (
         Glide.with(context).load(getImage(chart_item.logo)).into(holder.park_logo)
 
         Handler().postDelayed({
-            holder.park_status.layoutParams.height = (((chart_item.noPax).toFloat() / totalPax().toFloat())*2000).toInt()
+//            holder.park_status.layoutParams.height = (((chart_item.noPax).toFloat() / totalPax().toFloat())*2000).toInt()
+            holder.park_status.layoutParams.height = (chart_item.noPax).toInt()
             holder.park_status.background = ContextCompat.getDrawable(context, getImage(chart_item.background))
         }, 500)
     }

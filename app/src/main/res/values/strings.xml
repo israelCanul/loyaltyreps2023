@@ -108,8 +108,8 @@
     <string name="reservation_agency">Agencia</string>
     <string name="insert_agency">Ingresa agencia</string>
     <string name="reservation_rcx">RRX/RCX</string>
-    <string name="sales_bymonth">DEL MES</string>
-    <string name="sales_byear">DEL AÑO</string>
+    <string name="sales_bymonth">EN ESTE MES</string>
+    <string name="sales_byear">EN ESTE AÑO</string>
     <string name="month">Month Year</string>
     <string name="total_pax">Total pax:</string>
     <string name="days_left">¡Te quedan
@@ -336,6 +336,11 @@
     <string name="desc_activity_retrieve">Introduce tu RCX/RRX para recuperar tu contraseña</string>
     <string name="enviar_email">ENVIAR</string>
     <string name="title_activity_retrieve_password">Recuperar contraseña</string>
+    <string name="sales_byrange">Rango de Fecha</string>
+    <string name="fecha_inicial">Fecha Inicial</string>
+    <string name="fecha_final">Fecha Final</string>
+    <string name="Consultar_reporte">Consultar</string>
+    <string name="error_fields_required">Campos requeridos</string>
 
 
 </resources>
