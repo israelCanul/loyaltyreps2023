@@ -80,6 +80,7 @@ class ProfileRecordFragment : Fragment() {
         positivePointsAdapter = XPuntosAdapter(activity!!, listOfPositivePoints)
         negativePointsAdapter = XPuntosNegAdapter(activity!!, listOfNegativePoints)
 
+
         binding.positiveRecordButton.setOnClickListener {
             binding.recordButtonsRecyclerView.adapter = positivePointsAdapter
             binding.negativeRecordButton.background = ContextCompat.getDrawable(activity!!, R.drawable.button_green_border_bgtransparent)

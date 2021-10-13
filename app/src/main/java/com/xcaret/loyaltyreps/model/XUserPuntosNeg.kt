@@ -6,6 +6,9 @@ class XUserPuntosNeg(
     var fecha: String,
     var mip: String,
     var puntos: Int,
-    var articulo: String
+    var articulo: String,
+    var idEstatus: Int = 0,
+    var estatus: String = "",
+    var observaciones: String = ""
 ) {
 }

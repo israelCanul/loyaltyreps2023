@@ -25,6 +25,7 @@ import com.xcaret.loyaltyreps.model.XProduct
 import com.xcaret.loyaltyreps.model.XStoreCategory
 import com.xcaret.loyaltyreps.model.XUser
 import com.xcaret.loyaltyreps.util.AppPreferences
+import com.xcaret.loyaltyreps.view.fragments.profile.ProfileRecordFragment
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModel
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModelFactory
 
@@ -181,7 +182,7 @@ class ShopFragment : Fragment() {
             )
             shopAdapter.addFragment(newFragment, prodCategory.categoryName)
         }
-
+        shopAdapter.addFragment(StoreRecordFragment(), resources.getString(R.string.section_profile_record))
         viewPager!!.adapter = shopAdapter
     }
 

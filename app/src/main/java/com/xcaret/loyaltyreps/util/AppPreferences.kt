@@ -39,6 +39,7 @@ object AppPreferences {
     //User History of points
     var getTopTenAsignacionPuntos = "${XCARET_API_URL_ROOT}reporte/getTopTenAsignacionPuntos"
     var getOperacionesCanje = "${XCARET_API_URL_ROOT}reporte/getOperacionesCanje"
+    var getOperacionesCanje2 = "${XCARET_API_URL_ROOT}reporte/getOperacionesCanje2"//nuevo endpoint
 
     //main quiz urls
     var updMainQuizRep = "${XCARET_API_URL_ROOT}rep/updMainQuizRep"

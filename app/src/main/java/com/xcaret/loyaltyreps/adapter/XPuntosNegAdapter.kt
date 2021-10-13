@@ -24,16 +24,27 @@ class XPuntosNegAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val negPoint = listOfNegPoints[position]
-
         holder.pointsTitle.text = negPoint.articulo
         val pointstext = "- ${negPoint.puntos} pts"
         holder.pointsTotal.text = pointstext
         holder.pointsDate.text = AppPreferences.formatStringToDate(negPoint.fecha)
+
+        if(negPoint.observaciones.isNotBlank())
+            holder.comentarios.text = negPoint.observaciones
+        else
+            holder.comentarios.text = "Sin observaciónes"
+        holder.comentarios.visibility = View.VISIBLE
+        holder.estatusRecordValue.text = negPoint.estatus
+        holder.estatusRecord.visibility = View.VISIBLE
+        holder.estatusRecordValue.visibility = View.VISIBLE
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val pointsTitle = itemView.findViewById<TextView>(R.id.recordTitle)
         val pointsTotal = itemView.findViewById<TextView>(R.id.recordPoints)
         val pointsDate = itemView.findViewById<TextView>(R.id.recordDate)
+        val estatusRecord = itemView.findViewById<TextView>(R.id.estatusRecord)
+        val estatusRecordValue = itemView.findViewById<TextView>(R.id.estatusRecordValue)
+        val comentarios = itemView.findViewById<TextView>(R.id.comentarios)
     }
 }

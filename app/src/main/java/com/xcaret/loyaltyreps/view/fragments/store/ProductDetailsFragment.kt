@@ -62,11 +62,11 @@ class ProductDetailsFragment : Fragment() {
             this, viewModelFactory).get(XUserViewModel::class.java)
         binding.lifecycleOwner = this
 
-        productItem = arguments!!.getParcelable("xitem") as XProduct
+        productItem = arguments!!.getParcelable("xitem")
 
         loadProductDetails()
 
-        xUserViewModel.currentXUser.observe(this, Observer {
+        xUserViewModel.currentXUser.observe(viewLifecycleOwner, Observer {
                 xuser ->
                 xuser?.let {
                     totalDePutos = it.puntosParaArticulos

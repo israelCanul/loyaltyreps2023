@@ -69,34 +69,23 @@
                     app:layout_constraintTop_toBottomOf="@id/beganTraining"
                     android:layout_marginTop="20dp">
 
-                <Button android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="1" android:textColor="@color/colorWhite"
-                        android:background="@drawable/button_green"
-                        android:text="@string/prompt_profile_hint_positive_record"
-                        android:paddingTop="@dimen/margin15"
-                        android:paddingBottom="@dimen/margin15"
-                        android:paddingStart="0dp"
-                        android:paddingEnd="0dp"
-                        android:id="@+id/positiveRecordButton"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintEnd_toStartOf="@+id/negativeRecordButton" android:layout_marginEnd="5dp"
-                        android:textSize="@dimen/general_text" android:fontFamily="@font/roboto"
-                        />
 
-                <Button android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:background="@drawable/button_green_border_bgtransparent"
+
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:layout_weight="1" android:textColor="@color/colorAccent"
                         android:id="@+id/negativeRecordButton"
                         android:text="@string/prompt_profile_hint_negative_record"
                         android:paddingTop="@dimen/margin15"
                         android:paddingBottom="@dimen/margin15"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/positiveRecordButton"
-                        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="5dp"
-                        android:textSize="@dimen/general_text" android:fontFamily="@font/roboto"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="5dp"
+                        android:textSize="@dimen/general_text"
+                        android:fontFamily="@font/roboto"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -109,10 +98,11 @@
                     app:layout_constraintStart_toStartOf="@+id/recordButtons"
                     app:layout_constraintEnd_toEndOf="@+id/recordButtons" android:id="@+id/listContainer">
 
-                <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recordButtonsRecyclerView"
-                        tools:listitem="@layout/cardview_profile_record_item"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/cardview_profile_record_item" />
 
             </RelativeLayout>
 

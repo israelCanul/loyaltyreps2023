@@ -11,31 +11,94 @@
 
 
     <TextView
-            android:text="@string/app_name"
+            android:id="@+id/recordTitle"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" android:textSize="@dimen/text18"
-            android:id="@+id/recordTitle" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@+id/recordPoints"
-            android:layout_marginEnd="8dp" android:fontFamily="@font/roboto"/>
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/app_name"
+            android:textSize="@dimen/text16"
+            android:paddingStart="@dimen/margin5"
+            app:layout_constraintEnd_toStartOf="@+id/estatusRecord"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/estatusRecord"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="center_horizontal"
+            android:text="@string/prompt_record_estatus"
+            android:textSize="@dimen/text16"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/recordTitle"
+            app:layout_constraintEnd_toStartOf="@id/recordPoints"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
     <TextView
             android:text="@string/prompt_profile_hint_points"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/recordPoints"
-            android:textSize="@dimen/text18"
-            android:textColor="@color/colorPrimaryDark" android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" android:fontFamily="@font/roboto"/>
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/estatusRecordValue"
+            android:textSize="@dimen/text13"
+            android:textStyle="italic"
+            android:gravity="center_horizontal"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/estatusRecord"
+            app:layout_constraintTop_toTopOf="@id/recordDate"
+            android:layout_marginEnd="@dimen/margin5"
+            app:layout_constraintEnd_toStartOf="@id/recordPoints"
+            app:layout_constraintBottom_toBottomOf="@id/recordDate"
+            android:fontFamily="@font/roboto"/>
 
     <TextView
-            android:text="@string/date"
+            android:id="@+id/recordPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="0sp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/prompt_profile_hint_points"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/text18"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/comentarios"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/recordDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/recordDate"
-            app:layout_constraintTop_toBottomOf="@+id/recordTitle"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/roboto"
+            android:textStyle="italic"
+            android:textSize="@dimen/text13"
+            android:paddingStart="@dimen/margin5"
+            android:text="@string/date"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/recordTitle"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/recordTitle"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="@+id/recordTitle"
-            android:layout_marginTop="5dp" android:fontFamily="@font/roboto"/>
+            app:layout_constraintTop_toBottomOf="@+id/recordTitle"
+            app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+            android:id="@+id/comentarios"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@color/tab_indicator"
+            android:padding="@dimen/margin5"
+            android:text="Comentario de ejemplo"
+            android:textColor="@color/colorWhite"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recordDate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -341,4 +341,6 @@
     <string name="fecha_final">Fecha Final</string>
     <string name="Consultar_reporte">Consultar</string>
     <string name="error_fields_required">Campos requeridos</string>
+    <string name="prompt_record_estatus">Estatus</string>
+    <string name="NoRecordsInHistory">No existen Records</string>
 </resources>

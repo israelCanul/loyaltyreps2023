@@ -28,6 +28,7 @@ class XPuntosAdapter(
         val pointstext = "+ ${mPoint.puntos} pts"
         holder.pointsTotal.text = pointstext
         holder.pointsDate.text = AppPreferences.formatStringToDate(mPoint.fecha)
+        holder.comentarios.visibility = View.GONE
 
     }
 
@@ -35,5 +36,6 @@ class XPuntosAdapter(
         val pointsTitle = itemView.findViewById<TextView>(R.id.recordTitle)
         val pointsTotal = itemView.findViewById<TextView>(R.id.recordPoints)
         val pointsDate = itemView.findViewById<TextView>(R.id.recordDate)
+        val comentarios = itemView.findViewById<TextView>(R.id.comentarios)
     }
 }
