@@ -190,13 +190,40 @@
                     <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
                                  android:id="@+id/progressLoading"/>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/chartRecyclerView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="125dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="@dimen/margin15"
-                            android:orientation="horizontal" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
+                            >
+                        <com.airbnb.lottie.LottieAnimationView
+                                android:id="@+id/lottieAnimationViewForReport"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:elevation="5dp"
+                                app:layout_constraintEnd_toEndOf="@id/chartRecyclerView"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:lottie_autoPlay="true"
+                                app:lottie_loop="true"
+                                app:lottie_rawRes="@raw/manita"
+                                android:visibility="gone"
+                                app:lottie_speed="1"
+                                tools:src="@drawable/lore_face_progress" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/chartRecyclerView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="125dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/margin15"
+                                android:orientation="horizontal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                               android:textColor="@color/primary_text" android:textStyle="bold"

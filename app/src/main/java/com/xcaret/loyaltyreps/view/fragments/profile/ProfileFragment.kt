@@ -230,6 +230,7 @@ class ProfileFragment : Fragment() {
                 override fun onResponse(response: JSONObject) {
                     if (response.length() > 0){
                         print( "ususari" + response)
+
                         user2update.cnMainQuiz = response.getJSONObject("value").getBoolean("cnMainQuiz")
                         user2update.idEstatusArchivos = response.getJSONObject("value").getInt("idEstatusArchivos")
                         user2update.cnTarjetaActiva = response.getJSONObject("value").getBoolean("cnTarjetaActiva")
@@ -239,6 +240,7 @@ class ProfileFragment : Fragment() {
                         user2update.idEstadoNacimiento = response.getJSONObject("value").getInt("idEstadoNacimiento")
                         user2update.idMunicipioNacimiento = response.getJSONObject("value").getInt("idMunicipioNacimiento")
                         user2update.intereses = response.getJSONObject("value").getString("intereses")
+                        user2update.estatus = response.getJSONObject("value").getBoolean("estatus")
                         xUserViewModel.updateStatusArchivos(user2update)
                         xUserViewModel.onUpdateInterestsTop(user2update)
                         xUserViewModel.onUpdateInterests(user2update.intereses)

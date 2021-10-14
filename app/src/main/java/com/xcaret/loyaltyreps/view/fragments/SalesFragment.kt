@@ -79,6 +79,7 @@ class SalesFragment : Fragment() {
 
         binding.reportByRange.setOnClickListener{
             //openCalendar()
+
             binding.getRangesReport.visibility = View.VISIBLE
             binding.chartRecyclerView.visibility = View.GONE
 
@@ -108,6 +109,7 @@ class SalesFragment : Fragment() {
         yearChartAdapter = ChartAdapter(activity!!, chartItemsYear)
         RangeChartAdapter = ChartAdapter(activity!!, chartItemsRange)// nuevo adapter para los rangos
         binding.reportByMonth.setOnClickListener {
+            showAnimation(chartItems.count())
             binding.chartRecyclerView.adapter = chartAdapter
             binding.reportByYear.background = ContextCompat.getDrawable(activity!!, R.drawable.button_white_green_border)
             binding.reportByYear.setTextColor(Color.parseColor("#67a33c"))
@@ -130,6 +132,7 @@ class SalesFragment : Fragment() {
         }
 
         binding.reportByYear.setOnClickListener {
+            showAnimation(chartItemsYear.count())
             binding.chartRecyclerView.adapter = yearChartAdapter
             it.background = ContextCompat.getDrawable(activity!!, R.drawable.button_green)
             binding.reportByYear.setTextColor(Color.WHITE)
@@ -281,6 +284,7 @@ class SalesFragment : Fragment() {
                                         )
                                     )
                                 }
+                                showAnimation(chartItemsRange.count())
                                 totalPax = "Total pax: $noPaxesR"
                                 binding.totPax.text = totalPax
                                 binding.monthNYear.text = "${fmtOut.format(dateIn)} - ${fmtOut.format(dateOut)}"
@@ -495,6 +499,11 @@ class SalesFragment : Fragment() {
         }
         alertDialog.setCancelable(false)
     }
-
+    private fun showAnimation(count: Int){
+        if(count > 5)
+            binding.lottieAnimationViewForReport.visibility = View.VISIBLE
+        else
+            binding.lottieAnimationViewForReport.visibility = View.GONE
+    }
 
 }

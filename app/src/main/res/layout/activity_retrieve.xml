@@ -13,7 +13,7 @@
                 android:id="@+id/mainNavigationFragment"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/login_notice"
+                app:layout_constraintBottom_toTopOf="@+id/active_retrieve"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -145,17 +145,19 @@
         </androidx.core.widget.NestedScrollView>
 
         <TextView
-                android:id="@+id/login_notice"
+                android:id="@+id/active_retrieve"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/roboto"
-                android:gravity="bottom|center_vertical"
+                android:gravity="bottom|center_vertical|center_horizontal"
+
                 android:paddingTop="5dp"
-                android:text=""
-                android:textAlignment="center"
+                android:text="@string/retrieve_advice"
+                android:textAlignment="gravity"
+
                 android:textColor="@color/primary_text"
                 android:textColorHighlight="@color/colorPrimaryDark"
                 android:textColorLink="@color/colorPrimaryDark"

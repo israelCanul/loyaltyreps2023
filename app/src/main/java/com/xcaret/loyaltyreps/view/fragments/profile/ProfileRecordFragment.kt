@@ -31,6 +31,7 @@ import com.xcaret.loyaltyreps.model.XUserPuntosNeg
 import com.xcaret.loyaltyreps.util.AppPreferences
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModel
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModelFactory
+import kotlinx.android.synthetic.main.pickup_schedule_table_row.view.*
 
 /**
  * A simple [Fragment] subclass.
@@ -44,8 +45,8 @@ class ProfileRecordFragment : Fragment() {
     private var listOfPositivePoints: ArrayList<XUserPuntoPos> = ArrayList()
     private var positivePointsAdapter: XPuntosAdapter? = null
 
-    private var listOfNegativePoints: ArrayList<XUserPuntosNeg> = ArrayList()
-    private var negativePointsAdapter: XPuntosNegAdapter? = null
+//    private var listOfNegativePoints: ArrayList<XUserPuntosNeg> = ArrayList()
+//    private var negativePointsAdapter: XPuntosNegAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,7 +66,7 @@ class ProfileRecordFragment : Fragment() {
 
         loadRecyclerView()
         loadTopTenAsignationPoints()
-        loadOperacionesCanje()
+//        loadOperacionesCanje()
 
         binding.positiveRecordButton.performClick()
 
@@ -78,24 +79,25 @@ class ProfileRecordFragment : Fragment() {
             activity!!, RecyclerView.VERTICAL, false)
 
         positivePointsAdapter = XPuntosAdapter(activity!!, listOfPositivePoints)
-        negativePointsAdapter = XPuntosNegAdapter(activity!!, listOfNegativePoints)
+        binding.recordButtonsRecyclerView.adapter = positivePointsAdapter
+//        negativePointsAdapter = XPuntosNegAdapter(activity!!, listOfNegativePoints)
 
 
-        binding.positiveRecordButton.setOnClickListener {
-            binding.recordButtonsRecyclerView.adapter = positivePointsAdapter
-            binding.negativeRecordButton.background = ContextCompat.getDrawable(activity!!, R.drawable.button_green_border_bgtransparent)
-            binding.negativeRecordButton.setTextColor(Color.parseColor("#67a33c"))
-            it.background = ContextCompat.getDrawable(activity!!, R.drawable.button_green)
-            binding.positiveRecordButton.setTextColor(Color.WHITE)
-        }
-
-        binding.negativeRecordButton.setOnClickListener {
-            binding.recordButtonsRecyclerView.adapter = negativePointsAdapter
-            it.background = ContextCompat.getDrawable(activity!!, R.drawable.button_green)
-            binding.negativeRecordButton.setTextColor(Color.WHITE)
-            binding.positiveRecordButton.background = ContextCompat.getDrawable(activity!!, R.drawable.button_green_border_bgtransparent)
-            binding.positiveRecordButton.setTextColor(Color.parseColor("#67a33c"))
-        }
+//        binding.positiveRecordButton.setOnClickListener {
+//            binding.recordButtonsRecyclerView.adapter = positivePointsAdapter
+//            binding.negativeRecordButton.background = ContextCompat.getDrawable(activity!!, R.drawable.button_green_border_bgtransparent)
+//            binding.negativeRecordButton.setTextColor(Color.parseColor("#67a33c"))
+//            it.background = ContextCompat.getDrawable(activity!!, R.drawable.button_green)
+//            binding.positiveRecordButton.setTextColor(Color.WHITE)
+//        }
+//
+//        binding.negativeRecordButton.setOnClickListener {
+//            binding.recordButtonsRecyclerView.adapter = negativePointsAdapter
+//            it.background = ContextCompat.getDrawable(activity!!, R.drawable.button_green)
+//            binding.negativeRecordButton.setTextColor(Color.WHITE)
+//            binding.positiveRecordButton.background = ContextCompat.getDrawable(activity!!, R.drawable.button_green_border_bgtransparent)
+//            binding.positiveRecordButton.setTextColor(Color.parseColor("#67a33c"))
+//        }
 
         binding.gotoQuiz.setOnClickListener {
             findNavController().navigate(R.id.actionXHome)
@@ -126,12 +128,17 @@ class ProfileRecordFragment : Fragment() {
                         val mActivity = activity as MainActivity?
                         mActivity!!.xUserLogout(activity!!, "La sesión ha caducado", "Vuelve a iniciar sesión")
                     }
+                    if(anError!!.errorCode == 204){// si el endpoint no devuelve info
+                        binding.NoRecords.visibility = View.VISIBLE
+                    }
                     hideButtonsAndListContainer()
                 }
                 override fun onResponse(response: JSONObject) {
 
                     try {
+
                         if (response.getJSONArray("value").length() > 0) {
+                            binding.NoRecords.visibility = View.GONE
                             for (item in 0 until response.getJSONArray("value").length()) {
                                 val mitem = response.getJSONArray("value").getJSONObject(item)
                                 listOfPositivePoints.add(
@@ -148,6 +155,8 @@ class ProfileRecordFragment : Fragment() {
 
                             binding.recordButtonsRecyclerView.adapter!!.notifyDataSetChanged()
 
+                        }else{// si no hay records
+                            binding.NoRecords.visibility = View.VISIBLE
                         }
                     } catch (except: Exception) {
                         except.printStackTrace()
@@ -156,53 +165,53 @@ class ProfileRecordFragment : Fragment() {
             })
     }
 
-    private fun loadOperacionesCanje(){
-        listOfPositivePoints.clear()
-        val jsonObject = JSONObject()
-        try {
-            jsonObject.put("idRep", AppPreferences.idRep)
-            jsonObject.put("idUsuario", AppPreferences.idUsuaro)
-            jsonObject.put("ip", "")
-        } catch (e: JSONException) {
-            e.printStackTrace()
-        }
-
-        AndroidNetworking.post(AppPreferences.getOperacionesCanje)
-            .addJSONObjectBody(jsonObject)
-            .addHeaders("Authorization", "bearer "+AppPreferences.userToken)
-            .setTag("user_history")
-            .setPriority(Priority.HIGH)
-            .build()
-            .getAsJSONObject(object : JSONObjectRequestListener {
-                override fun onError(anError: ANError?) {
-                    println("ahahahah ${anError!!.errorCode}")
-                }
-                override fun onResponse(response: JSONObject) {
-                    println("record response $response")
-                    if (response.getJSONArray("value").length() > 0) {
-                        for (item in 0 until response.getJSONArray("value").length()) {
-                            val mitem = response.getJSONArray("value").getJSONObject(item)
-                            listOfNegativePoints.add(
-                                XUserPuntosNeg(
-                                    mitem.getInt("idOperacion"),
-                                    mitem.getInt("idEdoOperacion"),
-                                    mitem.getString("fecha"),
-                                    mitem.getString("ip"),
-                                    mitem.getInt("puntos"),
-                                    mitem.getString("articulo")
-                                )
-                            )
-                        }
-
-                        binding.recordButtonsRecyclerView.adapter!!.notifyDataSetChanged()
-
-                    } else {
-                        binding.beganTraining.visibility = View.VISIBLE
-                        hideButtonsAndListContainer()
-                    }
-                }
-            })
-    }
+//    private fun loadOperacionesCanje(){
+//        listOfPositivePoints.clear()
+//        val jsonObject = JSONObject()
+//        try {
+//            jsonObject.put("idRep", AppPreferences.idRep)
+//            jsonObject.put("idUsuario", AppPreferences.idUsuaro)
+//            jsonObject.put("ip", "")
+//        } catch (e: JSONException) {
+//            e.printStackTrace()
+//        }
+//
+//        AndroidNetworking.post(AppPreferences.getOperacionesCanje)
+//            .addJSONObjectBody(jsonObject)
+//            .addHeaders("Authorization", "bearer "+AppPreferences.userToken)
+//            .setTag("user_history")
+//            .setPriority(Priority.HIGH)
+//            .build()
+//            .getAsJSONObject(object : JSONObjectRequestListener {
+//                override fun onError(anError: ANError?) {
+//                    println("ahahahah ${anError!!.errorCode}")
+//                }
+//                override fun onResponse(response: JSONObject) {
+//                    println("record response $response")
+//                    if (response.getJSONArray("value").length() > 0) {
+//                        for (item in 0 until response.getJSONArray("value").length()) {
+//                            val mitem = response.getJSONArray("value").getJSONObject(item)
+//                            listOfNegativePoints.add(
+//                                XUserPuntosNeg(
+//                                    mitem.getInt("idOperacion"),
+//                                    mitem.getInt("idEdoOperacion"),
+//                                    mitem.getString("fecha"),
+//                                    mitem.getString("ip"),
+//                                    mitem.getInt("puntos"),
+//                                    mitem.getString("articulo")
+//                                )
+//                            )
+//                        }
+//
+//                        binding.recordButtonsRecyclerView.adapter!!.notifyDataSetChanged()
+//
+//                    } else {
+//                        binding.beganTraining.visibility = View.VISIBLE
+//                        hideButtonsAndListContainer()
+//                    }
+//                }
+//            })
+//    }
 
     private fun hideButtonsAndListContainer(){
         binding.recordButtons.visibility = View.GONE

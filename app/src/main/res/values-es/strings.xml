@@ -343,4 +343,5 @@
     <string name="error_fields_required">Campos requeridos</string>
     <string name="prompt_record_estatus">Estatus</string>
     <string name="NoRecordsInHistory">No existen Records</string>
+    <string name="retrieve_advice">Si olvidaste tu número de acceso o tu contraseña, contacta a tu Ejecutivo o llámanos al \n(998) 980 0390</string>
 </resources>

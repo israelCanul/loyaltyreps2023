@@ -11,7 +11,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/beganTraining"
                     app:layout_constraintTop_toTopOf="parent"
@@ -60,10 +61,62 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/NoRecords"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginEnd="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="20dp"
+                    >
+
+                <com.airbnb.lottie.LottieAnimationView android:layout_width="100dp"
+                        android:id="@+id/lottieAnimationViewNoRecords"
+                        android:layout_height="100dp" android:elevation="5dp"
+                        tools:src="@drawable/lore_face_progress"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintHorizontal_bias="0.497"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:lottie_rawRes="@raw/lore_historial_perfil"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_speed="1"/>
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/backgroun_pickup_form"
+                        android:orientation="vertical"
+                        android:padding="@dimen/general_padding"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lottieAnimationViewNoRecords">
+
+                    <TextView
+                            style="@style/GeneralTextGrey"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/NoRecordsInHistory"
+                            android:textAlignment="center" />
+
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
             <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="0dp" android:weightSum="2"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:id="@+id/recordButtons"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="@id/beganTraining"
                     app:layout_constraintStart_toStartOf="@id/beganTraining"
                     app:layout_constraintTop_toBottomOf="@id/beganTraining"
@@ -76,6 +129,7 @@
                         android:paddingTop="@dimen/margin15"
                         android:paddingBottom="@dimen/margin15"
                         android:paddingStart="0dp"
+                        android:visibility="gone"
                         android:paddingEnd="0dp"
                         android:id="@+id/positiveRecordButton"
                         app:layout_constraintStart_toStartOf="parent"
@@ -90,6 +144,7 @@
                         android:layout_weight="1" android:textColor="@color/colorAccent"
                         android:id="@+id/negativeRecordButton"
                         android:text="@string/prompt_profile_hint_negative_record"
+                        android:visibility="gone"
                         android:paddingTop="@dimen/margin15"
                         android:paddingBottom="@dimen/margin15"
                         app:layout_constraintEnd_toEndOf="parent"
