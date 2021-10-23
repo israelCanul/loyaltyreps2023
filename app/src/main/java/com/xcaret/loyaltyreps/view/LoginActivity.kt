@@ -165,9 +165,6 @@ class LoginActivity : AppCompatActivity() {
                             FirebaseMessaging.getInstance().subscribeToTopic(agencia.toString()).addOnSuccessListener {
                                 println("Firebase Token ${agencia.toString()}")
                             }
-//                            FirebaseMessaging.getInstance().subscribeToTopic("DEVTEST").addOnSuccessListener {
-//                                println("Firebase Token ${agencia.toString()}")
-//                            }
                         }
 
                         AppPreferences.loggedIn = true
@@ -233,8 +230,12 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onError(error: ANError) {
-                    binding.loginError.visibility = View.VISIBLE
                     binding.progressBar.visibility = View.GONE
+                    if(error!!.errorCode == 401 || error!!.errorCode == 201){// si el endpoint no devuelve info
+                        binding.loginDesactivado.visibility = View.VISIBLE
+                    }else{
+                        binding.loginError.visibility = View.VISIBLE
+                    }
                 }
             })
 
