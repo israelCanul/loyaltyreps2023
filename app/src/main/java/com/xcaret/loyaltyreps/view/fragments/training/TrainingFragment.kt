@@ -147,7 +147,7 @@ class TrainingFragment : Fragment() {
                                 )
                             )
                         }
-                        vrecyclerViewAdapter = XVideoAdapter(activity!!, R.layout.cardview_training_video, xVideoList, listOfQuizIds)
+                        vrecyclerViewAdapter = XVideoAdapter(activity!!, R.layout.cardview_training_video, xVideoList, listOfQuizIds, activity!!)
                         binding.videosRecyclerView.adapter = vrecyclerViewAdapter
                         binding.videosRecyclerView.adapter!!.notifyDataSetChanged()
                     } catch (except: Exception) {

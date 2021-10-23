@@ -1,14 +1,15 @@
 package com.xcaret.loyaltyreps.adapter
 
+import android.app.Activity
+import android.app.DownloadManager
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
@@ -25,20 +26,35 @@ import com.xcaret.loyaltyreps.model.XQuestion
 import com.xcaret.loyaltyreps.model.XQuestionChoice
 import com.xcaret.loyaltyreps.model.XVideo
 import com.xcaret.loyaltyreps.util.AppPreferences
+import com.xcaret.loyaltyreps.util.DownloadImage
 
 class XVideoAdapter(
     private val context: Context,
     private val resource: Int,
     private var xvArrayList: ArrayList<XVideo>,
-    private var listOfQuizIds: List<Int>
+    private var listOfQuizIds: List<Int>,
+    private var activity: Activity
 ) : RecyclerView.Adapter<XVideoAdapter.ViewHolder>(){
 
     var END_POINT = "quiz?video_id="
     lateinit var xquizQuestions: ArrayList<XQuestion>
-
+    var mydownloadID : Long = 0
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemContainer = LayoutInflater.from(parent.context)
             .inflate(resource, parent, false) as ViewGroup
+
+
+        var br = object: BroadcastReceiver(){
+            override fun onReceive(context: Context?, intent: Intent?) {
+                var id = intent?.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID,-1)
+                if(id==mydownloadID){
+                    Toast.makeText(context, "Download Completed", Toast.LENGTH_LONG).show()
+                }
+            }
+
+        }
+
+
         return ViewHolder(itemContainer)
     }
 
@@ -67,7 +83,12 @@ class XVideoAdapter(
                 loadVideoQuizData(xvideo.id.toString(), xvideo.name!!, holder.video_button)
             }
         }
-
+        if(xvideo.active!!){
+            holder.download_video.setOnClickListener {
+                var dm : DownloadImage = DownloadImage()
+                mydownloadID = dm.saveVideo(context!!,activity,xvideo.video.toString(),xvideo.name!! + "_quizz")
+            }
+        }
         holder.vide_cover.setOnClickListener {
             val bundle = Bundle().also {
                 it.putString("xvideo_url", xvideo.video)
@@ -87,6 +108,7 @@ class XVideoAdapter(
         val video_button: Button = itemViewGroup.videoQuiz
         val video_avalability_con: LinearLayout = itemViewGroup.availabilityContainer
         val quiz_completed: ConstraintLayout = itemViewGroup.quiz_completed_container
+        val download_video: Button = itemViewGroup.downloadVideoQuiz
     }
 
     private fun loadVideoQuizData(video_id: String, video_name: String, mView: Button) {
