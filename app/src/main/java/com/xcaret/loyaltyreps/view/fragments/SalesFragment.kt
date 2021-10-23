@@ -78,7 +78,7 @@ class SalesFragment : Fragment() {
         handleInformationClicks()
 
         binding.reportByRange.setOnClickListener{
-            //openCalendar()
+            binding.lottieAnimationViewForReport.visibility = View.GONE
 
             binding.getRangesReport.visibility = View.VISIBLE
             binding.chartRecyclerView.visibility = View.GONE

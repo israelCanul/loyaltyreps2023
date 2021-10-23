@@ -63,7 +63,7 @@ class HomeFragment : Fragment()  {
 
         loadUserInfo()
 
-        loadUserDataFromServer()
+        //loadUserDataFromServer()
 
         loadStaticViews()
         handleActions()
@@ -229,6 +229,7 @@ class HomeFragment : Fragment()  {
 
         // de aqui es donde se debe obtener los datos para actualizar en el home
         //Israel Canul
+        println("prueba activo/baja: ${AppPreferences.XCARET_API_URL_ROOT}rep/getDetalleRepById/${AppPreferences.idRep}")
         val user2update = XUser()
         AndroidNetworking.get("${AppPreferences.XCARET_API_URL_ROOT}rep/getDetalleRepById/${AppPreferences.idRep}")
             .setTag("user_info")
@@ -237,10 +238,16 @@ class HomeFragment : Fragment()  {
             .build()
             .getAsJSONObject(object : JSONObjectRequestListener {
                 override fun onError(anError: ANError?) {
+                    println("prueba activo/baja: " + anError?.errorCode.toString())
+                    if (anError!!.errorCode == 401 || anError.errorCode == 400 || anError.errorCode == 0 || anError.errorCode == 404 || anError.errorCode == 204 ) {
+                        val mActivity = activity as MainActivity?
+                        mActivity!!.xUserLogout(activity!!, "La sesión ha caducado", "Vuelve a iniciar sesión")
+                    }
                 }
                 override fun onResponse(response: JSONObject) {
                     if (response.length() > 0){
                         println(response.getJSONObject("value"))
+
                         //obtenemos los campos necesarios de la respuesta
                         user2update.puntosPorVentas = response.getJSONObject("value").getInt("puntosPorVentas")
                         user2update.puntosParaArticulos = response.getJSONObject("value").getInt("puntosParaArticulos")
