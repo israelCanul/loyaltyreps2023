@@ -102,7 +102,7 @@
 
                 <TextView
                         android:padding="@dimen/margin20"
-                        android:background="@color/colorPrimary"
+                        android:background="@color/colorTransparent"
                         android:id="@+id/textResponse"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
