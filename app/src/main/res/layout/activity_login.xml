@@ -131,6 +131,15 @@
                             android:textAlignment="center"
                             android:textColor="@color/error"
                             android:visibility="gone"/>
+                    <TextView
+                            android:id="@+id/login_desactivado"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/inactive_advice"
+                            android:textSize="@dimen/small"
+                            android:textAlignment="center"
+                            android:textColor="@color/error"
+                            android:visibility="gone"/>
 
                 </LinearLayout>
 

@@ -345,5 +345,7 @@
     <string name="NoRecordsInHistory">No existen Records</string>
     <string name="retrieve_advice">Si olvidaste tu número de acceso o tu contraseña, contacta a tu Ejecutivo o llámanos al \n(998) 980 0390</string>
 
+    <string name="inactive_advice">Favor de consultar tu status con tu Agencia o Ejecutivo de Cuenta</string>
+
 
 </resources>

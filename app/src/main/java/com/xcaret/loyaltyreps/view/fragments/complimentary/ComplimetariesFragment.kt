@@ -67,7 +67,7 @@ class ComplimetariesFragment : Fragment() {
     }
 
     private fun loadViews(){
-        xUserViewModel.currentXUser.observe(this, Observer {
+        xUserViewModel.currentXUser.observe(viewLifecycleOwner, Observer {
                 xuser ->
                 xuser?.let {
                     if (it.cnMainQuiz && it.estatus && it.idEstatusArchivos == 3){
@@ -85,14 +85,11 @@ class ComplimetariesFragment : Fragment() {
         binding.complimentariesRV.setHasFixedSize(true)
         binding.complimentariesRV.layoutManager = LinearLayoutManager(activity!!,
             RecyclerView.VERTICAL, false)
-
         mAdapter = XComplimentaryAdapter(activity!!, activity, mComplimentaries)
-
         binding.complimentariesRV.adapter = mAdapter
     }
 
     private fun loadCompliemtaries(){
-
         mComplimentaries.clear()
         val jsonObject = JSONObject()
         try {
@@ -101,7 +98,6 @@ class ComplimetariesFragment : Fragment() {
         } catch (e: JSONException) {
             e.printStackTrace()
         }
-
         println("jsonobjectrequescomplimentary $jsonObject")
 
         AndroidNetworking.post(AppPreferences.PUNK_API_URL+ENDPOINT_COMPLIMETARIES)
@@ -257,7 +253,27 @@ class ComplimetariesFragment : Fragment() {
                             } else { 0 }
                             //val tarjetaEspecial = if (xcom_item.get("tarjetaEspecial").toString() == "null") "" else xcom_item.getString("nombreAfiliado")
                             //val mphone = if (xcom_item.get("phone").toString() == "null") "" else xcom_item.getString("phone")
-
+                            if(item === 0 )
+                                println("myresponseitem" +
+                                    Complimentary(
+                                        noTarjeta,
+                                        nombreAfiliado,
+                                        tarjetaEspecial,
+                                        parque,
+                                        idServicio,
+                                        servicio,
+                                        noPaxBeneficio,
+                                        noPaxUtilizado,
+                                        noPaxPorUtilizar,
+                                        mimage,
+                                        name,
+                                        phone,
+                                        action,
+                                        infants,
+                                        note,
+                                        order
+                                    )
+                                )
 
                             mComplimentaries.add(
                                 Complimentary(
@@ -281,9 +297,11 @@ class ComplimetariesFragment : Fragment() {
                             )
 
                         }
+                        println("myresponsess $mComplimentaries")
                         binding.complimentariesRV.adapter!!.notifyDataSetChanged()
                         binding.progressBar.visibility = View.GONE
                     } catch (except: Exception) {
+                        println("myresponseError " + except.printStackTrace())
                         except.printStackTrace()
                     }
                 }

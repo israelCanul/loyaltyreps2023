@@ -54,6 +54,7 @@ object AppPreferences {
 
     //complimentary reservation
     var generarReserva = "${XCARET_API_URL_ROOT}Reserva/generarReserva"
+    var generarReserva2 = "${XCARET_API_URL_ROOT}Reserva/generarReserva2"
 
     private val IS_FIRST_RUN_PREF = Pair("is_first_run", true)
     private val LOGGEDIN = Pair("logged_in", false)

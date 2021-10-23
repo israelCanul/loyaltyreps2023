@@ -19,6 +19,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.whenCreated
+import androidx.navigation.fragment.findNavController
+
+import com.androidnetworking.AndroidNetworking
+import com.androidnetworking.common.Priority
+import com.androidnetworking.error.ANError
+import com.androidnetworking.interfaces.StringRequestListener
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -34,6 +41,7 @@ import com.xcaret.loyaltyreps.model.Complimentary
 import com.xcaret.loyaltyreps.model.Hijo
 import com.xcaret.loyaltyreps.model.XUser
 import com.xcaret.loyaltyreps.util.AppPreferences
+import com.xcaret.loyaltyreps.util.EventsTrackerFunctions
 import com.xcaret.loyaltyreps.util.FormManagerComplimentary
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModel
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModelFactory
@@ -91,19 +99,12 @@ class ComplimentaryDetailsFragment : Fragment() {
         xUserViewModel = ViewModelProviders.of(
             this, viewModelFactory).get(XUserViewModel::class.java)
         binding.lifecycleOwner = this
-
-
-
         try {
             complimentaryTem = arguments!!.getParcelable("complimentary") as Complimentary?
-
             loadDataFromDao()
-
         } catch (exception: Exception) {
             exception.printStackTrace()
         }
-
-
         return binding.root
     }
 
@@ -122,25 +123,12 @@ class ComplimentaryDetailsFragment : Fragment() {
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
                 println("DataBaseChanges " + p0.value)
-                var dias = p0.value
-                dias = dias.toString().split(",")
-                diasBL = dias as ArrayList<String>
-//                fun getDay(day: String) = run {
-//                    when(day){
-//                        "Lunes" -> 0
-//                        "Martes" -> 1
-//                        "Miercoles" -> 2
-//                        "Jueves" -> 3
-//                        "Viernes" -> 4
-//                        "Sabado" -> 5
-//                        "Domingo" -> 6
-//                        else -> null
-//                    }
-//                }
-
-
+                if(p0.value !== null){
+                   var dias = p0.value
+                   dias = dias.toString().split(",")
+                   diasBL = dias as ArrayList<String>
+                }
             }
-
             override fun onCancelled(p0: DatabaseError) {
                 TODO("Not yet implemented")
             }
@@ -262,18 +250,19 @@ class ComplimentaryDetailsFragment : Fragment() {
                 }
                 binding.namesChildren?.removeAllViews()
                 for (i in 0 until noKids){
-                    var textInputLayout = TextInputLayout(context)
-                    val lp = LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT
-                    )
-                    lp.setMargins(0, 0, 0, 0)
-                    textInputLayout.layoutParams = lp
-                    var inputText = TextInputEditText(ContextThemeWrapper(activity, R.style.CInput))
-                    inputText.setHint("Nombre y Apellido (Niño "+(i+1)+")")
-                    inputText.isEnabled = true
-                    textInputLayout.addView(inputText)
-                    binding.namesChildren?.addView(textInputLayout)
+//                    var textInputLayout = TextInputLayout(context)
+//                    val lp = LinearLayout.LayoutParams(
+//                        LinearLayout.LayoutParams.MATCH_PARENT,
+//                        LinearLayout.LayoutParams.WRAP_CONTENT
+//                    )
+//                    lp.setMargins(0, 0, 0, 0)
+//                    textInputLayout.layoutParams = lp
+//                    var inputText = TextInputEditText(ContextThemeWrapper(activity, R.style.CInput))
+//                    inputText.setHint("Nombre y Apellido (Niño "+(i+1)+")")
+//                    inputText.isEnabled = true
+//                    textInputLayout.addView(inputText)
+//                    binding.namesChildren?.addView(textInputLayout)
+                    binding.namesChildren?.addView(formManager.CreateInfantesList(i,activity,context,binding))
                 }
 
                 //the list of infants always have 6 elements [0-5]
@@ -326,20 +315,8 @@ class ComplimentaryDetailsFragment : Fragment() {
                 }
                 binding.namesInfants?.removeAllViews()
                 for (i in 0 until noInfants){
-                    var textInputLayout = TextInputLayout(context)
-                    val lp = LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT
-                    )
-                    lp.setMargins(0, 0, 0, 0)
-                    textInputLayout.layoutParams = lp
-                    var inputText = TextInputEditText(ContextThemeWrapper(activity, R.style.CInput))
-                    inputText.setHint("Nombre y Apellido (Infante "+(i+1)+")")
-                    inputText.isEnabled = true
-                    textInputLayout.addView(inputText)
-                    binding.namesInfants?.addView(textInputLayout)
+                    binding.namesInfants?.addView(formManager.CreateInfantesList(i,activity,context,binding))
                 }
-
             } catch (error: java.lang.Exception) {
                 error.printStackTrace()
             }
@@ -442,57 +419,99 @@ class ComplimentaryDetailsFragment : Fragment() {
         return valid
     }
     private fun validateInputs(): Boolean{
+
         var linearLayout: LinearLayout = binding.namesAdults
         nameAdults =  JSONArray()
         for (i in 0 until linearLayout.childCount){
-            var inputLayout = linearLayout.getChildAt(i) as TextInputLayout
-            var input = inputLayout.editText as TextInputEditText
-            if(input.text.toString().isEmpty()){
-                input.requestFocus()
-                val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-                imm!!.toggleSoftInput(
-                    InputMethodManager.SHOW_FORCED,
-                    InputMethodManager.HIDE_IMPLICIT_ONLY
-                )
-                return false
-            } else{
-                nameAdults?.put(input.text.toString())
+            var layoutInputs = linearLayout.getChildAt(i) as LinearLayout
+            var dataForAdult = JSONObject()
+            for (j in 0 until layoutInputs.childCount){
+                var inputLayout = layoutInputs.getChildAt(j) as TextInputLayout
+                var input = inputLayout.editText as TextInputEditText
+                if(input.text.toString().isEmpty()){
+                    input.requestFocus()
+                    val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+                    imm!!.toggleSoftInput(
+                        InputMethodManager.SHOW_FORCED,
+                        InputMethodManager.HIDE_IMPLICIT_ONLY
+                    )
+                    return false
+                } else{
+                    //nameAdults?.put(input.text.toString())
+                    var index = "nombre"
+                    when (j) {
+                        0 -> index = "nombre"
+                        1 -> index = "paterno"
+                        2 -> index = "materno"
+                    }
+                    dataForAdult.accumulate(index.toString(), input.text.toString())
+                }
             }
+            nameAdults?.put(dataForAdult)
         }
+        println("complimentary: " + nameAdults)
+
         var linearLayoutChildren: LinearLayout = binding.namesChildren
         nameKids =  JSONArray()
         for (i in 0 until linearLayoutChildren.childCount){
-            var inputLayout = linearLayoutChildren.getChildAt(i) as TextInputLayout
-            var input = inputLayout.editText as TextInputEditText
-            if(input.text.toString().isEmpty()){
-                input.requestFocus()
-                val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-                imm!!.toggleSoftInput(
-                    InputMethodManager.SHOW_FORCED,
-                    InputMethodManager.HIDE_IMPLICIT_ONLY
-                )
-                return false
-            }else{
-                nameKids?.put(input.text.toString())
+            var layoutInputs = linearLayoutChildren.getChildAt(i) as LinearLayout
+            var dataForKids = JSONObject()
+            for (j in 0 until layoutInputs.childCount){
+                var inputLayout = layoutInputs.getChildAt(j) as TextInputLayout
+                var input = inputLayout.editText as TextInputEditText
+                if(input.text.toString().isEmpty()){
+                    input.requestFocus()
+                    val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+                    imm!!.toggleSoftInput(
+                        InputMethodManager.SHOW_FORCED,
+                        InputMethodManager.HIDE_IMPLICIT_ONLY
+                    )
+                    return false
+                } else{
+                    //nameAdults?.put(input.text.toString())
+                    var index = "nombre"
+                    when (j) {
+                        0 -> index = "nombre"
+                        1 -> index = "paterno"
+                        2 -> index = "materno"
+                    }
+                    dataForKids.accumulate(index.toString(), input.text.toString())
+                }
             }
+            nameKids?.put(dataForKids)
         }
+        println("complimentary: " + nameKids)
+
         var linearLayoutInfants: LinearLayout = binding.namesInfants
         nameInfants =  JSONArray()
         for (i in 0 until linearLayoutInfants.childCount){
-            var inputLayout = linearLayoutInfants.getChildAt(i) as TextInputLayout
-            var input = inputLayout.editText as TextInputEditText
-            if(input.text.toString().isEmpty()){
-                input.requestFocus()
-                val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-                imm!!.toggleSoftInput(
-                    InputMethodManager.SHOW_FORCED,
-                    InputMethodManager.HIDE_IMPLICIT_ONLY
-                )
-                return false
-            }else{
-                nameInfants?.put(input.text.toString())
+            var layoutInputs = linearLayoutInfants.getChildAt(i) as LinearLayout
+            var dataForInfantes = JSONObject()
+            for (j in 0 until layoutInputs.childCount){
+                var inputLayout = layoutInputs.getChildAt(j) as TextInputLayout
+                var input = inputLayout.editText as TextInputEditText
+                if(input.text.toString().isEmpty()){
+                    input.requestFocus()
+                    val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+                    imm!!.toggleSoftInput(
+                        InputMethodManager.SHOW_FORCED,
+                        InputMethodManager.HIDE_IMPLICIT_ONLY
+                    )
+                    return false
+                } else{
+                    //nameAdults?.put(input.text.toString())
+                    var index = "nombre"
+                    when (j) {
+                        0 -> index = "nombre"
+                        1 -> index = "paterno"
+                        2 -> index = "materno"
+                    }
+                    dataForInfantes.accumulate(index.toString(), input.text.toString())
+                }
             }
+            nameInfants?.put(dataForInfantes)
         }
+        println("complimentary: " + nameInfants)
 
         return true
     }
@@ -508,14 +527,21 @@ class ComplimentaryDetailsFragment : Fragment() {
 
         binding.progressBar.visibility = View.VISIBLE
         val jsonObject = JSONObject()
+        val jsonVisitantes = JSONObject()
         try {
+            jsonVisitantes.put("adultos",nameAdults)
+            jsonVisitantes.put("menores",nameKids)
+            jsonVisitantes.put("infantes",nameInfants)
+
+
             jsonObject.put("titularReservacion", fullName)
-            jsonObject.put("adultos", noAdults)
-            jsonObject.put("nombresAdultos", nameAdults)
-            jsonObject.put("menores", noKids)
-            jsonObject.put("nombresMenores", nameKids)
-            jsonObject.put("infantes", noInfants)
-            jsonObject.put("nombresInfantes", nameInfants)
+            jsonObject.put("visitantes",jsonVisitantes)
+//            jsonObject.put("adultos", noAdults)
+//            jsonObject.put("nombresAdultos", nameAdults)
+//            jsonObject.put("menores", noKids)
+//            jsonObject.put("nombresMenores", nameKids)
+//            jsonObject.put("infantes", noInfants)
+//            jsonObject.put("nombresInfantes", nameInfants)
             jsonObject.put("idServicio", complimentaryTem!!.idServicio)
             jsonObject.put("servicio", complimentaryTem!!.servicio)
             jsonObject.put("fechaVista", fechaVisita)
@@ -526,8 +552,8 @@ class ComplimentaryDetailsFragment : Fragment() {
             e.printStackTrace()
         }
 
-        println("json object to update $jsonObject")
-        /*AndroidNetworking.post(AppPreferences.generarReserva)
+        println("complimentary: $jsonObject")
+        AndroidNetworking.post(AppPreferences.generarReserva2)
             .addJSONObjectBody(jsonObject) // posting json
             .addHeaders("Authorization", "bearer "+AppPreferences.userToken)
             .setTag("complimentary_reservation")
@@ -535,6 +561,7 @@ class ComplimentaryDetailsFragment : Fragment() {
             .build()
             .getAsString(object : StringRequestListener {
                 override fun onResponse(response: String?) {
+                    println("complimentary: onResponse ${response}")
                     binding.progressBar.visibility = View.GONE
                     if (response == "true") {
                         EventsTrackerFunctions.trackEvent(EventsTrackerFunctions.complimentaryBook)
@@ -543,12 +570,12 @@ class ComplimentaryDetailsFragment : Fragment() {
                         virtualCardUnAvailablePopup()
                     }
                 }
-
                 override fun onError(anError: ANError?) {
+                    println("complimentary: error ${anError!!.message.toString()}")
                     binding.progressBar.visibility = View.GONE
                     snackBarMessage(anError!!.message.toString())
                 }
-            })*/
+            })
 
     }
 
