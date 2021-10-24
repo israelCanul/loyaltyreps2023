@@ -94,7 +94,7 @@ class NewsFeedFragment : Fragment() {
                         )
 
                         binding.latestNew.setOnClickListener {
-                            EventsTrackerFunctions.trackEvent(EventsTrackerFunctions.newsFeedFeaturedView)
+                            EventsTrackerFunctions.trackNewsFeaturedEvent(bundleNews.title.toString())
                             val bundle = Bundle().also { it.putParcelable("xnews", bundleNews) }
                             findNavController().navigate(R.id.to_newsDetailsFragment, bundle)
                         }
