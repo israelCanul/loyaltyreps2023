@@ -196,7 +196,7 @@ class ComplimentaryDetailsFragment : Fragment() {
                 for (i in 0 until noAdults){
                     binding.namesAdults?.addView(formManager.CreateAdultOnList(i,activity,context,binding,repName,repLastP,repLastM))
                 }
-                maxKids = adulstList.size - noAdults
+                maxKids = (complimentaryTem!!.noPaxPorUtilizar + 1) - noAdults
 
                 if (maxKids > 0) {
                     loadNumberOfKids()

@@ -127,7 +127,7 @@
                         android:layout_below="@+id/login_form_container"
                         android:elevation="2dp"
                         android:layout_marginTop="28dp"
-                        android:background="@drawable/button_primary_border_white"
+                        android:background="@drawable/button_transparent"
                         android:enabled="true"
                         android:paddingStart="@dimen/margin50"
                         android:paddingEnd="@dimen/margin50"
