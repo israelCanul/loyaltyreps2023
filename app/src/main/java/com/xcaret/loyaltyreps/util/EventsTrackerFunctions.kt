@@ -135,6 +135,14 @@ object EventsTrackerFunctions {
         }
         firebaseAnalytics.logEvent(newsSection, params)
     }
+    fun trackNewsFeaturedEvent(newSelected: String){
+        val params = Bundle()
+        params.let {
+            it.putString("rcx", AppPreferences.userRCX)
+            it.putString("new", newSelected)
+        }
+        firebaseAnalytics.logEvent(newsFeedFeaturedView, params)
+    }
     fun trackVentasSectionEvent(graficaSelected: String){
         val params = Bundle()
         params.let {

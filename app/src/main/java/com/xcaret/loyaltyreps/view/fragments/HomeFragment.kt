@@ -168,7 +168,10 @@ class HomeFragment : Fragment()  {
     }
 
     private fun handleActions(){
-        binding.goToPickups.setOnClickListener { findNavController().navigate(R.id.to_pickUpsFragment) }
+        binding.goToPickups.setOnClickListener {
+            trackClickButtonEvent("Pickups")
+            findNavController().navigate(R.id.to_pickUpsFragment)
+        }
         binding.cardGoToTraining.setOnClickListener {
             trackClickButtonEvent("Training")
             findNavController().navigate(R.id.to_trainingFragment)
