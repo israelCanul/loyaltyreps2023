@@ -13,6 +13,7 @@ object EventsTrackerFunctions {
     lateinit var firebaseAnalytics: FirebaseAnalytics
 
     val eventLogin = "login"
+    val eventRecovery = "recovery"
     val repCardOpen = "tarjeta_rep"
     val repCardError = "tarjeta_rep_error"
     val chatOpen = "chat"
@@ -37,6 +38,11 @@ object EventsTrackerFunctions {
         val params = Bundle()
         params.putString("rcx", rcxRrx)
         firebaseAnalytics.logEvent(eventLogin, params)
+    }
+    fun trackRecovery(rcxRrx: String){
+        val params = Bundle()
+        params.putString("rcx", rcxRrx)
+        firebaseAnalytics.logEvent(eventRecovery, params)
     }
 
     fun trackQuizCompleted(quizMain: Boolean, quizName: String, approved:Boolean, score:Double){

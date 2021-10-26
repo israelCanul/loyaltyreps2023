@@ -26,6 +26,7 @@ import com.androidnetworking.interfaces.StringRequestListener
 import com.xcaret.loyaltyreps.R
 import com.xcaret.loyaltyreps.databinding.ActivityRetrieveBinding
 import com.xcaret.loyaltyreps.util.AppPreferences
+import com.xcaret.loyaltyreps.util.EventsTrackerFunctions.trackRecovery
 
 
 class RetrievePasswordActivity: AppCompatActivity()  {
@@ -72,7 +73,7 @@ class RetrievePasswordActivity: AppCompatActivity()  {
         this.setText(spannableString, TextView.BufferType.SPANNABLE)
     }
     private fun retrievePassword(cardId:String){
-
+        trackRecovery(cardId)
         AndroidNetworking.get(AppPreferences.XCARET_LONGIN+"authenticate/recoverPassword/${cardId}")
             .setTag("retrievepass")
             .setPriority(Priority.MEDIUM)
