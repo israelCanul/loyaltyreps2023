@@ -254,7 +254,7 @@
                             android:layout_height="wrap_content"
                             android:drawableRight="@drawable/icon_information"
                             android:gravity="right|center_vertical"
-                            android:text="¿Cómo funcionan los niveles de reps? "
+                            android:text="@string/convertirse_top_rep"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="italic" />
 
