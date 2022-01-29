@@ -49,6 +49,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
+import java.util.function.BooleanSupplier
 import kotlin.collections.ArrayList
 
 
@@ -516,12 +517,26 @@ class ComplimentaryDetailsFragment : Fragment() {
         return true
     }
 
+    private fun validateFullName(): Boolean{
+            var valid = true
+            if (fullName.toString().isNullOrEmpty()) {
+                valid = false
+            }
+            return valid
+    }
+
     private fun sendReservationRequest(xUser: XUser){
         if (!validateDate()){
             return
         }
         // input validations
         if (!validateInputs()){
+            return
+        }
+        if(!validateFullName()){
+            val builder = AlertDialog.Builder(context!!)
+            builder.setTitle(R.string.error_update_perfil).setMessage(R.string.error_on_fullname)
+            builder.create().show()
             return
         }
 
@@ -552,7 +567,7 @@ class ComplimentaryDetailsFragment : Fragment() {
             e.printStackTrace()
         }
 
-        println("complimentary: $jsonObject")
+        println("complimentary a reserva: $jsonObject")
         AndroidNetworking.post(AppPreferences.generarReserva2)
             .addJSONObjectBody(jsonObject) // posting json
             .addHeaders("Authorization", "bearer "+AppPreferences.userToken)

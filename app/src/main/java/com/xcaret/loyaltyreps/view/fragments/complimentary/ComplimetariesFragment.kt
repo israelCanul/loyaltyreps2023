@@ -17,7 +17,6 @@ import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.google.android.material.snackbar.Snackbar
-import com.xcaret.loyaltyreps.MainActivity
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -26,7 +25,6 @@ import com.xcaret.loyaltyreps.adapter.XComplimentaryAdapter
 import com.xcaret.loyaltyreps.database.XCaretLoyaltyDatabase
 import com.xcaret.loyaltyreps.databinding.FragmentComplimetariesBinding
 import com.xcaret.loyaltyreps.model.Complimentary
-import com.xcaret.loyaltyreps.model.XComplimentary
 import com.xcaret.loyaltyreps.util.AppPreferences
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModel
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModelFactory

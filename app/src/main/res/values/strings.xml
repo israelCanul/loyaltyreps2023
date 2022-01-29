@@ -348,6 +348,9 @@
     <string name="inactive_advice">Favor de consultar tu status con tu Agencia o Ejecutivo de Cuenta</string>
     <string name="Descargar_Video">Descargar Video</string>
     <string name="convertirse_top_rep">¿Cómo puedes convertirte en un Top Rep?</string>
+    <string name="error_update_perfil">Actualiza tu perfil</string>
+    <string name="error_on_fullname">Para poder reservar necesitas agregar tu email en la seccion \"Perfil\"</string>
+    <string name="sin_observaciones">Sin observaciones</string>
 
 
 </resources>

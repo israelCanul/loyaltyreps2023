@@ -32,7 +32,7 @@ class XPuntosNegAdapter(
         if(negPoint.observaciones.isNotBlank())
             holder.comentarios.text = negPoint.observaciones
         else
-            holder.comentarios.text = "Sin observaciónes"
+            holder.comentarios.text = R.string.sin_observaciones.toString()// se agrega el texto cuando el campo observaciones esta vacio
         holder.comentarios.visibility = View.VISIBLE
         holder.estatusRecordValue.text = negPoint.estatus
         holder.estatusRecord.visibility = View.VISIBLE
