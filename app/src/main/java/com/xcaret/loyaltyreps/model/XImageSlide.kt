@@ -4,8 +4,8 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class XImageSlide (
-    var name: String,
-    var image: String
+    var name: String?,
+    var image: String?
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this (

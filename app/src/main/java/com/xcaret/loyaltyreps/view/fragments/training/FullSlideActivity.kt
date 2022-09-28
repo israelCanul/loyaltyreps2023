@@ -74,7 +74,10 @@ class FullSlideActivity : AppCompatActivity() {
         binding.downLoadImageSelected.setOnClickListener{
             println("Si imprime" + images[binding.xParkSlideViewPager.currentItem].image)
             var dm : DownloadImage = DownloadImage()
-            dm.save(this, this, images[binding.xParkSlideViewPager.currentItem].image, intent.extras?.getString("parkName", "")!! + binding.xParkSlideViewPager.currentItem)
+            images[binding.xParkSlideViewPager.currentItem].image?.let { it1 ->
+                dm.save(this, this,
+                    it1, intent.extras?.getString("parkName", "")!! + binding.xParkSlideViewPager.currentItem)
+            }
         }
 
     }

@@ -10,9 +10,9 @@ android {
     defaultConfig {
         applicationId "com.xcaret.loyaltyreps"
         minSdkVersion 19
-        targetSdkVersion 29
-        versionCode 38
-        versionName "1.0.15"
+        targetSdkVersion 30
+        versionCode 40
+        versionName "1.0.17"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
@@ -109,7 +109,7 @@ dependencies {
     //retrofit with moshi converter
     implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
     implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit"
-    implementation "com.squareup.okhttp3:logging-interceptor:3.14.2"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
 
     //Material DateTime Picker
     implementation 'com.wdullaer:materialdatetimepicker:4.2.3'

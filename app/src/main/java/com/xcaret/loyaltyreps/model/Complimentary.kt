@@ -4,21 +4,21 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Complimentary (
-    var noTarjeta: String,
-    var nombreAfiliado: String,
-    var tarjetaEspecial: String,
-    var parque: String,
-    var idServicio: String,
-    var servicio: String,
+    var noTarjeta: String?,
+    var nombreAfiliado: String?,
+    var tarjetaEspecial: String?,
+    var parque: String?,
+    var idServicio: String?,
+    var servicio: String?,
     var noPaxBeneficio: Int,
     var noPaxUtilizado: Int,
     var noPaxPorUtilizar: Int,
-    var image: String,
-    var name: String,
-    var phone: String,
-    var action: String,
+    var image: String?,
+    var name: String?,
+    var phone: String?,
+    var action: String?,
     var infants: Boolean,
-    var note: String,
+    var note: String?,
     var order: Int
 ): Parcelable {
 

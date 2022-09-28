@@ -125,6 +125,7 @@ class HomeFragment : Fragment()  {
                     val user_level = "${getXUserLevel(totalPoints.toInt())}"
                     binding.xuserLevel.text = user_level
 
+
                     if(getXUserLevel(totalPoints.toInt()) >= 10){
 //                    if(true){
                         binding.xUserName.text = fullName + "\n Top Rep"

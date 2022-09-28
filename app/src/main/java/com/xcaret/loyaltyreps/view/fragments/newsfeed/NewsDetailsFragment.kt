@@ -44,7 +44,7 @@ class NewsDetailsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        xNewsItem = arguments!!.getParcelable("xnews") as XNews
+        xNewsItem = arguments!!.getParcelable("xnews")
 
         //println("firebase " + xNewsItem!!.title.toString())
         trackNewsSectionEvent(xNewsItem!!.title.toString())

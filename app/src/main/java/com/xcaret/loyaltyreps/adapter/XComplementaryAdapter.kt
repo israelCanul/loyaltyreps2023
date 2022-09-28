@@ -49,8 +49,8 @@ class XComplimentaryAdapter (
         holder.comp_availability.text = mavailability
 
 
-        holder.comp_notice.text = AppPreferences.emptyString(mcomplimentary.note)
-        holder.comp_notice.visibility = if (mcomplimentary.note.isEmpty()) View.GONE else View.VISIBLE
+        holder.comp_notice.text = mcomplimentary.note?.let { AppPreferences.emptyString(it) }
+        holder.comp_notice.visibility = if (mcomplimentary.note?.isEmpty() == true) View.GONE else View.VISIBLE
 
         when(mcomplimentary.action){
             "none" -> {

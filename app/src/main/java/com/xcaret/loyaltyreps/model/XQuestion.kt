@@ -12,7 +12,7 @@ data class XQuestion(
 ) : Parcelable {
     constructor(parcel: Parcel) : this (
         parcel.readInt(),
-        parcel.createTypedArrayList(XQuestionChoice.CREATOR),
+        parcel.createTypedArrayList(XQuestionChoice.CREATOR) as ArrayList<XQuestionChoice>,
         parcel.readString(),
         parcel.readInt()
     )

@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/activity_full_slide.xml" value="0.1859375" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/activity_login.xml" value="0.3625" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/activity_retrieve.xml" value="0.1859375" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/fragment_complimentary_details.xml" value="0.3625" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/fragment_complimetaries.xml" value="0.21557971014492755" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/fragment_pick_ups.xml" value="0.1859375" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/fragment_profile.xml" value="0.21770833333333334" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/fragment_profile_interests.xml" value="0.21770833333333334" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/fragment_profile_my_account.xml" value="0.21770833333333334" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/fragment_profile_record.xml" value="0.21770833333333334" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/fragment_sales.xml" value="0.1859375" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/fragment_shop_response.xml" value="0.21770833333333334" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/fragment_store_record.xml" value="0.21770833333333334" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/fragment_success_full_reservation.xml" value="0.3625" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/fragment_training.xml" value="0.1859375" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/fragment_training_park_details.xml" value="0.1859375" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/fragment_training_park_tdetails.xml" value="0.1859375" />
+        <entry key="..\:/android/Loyalty/app/src/main/res/layout/fragment_training_result.xml" value="0.1859375" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

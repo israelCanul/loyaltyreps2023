@@ -148,7 +148,7 @@ class ComplimentaryDetailsFragment : Fragment() {
         binding.reservationAgency.setText(xUser.agencia)
         binding.reservationRCX.setText(xUser.correo)
 
-        getDataFromFirebase(complimentaryTem!!.idServicio)
+        complimentaryTem!!.idServicio?.let { getDataFromFirebase(it) }
 //        if (!complimentaryTem!!.infants){
 //            binding.textView16.visibility = View.GONE
 //        }

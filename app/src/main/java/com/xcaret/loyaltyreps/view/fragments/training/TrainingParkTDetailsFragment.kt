@@ -28,7 +28,7 @@ class TrainingParkTDetailsFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_training_park_tdetails, container, false)
 
 
-        xTraining = arguments!!.getParcelable("xtraining_item") as XTraining
+        xTraining = arguments!!.getParcelable("xtraining_item")
 
         mcontent = "<!DOCTYPE html>"
         mcontent += "<head></head>"
@@ -41,7 +41,7 @@ class TrainingParkTDetailsFragment : Fragment() {
 
         binding.xtParkName.text = xTraining!!.name
         binding.xtParkDescription.setBackgroundColor(Color.TRANSPARENT)
-        binding.xtParkDescription.loadDataWithBaseURL(null, mcontent, "text/html", "UTF-8", null)
+        binding.xtParkDescription.loadDataWithBaseURL(null, mcontent!!, "text/html", "UTF-8", null)
 
         return binding.root
     }

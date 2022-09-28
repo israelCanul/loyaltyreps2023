@@ -60,6 +60,7 @@ import com.xcaret.loyaltyreps.util.AppPreferences
 import com.xcaret.loyaltyreps.util.XcaretLoyaltyApi
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModel
 import com.xcaret.loyaltyreps.viewmodel.XUserViewModelFactory
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -201,7 +202,7 @@ class ProfileMyAccountFragment : Fragment() {
             })
         )
 
-        xUserViewModel.currentXUser.observe(this, Observer {
+        xUserViewModel.currentXUser.observe(viewLifecycleOwner, Observer {
             xuser ->
             xuser?.let {
                 binding.currUserStatus.text = if (it.cnMainQuiz && it.idEstatusArchivos == 3) "Validado" else "Pendiente"
@@ -540,7 +541,7 @@ class ProfileMyAccountFragment : Fragment() {
             e.printStackTrace()
         }
 
-        val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file1)
+        val requestFile = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), file1)
 
         val body1 = MultipartBody.Part.createFormData("Files", fileName, requestFile)
 

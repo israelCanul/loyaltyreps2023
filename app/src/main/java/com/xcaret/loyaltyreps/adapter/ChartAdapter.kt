@@ -36,7 +36,11 @@ class ChartAdapter (
         Handler().postDelayed({
 //            holder.park_status.layoutParams.height = (((chart_item.noPax).toFloat() / totalPax().toFloat())*2000).toInt()
             holder.park_status.layoutParams.height = (chart_item.noPax).toInt()
-            holder.park_status.background = ContextCompat.getDrawable(context, getImage(chart_item.background))
+            holder.park_status.background = chart_item.background?.let { getImage(it) }?.let {
+                ContextCompat.getDrawable(context,
+                    it
+                )
+            }
         }, 500)
     }
 
