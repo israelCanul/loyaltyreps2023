@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -346,22 +347,35 @@ class SalesFragment : Fragment() {
                                 val noPax = chartitem.getInt("noPax")
 
                                 val citemId =  chartitem.getInt("idParque")
-                                val mBackground = "chart_item_$citemId"
-                                val mLogo = "icon_xpark_$citemId"
-
-                                noPaxesM += noPax
-                                if(noPax > 0){
-                                    chartItems.add(
-                                        ChartItem(
-                                            chartitem.getInt("idParque"),
-                                            chartitem.getString("nombreParque"),
-                                            noPax,
-                                            mLogo,
-                                            mBackground,
-                                            noPaxesM
-                                        )
-                                    )
+                                var mBackground = "chart_item_$citemId"
+                                var mLogo = "icon_xpark_$citemId"
+                                Log.i("Id Parque",citemId.toString())
+                                when (citemId){
+                                    in 1..10 -> {
+                                        mLogo = "icon_xpark_$citemId"
+                                        mBackground = "chart_item_$citemId"
+                                    }
+                                    else ->{
+                                        mLogo = "lore_face_progress"
+                                        mBackground = "chart_item_default"
+                                    }
                                 }
+                                Log.i("Id Logo ", mLogo)
+
+                                    noPaxesM += noPax
+                                    if (noPax > 0) {
+                                        chartItems.add(
+                                            ChartItem(
+                                                chartitem.getInt("idParque"),
+                                                chartitem.getString("nombreParque"),
+                                                noPax,
+                                                mLogo,
+                                                mBackground,
+                                                noPaxesM
+                                            )
+                                        )
+                                    }
+
                                 totalPax = "Total pax: $noPaxesM"
                                 binding.totPax.text = totalPax
                             }

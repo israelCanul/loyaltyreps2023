@@ -18,9 +18,7 @@ import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.androidnetworking.interfaces.StringRequestListener
-import io.smooch.core.Settings
-import io.smooch.core.Smooch
-import io.smooch.ui.ConversationActivity
+
 import com.xcaret.loyaltyreps.database.XCaretLoyaltyDatabase
 import com.xcaret.loyaltyreps.databinding.ActivityMainBinding
 import com.xcaret.loyaltyreps.model.XUser
@@ -52,8 +50,6 @@ class MainActivity : AppCompatActivity() {
         xUserViewModel = ViewModelProviders.of(
             this, viewModelFactory).get(XUserViewModel::class.java)
         setupNavigation()
-
-
     }
 
     private fun setupNavigation() {
@@ -97,12 +93,12 @@ class MainActivity : AppCompatActivity() {
     }*/
 
     fun loadChat(){
-        Smooch.init(application, Settings("5cda4d74c927b700107c67bd")) { response ->
-            if (response.error == null) {
-                ConversationActivity.show(this)
-            } else {
-            }
-        }
+//        Smooch.init(application, Settings("5cda4d74c927b700107c67bd")) { response ->
+//            if (response.error == null) {
+//                ConversationActivity.show(this)
+//            } else {
+//            }
+//        }
     }
 
     fun xUserLogout(context: Context, title: String, description: String){

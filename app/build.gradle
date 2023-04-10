@@ -6,13 +6,13 @@ apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'io.fabric'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     defaultConfig {
         applicationId "com.xcaret.loyaltyreps"
         minSdkVersion 19
-        targetSdkVersion 30
-        versionCode 40
-        versionName "1.0.17"
+        targetSdkVersion 31
+        versionCode 41
+        versionName "1.0.18"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
@@ -27,7 +27,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     dataBinding {
         enabled = true
     }
@@ -73,8 +72,8 @@ dependencies {
     implementation 'com.github.razir.progressbutton:progressbutton:1.0.2'
     implementation 'org.apache.commons:commons-lang3:3.4'
 
-    implementation 'io.smooch:core:5.19.0'
-    implementation 'io.smooch:ui:5.19.0'
+//    implementation 'io.smooch:core:5.19.0'
+//    implementation 'io.smooch:ui:5.19.0'
     implementation 'com.google.firebase:firebase-core:17.2.1'
     implementation 'com.google.firebase:firebase-messaging:20.0.0'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'

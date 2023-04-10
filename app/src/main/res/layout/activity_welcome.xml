@@ -18,7 +18,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/activity_title"
-                                android:text="@string/meet_lore_title" android:textSize="@dimen/text26"
+                                android:text="@string/meet_lore_title"
+                                android:textSize="@dimen/text26"
                                 android:layout_marginTop="@dimen/margin30"/>
 
                         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -59,9 +60,11 @@
                                 android:fontFamily="@font/roboto"/>
 
                         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                                  android:text="@string/welcom_skip_notice" android:textAlignment="center"
+                                  android:text="@string/welcom_skip_notice"
+                                android:textAlignment="center"
                                   android:textSize="@dimen/general_text"
-                                  android:textColor="@color/colorPrimary" android:layout_below="@+id/gotoMainView"
+                                  android:textColor="@color/colorPrimary"
+                                android:layout_below="@+id/gotoMainView"
                                   android:layout_marginTop="@dimen/margin50" android:textStyle="italic"/>
 
                 </RelativeLayout>
